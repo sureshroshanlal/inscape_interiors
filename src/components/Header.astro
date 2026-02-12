@@ -1,0 +1,58 @@
+<header class="top-0 left-0 w-full bg-background z-30">
+  <div class="page-padding">
+    <!-- Desktop Header -->
+    <div class="hidden md:flex items-center justify-center py-6 relative">
+      <!-- Left Vertical Nav -->
+      <nav class="absolute left-0 top-1/2 -translate-y-1/2">
+        <ul class="flex flex-col gap-1 text-[14px] font-light tracking-wide">
+          <li><a href="/projects">Projects</a></li>
+          <!-- <li><a href="/studio55">Studio 55</a></li> -->
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Logo -->
+      <a href="/">
+        <img src="/images/inscape_logo.webp" alt="Inscape Interiors" class="h-36 w-auto" />
+      </a>
+    </div>
+
+    <!-- Mobile Header -->
+    <div class="flex md:hidden items-center justify-between py-5">
+      <a href="/">
+        <img src="/images/logo.svg" alt="Inscape Interiors" class="h-8 w-auto" />
+      </a>
+
+      <button id="mobile-toggle" class="p-2 -mr-2" aria-label="Toggle menu">
+        <div class="space-y-1.5">
+          <span class="block w-6 h-px bg-black transition-all duration-300"
+          ></span>
+          <span class="block w-6 h-px bg-black transition-all duration-300"
+          ></span>
+          <span class="block w-6 h-px bg-black transition-all duration-300"
+          ></span>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+    <nav class="page-padding py-8 flex flex-col gap-6">
+      <a href="/projects" class="text-sm">Projects</a>
+      <!-- <a href="/studio55" class="text-sm">Studio 55</a> -->
+      <a href="/about" class="text-sm">About</a>
+      <a href="/contact" class="text-sm">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("mobile-toggle");
+  const menu = document.getElementById("mobile-menu");
+
+  toggle?.addEventListener("click", () => {
+    menu?.classList.toggle("hidden");
+  });
+</script>

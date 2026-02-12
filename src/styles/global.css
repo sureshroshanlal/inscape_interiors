@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-sans font-normal;
+  }
+
+  /* Remove default margins */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Links */
+  a {
+    @apply text-[#301804] no-underline transition-opacity duration-300;
+  }
+
+  a:hover {
+    @apply opacity-60;
+  }
+
+  /* Images */
+  img {
+    @apply block max-w-full h-auto;
+  }
+}
+
+@layer components {
+  /* Container */
+  .container-site {
+    @apply w-full mx-auto px-6 md:px-12 lg:px-20;
+    max-width: 1400px;
+  }
+
+  /* Button Primary */
+  .btn-primary {
+    @apply inline-block px-8 py-3.5 text-nav font-sans uppercase tracking-wider;
+    @apply border border-site-text transition-all duration-300;
+  }
+
+  .btn-primary:hover {
+    @apply bg-site-text text-site-bg opacity-100;
+  }
+
+  /* Section Spacing */
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-section;
+  }
+
+  .section-padding-sm {
+    @apply py-12 md:py-16 lg:py-section-sm;
+  }
+
+  .page-padding {
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@layer utilities {
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 1.2s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.8s ease-out forwards;
+  }
+
+  /* Delay classes */
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+  .delay-600 {
+    animation-delay: 600ms;
+  }
+
+  /* Image hover effects */
+  .img-hover-zoom {
+    @apply overflow-hidden;
+  }
+
+  .img-hover-zoom img {
+    @apply transition-transform duration-700 ease-out;
+  }
+
+  .img-hover-zoom:hover img {
+    @apply scale-105;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

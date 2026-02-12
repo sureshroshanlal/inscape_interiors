@@ -1,0 +1,54 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Newsletter — Inscape Interiors">
+  <section class="page-padding section-spacing">
+    <div class="max-w-xl mx-auto text-center">
+      <h1 class="heading-lg mb-6">Newsletter</h1>
+
+      <p class="body-text mb-10">
+        Stay up to date with Tasha's latest projects, ceramics, and Studio 55
+        events.
+      </p>
+
+      <form class="space-y-6" action="#" method="post">
+        <div>
+          <input
+            type="text"
+            name="first_name"
+            required
+            class="w-full bg-transparent border-b border-brown-300 pb-2 font-sans text-sm text-brown-800 text-center focus:outline-none focus:border-brown-700 transition-colors placeholder:text-brown-300"
+            placeholder="First Name"
+          />
+        </div>
+        <div>
+          <input
+            type="text"
+            name="last_name"
+            required
+            class="w-full bg-transparent border-b border-brown-300 pb-2 font-sans text-sm text-brown-800 text-center focus:outline-none focus:border-brown-700 transition-colors placeholder:text-brown-300"
+            placeholder="Last Name"
+          />
+        </div>
+        <div>
+          <input
+            type="email"
+            name="email"
+            required
+            class="w-full bg-transparent border-b border-brown-300 pb-2 font-sans text-sm text-brown-800 text-center focus:outline-none focus:border-brown-700 transition-colors placeholder:text-brown-300"
+            placeholder="Email Address"
+          />
+        </div>
+        <div class="pt-4">
+          <button
+            type="submit"
+            class="label-text bg-transparent border border-brown-400 px-8 py-3 hover:bg-brown-900 hover:text-cream hover:border-brown-900 transition-all duration-300"
+          >
+            Subscribe
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+</Layout>

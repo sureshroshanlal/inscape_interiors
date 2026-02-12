@@ -1,0 +1,38 @@
+<section class="w-full py-section overflow-hidden">
+  <div class="max-w-[1240px] mx-auto">
+    <div class="flex flex-col md:flex-row gap-12">
+      <a href="#" class="block w-full md:w-1/2 parallax-up">
+        <img
+          src="/images/projects/golbourne-road.jpg"
+          alt="Golborne Road Interior Inscape Interiors"
+          class="w-full h-auto"
+        />
+      </a>
+
+      <a href="#" class="block w-full md:w-1/2 parallax-down">
+        <img
+          src="/images/projects/elgin-crescent.jpg"
+          alt="Inscape Interiors Interior Design"
+          class="w-full h-auto"
+        />
+      </a>
+    </div>
+  </div>
+</section>
+
+<script lang="ts">
+  const up = document.querySelector<HTMLElement>(".parallax-up");
+  const down = document.querySelector<HTMLElement>(".parallax-down");
+
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+
+    if (up) {
+      up.style.transform = `translateY(${scrollY * 0.05}px)`;
+    }
+
+    if (down) {
+      down.style.transform = `translateY(-${scrollY * 0.05}px)`;
+    }
+  });
+</script>

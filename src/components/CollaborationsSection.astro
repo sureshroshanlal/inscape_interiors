@@ -1,0 +1,87 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = "Our Collaborations" } = Astro.props;
+
+const logos = [
+  "/images/clients/client-1.webp",
+  "/images/clients/client-2.webp",
+  "/images/clients/client-3.webp",
+  "/images/clients/client-4.webp",
+  "/images/clients/client-5.webp",
+  "/images/clients/client-6.webp",
+  "/images/clients/client-7.webp",
+  "/images/clients/client-8.webp",
+];
+---
+
+<section class="w-full bg-background py-section overflow-hidden">
+  <div class="max-w-[1240px] mx-auto flex flex-col gap-24">
+    <h3 class="text-[32px] md:text-[38px] font-light text-center">
+      {title}
+    </h3>
+
+    <div class="relative w-full overflow-hidden">
+      <div
+        class="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10"
+      >
+      </div>
+      <div class="marquee-track">
+        <!-- First Set -->
+        {
+          logos.map((logo, i) => (
+            <img
+              src={logo}
+              alt={`Client ${i + 1}`}
+              class="h-14 md:h-16 w-auto object-contain opacity-60"
+              loading="lazy"
+            />
+          ))
+        }
+
+        <!-- Duplicate for seamless loop -->
+        {
+          logos.map((logo, i) => (
+            <img
+              src={logo}
+              alt={`Client duplicate ${i + 1}`}
+              class="h-14 md:h-16 w-auto object-contain opacity-60"
+              loading="lazy"
+            />
+          ))
+        }
+      </div>
+
+      <div
+        class="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10"
+      >
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-track {
+    display: flex;
+    gap: 4rem;
+    width: max-content;
+    animation: scroll 45s linear infinite;
+  }
+
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+  }
+</style>

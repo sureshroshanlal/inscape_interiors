@@ -1,0 +1,96 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const projects = [
+  {
+    title: "Kensal Rise",
+    subtitle: "Tasha's Home",
+    image: "/images/projects/kensal-rise.jpg",
+    slug: "kensal-rise-interior-design",
+  },
+  {
+    title: "Golbourne Road",
+    subtitle: "Apartment",
+    image: "/images/projects/golbourne-road.jpg",
+    slug: "golbourne-road-apartment-interior",
+  },
+  {
+    title: "Cassandra Goad",
+    subtitle: "Shop",
+    image: "/images/projects/cassandra-goad.jpg",
+    slug: "cassandra-goad-interior-design",
+  },
+  {
+    title: "Holland Park",
+    subtitle: "Family House",
+    image: "/images/projects/holland-park.jpg",
+    slug: "holland-park-interior-design",
+  },
+  {
+    title: "Elgin Crescent",
+    subtitle: "Loft",
+    image: "/images/projects/elgin-crescent.jpg",
+    slug: "elgin-crescent-interior",
+  },
+  {
+    title: "Notting Hill",
+    subtitle: "Townhouse",
+    image: "/images/projects/notting-hill.jpg",
+    slug: "notting-hill-townhouse-interior",
+  },
+  {
+    title: "Camden",
+    subtitle: "Family Home",
+    image: "/images/projects/camden.jpg",
+    slug: "camden-family-home-interior",
+  },
+];
+---
+
+<Layout title="Projects — Inscape Interiors">
+  <section class="page-padding section-spacing">
+    <div class="max-w-6xl mx-auto">
+      <!-- Page heading -->
+      <div class="text-center mb-16 md:mb-20">
+        <h1 class="heading-xl">Projects</h1>
+      </div>
+
+      <!-- Projects grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        {
+          projects.map((project, index) => (
+            <a
+              href={`/project/${project.slug}`}
+              class:list={[
+                "group relative block overflow-hidden",
+                index === 0 ? "md:col-span-2" : "",
+              ]}
+            >
+              <div
+                class:list={[
+                  "relative overflow-hidden",
+                  index === 0 ? "aspect-[16/9]" : "aspect-[3/4]",
+                ]}
+              >
+                <img
+                  src={project.image}
+                  alt={`${project.title} ${project.subtitle}`}
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                  <h2 class="font-serif font-light text-white text-xl md:text-2xl lg:text-3xl tracking-wide">
+                    {project.title}
+                  </h2>
+                  <p class="font-sans text-white/80 text-xs md:text-sm uppercase tracking-widest-plus mt-2">
+                    {project.subtitle}
+                  </p>
+                </div>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
