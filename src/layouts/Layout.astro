@@ -24,22 +24,22 @@ const {
     <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
+    <!-- <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    /> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
   </head>
   <body
     class="min-h-screen flex flex-col bg-background font-sans font-light text-base"
   >
-    <div class="p-[15px]">
-      <Header />
-
-      <!-- MAIN -->
-      <main class="flex-1">
-        <slot />
-      </main>
-      <Footer />
-    </div>
+    <Header />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>

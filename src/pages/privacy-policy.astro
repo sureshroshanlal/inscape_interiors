@@ -1,0 +1,159 @@
+---
+// privacy.astro
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Privacy Policy — Inscape Interiors">
+  <section class="w-full py-section">
+    <div class="max-w-[900px] mx-auto">
+      <h1
+        class="text-[42px] md:text-[56px] font-light leading-tight mb-12 font-serif text-hyperlink text-center fade-in-element opacity-0"
+      >
+        Privacy Policy
+      </h1>
+
+      <div class="space-y-8 fade-in-element opacity-0">
+        <div>
+          <h2
+            class="text-2xl md:text-3xl font-light font-serif text-hyperlink mb-4"
+          >
+            Information We Collect
+          </h2>
+          <p class="text-base md:text-lg text-hyperlink mb-4">
+            We collect information you provide directly to us, including name,
+            email address, phone number, and project details when you contact us
+            or subscribe to our newsletter.
+          </p>
+        </div>
+
+        <div>
+          <h2
+            class="text-2xl md:text-3xl font-light font-serif text-hyperlink mb-4"
+          >
+            How We Use Your Information
+          </h2>
+          <p class="text-base md:text-lg text-hyperlink mb-4">
+            We use the information we collect to respond to your inquiries,
+            provide our services, send newsletters (if subscribed), and improve
+            our website and services.
+          </p>
+        </div>
+
+        <div>
+          <h2
+            class="text-2xl md:text-3xl font-light font-serif text-hyperlink mb-4"
+          >
+            Information Sharing
+          </h2>
+          <p class="text-base md:text-lg text-hyperlink mb-4">
+            We do not sell, trade, or otherwise transfer your personal
+            information to third parties. We may share information with trusted
+            service providers who assist us in operating our website or
+            conducting our business.
+          </p>
+        </div>
+
+        <div>
+          <h2
+            class="text-2xl md:text-3xl font-light font-serif text-hyperlink mb-4"
+          >
+            Data Security
+          </h2>
+          <p class="text-base md:text-lg text-hyperlink mb-4">
+            We implement appropriate security measures to protect your personal
+            information. However, no method of transmission over the internet is
+            100% secure.
+          </p>
+        </div>
+
+        <div>
+          <h2
+            class="text-2xl md:text-3xl font-light font-serif text-hyperlink mb-4"
+          >
+            Your Rights
+          </h2>
+          <p class="text-base md:text-lg text-hyperlink mb-4">
+            You have the right to access, correct, or delete your personal
+            information. To exercise these rights, please contact us using the
+            information on our Contact page.
+          </p>
+        </div>
+
+        <div>
+          <h2
+            class="text-2xl md:text-3xl font-light font-serif text-hyperlink mb-4"
+          >
+            Cookies
+          </h2>
+          <p class="text-base md:text-lg text-hyperlink mb-4">
+            We may use cookies to enhance your experience on our website. You
+            can choose to disable cookies through your browser settings.
+          </p>
+        </div>
+
+        <div>
+          <h2
+            class="text-2xl md:text-3xl font-light font-serif text-hyperlink mb-4"
+          >
+            Changes to Privacy Policy
+          </h2>
+          <p class="text-base md:text-lg text-hyperlink mb-4">
+            We may update this privacy policy from time to time. The updated
+            policy will be posted on this page with the revised date.
+          </p>
+        </div>
+
+        <div>
+          <h2
+            class="text-2xl md:text-3xl font-light font-serif text-hyperlink mb-4"
+          >
+            Contact Us
+          </h2>
+          <p class="text-base md:text-lg text-hyperlink mb-4">
+            If you have questions about this privacy policy, please contact us
+            through our Contact page.
+          </p>
+        </div>
+      </div>
+
+      <p
+        class="text-sm text-hyperlink/60 text-center mt-12 fade-in-element opacity-0"
+      >
+        Last updated: February 2026
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .fade-in-element {
+    transition:
+      opacity 1.2s ease-out,
+      transform 1.2s ease-out;
+    transform: translateY(20px);
+  }
+
+  .fade-in-element.visible {
+    opacity: 1 !important;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add("visible");
+          }, index * 200);
+        }
+      });
+    },
+    { threshold: 0.2 },
+  );
+
+  document.querySelectorAll(".fade-in-element").forEach((el) => {
+    observer.observe(el);
+  });
+</script>

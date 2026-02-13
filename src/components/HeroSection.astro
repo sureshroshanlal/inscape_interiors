@@ -1,26 +1,58 @@
-<section class="relative w-full">
+<section class="w-full">
   <!-- Background image -->
-  <div class="w-full">
+  <div>
     <img
       src="/images/hero-banner.jpg"
       alt="Hero"
-      class="w-full h-full object-cover"
+      class="w-full h-auto fade-in-element opacity-0"
       loading="eager"
     />
   </div>
 
-  <!-- Optional overlay for better text readability -->
-
-  <div class="mt-16 text-center max-w-4xl mx-auto px-5">
+  <div class="max-w-[1240px] mx-auto py-section text-center">
     <h1
-      class="text-[38px] md:text-[48px] font-light font-serif mb-6 text-hyperlink"
+      class="text-[32px] md:text-[38px] font-light leading-tight mb-8 font-serif text-hyperlink fade-in-element opacity-0 max-w-[600px] mx-auto"
     >
       Inscape is an interior design firm based in Hyderabad.
     </h1>
-
-    <p class="text-[18px] font-light text-hyperlink">
+    <p
+      class="text-base md:text-lg max-w-[480px] mx-auto text-hyperlink fade-in-element opacity-0"
+    >
       Inspired by art and nature, we design unique and elegant spaces that evoke
       creativity and joy.
     </p>
   </div>
 </section>
+
+<style>
+  .fade-in-element {
+    transition:
+      opacity 0.8s ease-out,
+      transform 0.8s ease-out;
+    transform: translateY(20px);
+  }
+
+  .fade-in-element.visible {
+    opacity: 1 !important;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add("visible");
+          }, index * 600); // 200ms stagger delay
+        }
+      });
+    },
+    { threshold: 0.2 },
+  );
+
+  document.querySelectorAll(".fade-in-element").forEach((el) => {
+    observer.observe(el);
+  });
+</script>

@@ -2,32 +2,46 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="About — Tasha Freeman">
+<Layout title="About — Inscape">
   <!-- HERO / BIO SECTION -->
-  <section class="page-padding section-spacing">
+  <section class="w-full py-section">
     <div
-      class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start"
+      class="max-w-[1240px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start"
     >
       <!-- Portrait -->
-      <div class="overflow-hidden">
+      <div class="overflow-hidden fade-in-element opacity-0">
         <img
           src="/images/about/about-hero.jpg"
           alt="Tasha Freeman"
           class="w-full h-auto object-cover"
+          width="777"
+          height="1024"
+          loading="eager"
+          decoding="async"
         />
       </div>
 
       <!-- Bio text -->
       <div class="flex flex-col justify-center py-4 md:py-8">
-        <h1 class="heading-lg mb-8">About</h1>
+        <h1
+          class="text-[42px] md:text-[56px] font-light leading-tight mb-8 font-serif text-hyperlink fade-in-element opacity-0"
+        >
+          About
+        </h1>
         <div class="space-y-6">
-          <p class="body-text">
+          <p
+            class="text-base md:text-lg text-hyperlink fade-in-element opacity-0"
+          >
             About Text here
           </p>
-          <p class="body-text">
+          <p
+            class="text-base md:text-lg text-hyperlink fade-in-element opacity-0"
+          >
             About Text here
           </p>
-          <p class="body-text">
+          <p
+            class="text-base md:text-lg text-hyperlink fade-in-element opacity-0"
+          >
             About Text here
           </p>
         </div>
@@ -36,34 +50,83 @@ import Layout from "../layouts/Layout.astro";
   </section>
 
   <!-- THE STYLE SECTION -->
-  <section class="page-padding pb-16 md:pb-20 lg:pb-24">
-    <div class="max-w-6xl mx-auto">
+  <section class="w-full py-section">
+    <div class="max-w-[1240px] mx-auto">
       <div class="text-center mb-12 md:mb-16">
-        <h2 class="heading-lg">The Style</h2>
+        <h2
+          class="text-[42px] md:text-[56px] font-light leading-tight font-serif text-hyperlink fade-in-element opacity-0"
+        >
+          The Style
+        </h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-        <div class="overflow-hidden">
+        <div class="overflow-hidden fade-in-element opacity-0">
           <img
             src="/images/about/style-1.jpg"
             alt="The Style"
             class="w-full h-auto object-cover aspect-[3/4]"
+            width="777"
+            height="1024"
+            loading="lazy"
+            decoding="async"
           />
         </div>
-        <div class="overflow-hidden">
+        <div class="overflow-hidden fade-in-element opacity-0">
           <img
             src="/images/about/style-2.jpg"
             alt="The Style"
             class="w-full h-auto object-cover aspect-[3/4]"
+            width="777"
+            height="1024"
+            loading="lazy"
+            decoding="async"
           />
         </div>
-        <div class="overflow-hidden">
+        <div class="overflow-hidden fade-in-element opacity-0">
           <img
             src="/images/about/style-3.jpg"
             alt="The Style"
             class="w-full h-auto object-cover aspect-[3/4]"
+            width="777"
+            height="1024"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </div>
     </div>
   </section>
 </Layout>
+
+<style>
+  .fade-in-element {
+    transition:
+      opacity 1.2s ease-out,
+      transform 1.2s ease-out;
+    transform: translateY(20px);
+  }
+
+  .fade-in-element.visible {
+    opacity: 1 !important;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add("visible");
+          }, index * 200);
+        }
+      });
+    },
+    { threshold: 0.2 },
+  );
+
+  document.querySelectorAll(".fade-in-element").forEach((el) => {
+    observer.observe(el);
+  });
+</script>

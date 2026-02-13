@@ -7,9 +7,13 @@ export default {
       //   sans: ['"TT Ramillas"', "serif"],
       //   serif: ['"TT Ramillas"', "serif"],
       // },
+      // fontFamily: {
+      //   sans: ['"Playfair Display"', "serif"],
+      //   serif: ['"Playfair Display"', "serif"],
+      // },
       fontFamily: {
-        sans: ['"Playfair Display"', "serif"],
-        serif: ['"Playfair Display"', "serif"],
+        sans: ['"Cormorant Garamond"', "serif"],
+        serif: ['"Cormorant Garamond"', "serif"],
       },
       fontSize: {
         base: "18px", // paragraph size
@@ -26,8 +30,8 @@ export default {
       },
       spacing: {
         section: "100px", // vertical rhythm
-        'section-sm': "70px",
-        gutter: "10px", // horizontal padding
+        'section-sm': "80px",
+        gutter: "24px", // horizontal padding
         header: "50px", // fixed header height
         heroX: "20px",
         heroBottom: "80px",

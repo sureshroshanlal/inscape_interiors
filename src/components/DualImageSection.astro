@@ -1,38 +1,86 @@
-<section class="w-full py-section overflow-hidden">
-  <div class="max-w-[1240px] mx-auto">
-    <div class="flex flex-col md:flex-row gap-12">
-      <a href="#" class="block w-full md:w-1/2 parallax-up">
+<section class="w-full py-section">
+  <div
+    class="max-w-[1240px] mx-auto flex flex-col md:flex-row gap-12 items-center"
+  >
+    <!-- LEFT IMAGE -->
+    <div class="w-full md:w-1/2 fade-in-element opacity-0">
+      <a href="/projects/golbourne-road">
         <img
           src="/images/projects/golbourne-road.jpg"
-          alt="Golborne Road Interior Inscape Interiors"
-          class="w-full h-auto"
+          alt="Golborne Road Interior"
+          class="w-full h-auto parallax-left"
+          width="777"
+          height="1024"
+          decoding="async"
         />
       </a>
+    </div>
 
-      <a href="#" class="block w-full md:w-1/2 parallax-down">
+    <!-- RIGHT IMAGE -->
+    <div class="w-full md:w-1/2 fade-in-element opacity-0">
+      <a href="/projects/elgin-crescent">
         <img
           src="/images/projects/elgin-crescent.jpg"
-          alt="Inscape Interiors Interior Design"
-          class="w-full h-auto"
+          alt="Elgin Crescent Interior"
+          class="w-full h-auto parallax-right"
+          width="777"
+          height="1024"
+          loading="lazy"
+          decoding="async"
         />
       </a>
     </div>
   </div>
 </section>
 
-<script lang="ts">
-  const up = document.querySelector<HTMLElement>(".parallax-up");
-  const down = document.querySelector<HTMLElement>(".parallax-down");
+<style>
+  .fade-in-element {
+    transition:
+      opacity 1.2s ease-out,
+      transform 1.2s ease-out;
+    transform: translateY(20px);
+  }
 
-  window.addEventListener("scroll", () => {
+  .fade-in-element.visible {
+    opacity: 1 !important;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const leftImg = document.querySelector<HTMLImageElement>(".parallax-left");
+  const rightImg = document.querySelector<HTMLImageElement>(".parallax-right");
+  const section = document.querySelector<HTMLElement>("section");
+
+  function parallax() {
+    if (!leftImg || !rightImg || !section) return;
+
+    const sectionTop = section.offsetTop;
     const scrollY = window.scrollY;
+    const relativeScroll = scrollY - sectionTop + window.innerHeight;
 
-    if (up) {
-      up.style.transform = `translateY(${scrollY * 0.05}px)`;
-    }
+    rightImg.style.transform = `translateY(${300 - relativeScroll * 0.15}px)`;
+    leftImg.style.transform = `translateY(${-300 + relativeScroll * 0.15}px)`;
+  }
 
-    if (down) {
-      down.style.transform = `translateY(-${scrollY * 0.05}px)`;
-    }
+  window.addEventListener("scroll", parallax, { passive: true });
+  parallax();
+
+  // Fade in observer
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add("visible");
+          }, index * 300); // 300ms stagger between images
+        }
+      });
+    },
+    { threshold: 0.2 },
+  );
+
+  document.querySelectorAll(".fade-in-element").forEach((el) => {
+    observer.observe(el);
   });
 </script>

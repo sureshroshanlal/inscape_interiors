@@ -3,12 +3,6 @@ import Layout from "../layouts/Layout.astro";
 
 const projects = [
   {
-    title: "Kensal Rise",
-    subtitle: "Tasha's Home",
-    image: "/images/projects/kensal-rise.jpg",
-    slug: "kensal-rise-interior-design",
-  },
-  {
     title: "Golbourne Road",
     subtitle: "Apartment",
     image: "/images/projects/golbourne-road.jpg",
@@ -44,15 +38,25 @@ const projects = [
     image: "/images/projects/camden.jpg",
     slug: "camden-family-home-interior",
   },
+  {
+    title: "Kensal Rise",
+    subtitle: "Tasha's Home",
+    image: "/images/projects/kensal-rise.jpg",
+    slug: "kensal-rise-interior-design",
+  },
 ];
 ---
 
 <Layout title="Projects — Inscape Interiors">
-  <section class="page-padding section-spacing">
-    <div class="max-w-6xl mx-auto">
+  <section class="w-full py-section">
+    <div class="max-w-[1240px] mx-auto">
       <!-- Page heading -->
       <div class="text-center mb-16 md:mb-20">
-        <h1 class="heading-xl">Projects</h1>
+        <h1
+          class="text-[42px] md:text-[56px] font-light leading-tight mb-8 font-serif text-hyperlink fade-in-element opacity-0 max-w-[600px] mx-auto"
+        >
+          Projects
+        </h1>
       </div>
 
       <!-- Projects grid -->
@@ -62,7 +66,7 @@ const projects = [
             <a
               href={`/project/${project.slug}`}
               class:list={[
-                "group relative block overflow-hidden",
+                "group relative block overflow-hidden fade-in-element opacity-0",
                 index === 0 ? "md:col-span-2" : "",
               ]}
             >
@@ -76,6 +80,10 @@ const projects = [
                   src={project.image}
                   alt={`${project.title} ${project.subtitle}`}
                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  width="777"
+                  height="1024"
+                  loading={index === 0 ? "eager" : "lazy"}
+                  decoding="async"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
@@ -94,3 +102,36 @@ const projects = [
     </div>
   </section>
 </Layout>
+
+<style>
+  .fade-in-element {
+    transition:
+      opacity 1.2s ease-out,
+      transform 1.2s ease-out;
+    transform: translateY(20px);
+  }
+
+  .fade-in-element.visible {
+    opacity: 1 !important;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add("visible");
+          }, index * 150);
+        }
+      });
+    },
+    { threshold: 0.2 },
+  );
+
+  document.querySelectorAll(".fade-in-element").forEach((el) => {
+    observer.observe(el);
+  });
+</script>
