@@ -1,27 +1,36 @@
-<header class="top-0 left-0 w-full bg-background z-30">
+<!-- <header class="top-0 left-0 w-full bg-background z-30"> -->
+<header class="header-hide bg-primary z-50 transition-all duration-300">
   <div class="page-padding">
     <!-- Desktop Header -->
     <div class="hidden md:flex items-center justify-center relative">
       <!-- Left Vertical Nav -->
       <nav class="absolute left-0 top-1/2 -translate-y-1/2">
-        <ul class="flex flex-col gap-1 text-[14px] font-light tracking-wide">
-          <li><a href="/projects">Projects</a></li>
+        <ul class="flex flex-col gap-1 text-[16px] font-dark tracking-wide">
+          <li><a href="/projects" class="hover:text-rose-400">Projects</a></li>
           <!-- <li><a href="/studio55">Studio 55</a></li> -->
-          <li><a href="/about">About</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><a href="/about" class="hover:text-rose-400">About</a></li>
+          <li><a href="/contact" class="hover:text-rose-400">Contact</a></li>
         </ul>
       </nav>
 
       <!-- Logo -->
       <a href="/">
-        <img src="/images/inscape_logo.webp" alt="Inscape Interiors" class="h-36 w-auto" />
+        <img
+          src="/images/inscape_logo-1.webp"
+          alt="Inscape Interiors"
+          class="h-36 w-auto"
+        />
       </a>
     </div>
 
     <!-- Mobile Header -->
     <div class="flex md:hidden items-center justify-between py-5">
       <a href="/">
-        <img src="/images/inscape_logo.webp" alt="Inscape Interiors" class="h-8 w-auto" />
+        <img
+          src="/images/inscape_logo-1.webp"
+          alt="Inscape Interiors"
+          class="h-8 w-auto"
+        />
       </a>
 
       <button id="mobile-toggle" class="p-2 -mr-2" aria-label="Toggle menu">
@@ -56,3 +65,34 @@
     menu?.classList.toggle("hidden");
   });
 </script>
+<script>
+  const header = document.querySelector<HTMLImageElement>(".header-hide");
+
+  let lastScroll = 0;
+  if (header) {
+    window.addEventListener(
+      "scroll",
+      () => {
+        const currentScroll = window.scrollY;
+
+        if (currentScroll > lastScroll && currentScroll > 30) {
+          // Scrolling down - hide header
+          header.style.transform = "translateY(-100%)";
+        } else {
+          // Scrolling up - show header
+          header.style.transform = "translateY(0)";
+        }
+
+        lastScroll = currentScroll;
+      },
+      { passive: true },
+    );
+  }
+</script>
+
+<style>
+  .header-hide {
+    position: sticky;
+    top: 0;
+  }
+</style>
