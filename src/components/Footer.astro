@@ -1,5 +1,16 @@
 <footer class="bg-secondary py-12 md:py-14">
   <div class="max-w-[1240px] mx-auto px-6">
+    <!-- Mobile: Logo First -->
+    <div class="flex justify-center mb-8 md:hidden">
+      <a href="/">
+        <img
+          src="/images/inscape_footer_logo.png"
+          alt="Inscape Interiors"
+          class="w-auto h-24"
+        />
+      </a>
+    </div>
+
     <!-- Footer Grid -->
     <div class="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-12 lg:gap-16 mb-8">
       <!-- Column 1 - Navigation Links -->
@@ -7,104 +18,80 @@
         <nav>
           <ul class="flex flex-col gap-4 md:gap-5">
             <li>
-              <a
-                href="/projects"
-                class="text-sm text-primary hover:text-rose-400 transition-opacity"
-                >Projects</a
-              >
-            </li>
-            <li>
-              <a
-                href="/about"
-                class="text-sm text-primary hover:text-rose-400 transition-opacity"
-                >About</a>
+              href="/projects" class="text-sm text-primary hover:text-rose-400
+              transition-colors" >Projects
             </li>
           </ul>
+          <li>
+            href="/about" class="text-sm text-primary hover:text-rose-400
+            transition-colors" >About
+          </li>
         </nav>
       </div>
-
-      <!-- Column 2 - Contact -->
-      <div>
-        <nav>
-          <ul class="flex flex-col gap-4 md:gap-5">
-            <li>
-              <a
-                href="/contact"
-                class="text-sm text-primary hover:text-rose-400 transition-opacity"
-                >Contact</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-
-      <!-- Column 3 - Logo -->
-      <div class="flex justify-center items-start">
-        <a href="/">
-          <img
-            src="/images/inscape_footer_logo.png"
-            alt="Inscape Interiors"
-            class="w-auto h-28 md:h-32"
-          />
-        </a>
-      </div>
-
-      <!-- Column 4 - Social Links -->
-      <div>
-        <nav>
-          <ul class="flex flex-col gap-4 md:gap-5">
-            <li>
-              <a
-                href="https://instagram.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Visit Instagram"
-                class="text-sm text-primary hover:text-rose-400 transition-opacity"
-              >
-                Instagram
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.pinterest.co.uk/"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Visit Pinterest"
-                class="text-sm text-primary hover:text-rose-400 transition-opacity"
-              >
-                Pinterest
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-
-      <!-- Column 5 - Legal -->
-      <div>
-        <nav>
-          <ul class="flex flex-col gap-4 md:gap-5">
-            <li>
-              <a
-                href="/terms"
-                class="text-sm text-primary hover:text-rose-400 transition-opacity"
-                >Terms</a>
-            </li>
-            <li>
-              <a
-                href="/privacy-policy"
-                class="text-sm text-primary hover:text-rose-400 transition-opacity"
-                >Privacy Policy</a
-              >
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-
-    <!-- Copyright -->
-    <div class="text-center pt-6 border-t border-primary/20">
-      <p class="text-xs text-primary/80">
-        Copyright © Inscape Interiors. All rights reserved.
-      </p>
     </div>
   </div>
+
+  <!-- Column 2 - Contact -->
+  <div>
+    <nav>
+      <ul class="flex flex-col gap-4 md:gap-5">
+        <li>
+          href="/contact" class="text-sm text-primary hover:text-rose-400
+          transition-colors" >Contact
+        </li>
+      </ul>
+    </nav>
+  </div>
 </footer>
+
+<!-- Column 3 - Logo (Desktop only) -->
+<div class="hidden md:flex justify-center items-start">
+  <a href="/">
+    <img
+      src="/images/inscape_footer_logo.png"
+      alt="Inscape Interiors"
+      class="w-auto h-28 md:h-32"
+    />
+  </a>
+</div>
+
+<!-- Column 4 - Social Links -->
+<div>
+  <nav>
+    <ul class="flex flex-col gap-4 md:gap-5">
+      <li>
+        href="https://instagram.com/" target="_blank" rel="noopener noreferrer"
+        title="Visit Instagram" class="text-sm text-primary hover:text-rose-400
+        transition-colors" > Instagram
+      </li>
+    </ul>
+    <li>
+      href="https://www.pinterest.co.uk/" target="_blank" rel="noopener
+      noreferrer" title="Visit Pinterest" class="text-sm text-primary
+      hover:text-rose-400 transition-colors" > Pinterest
+    </li>
+  </nav>
+</div>
+
+<!-- Column 5 - Legal -->
+<div>
+  <nav>
+    <ul class="flex flex-col gap-4 md:gap-5">
+      <li>
+        href="/terms" class="text-sm text-primary hover:text-rose-400
+        transition-colors" >Terms
+      </li>
+    </ul>
+    <li>
+      href="/privacy-policy" class="text-sm text-primary hover:text-rose-400
+      transition-colors" >Privacy Policy
+    </li>
+  </nav>
+</div>
+
+<!-- Copyright -->
+<div class="text-center pt-6 border-t border-primary/20">
+  <p class="text-xs text-primary/80">
+    Copyright © Inscape Interiors. All rights reserved.
+  </p>
+</div>
