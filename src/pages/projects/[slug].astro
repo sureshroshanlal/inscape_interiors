@@ -1,0 +1,149 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+
+  return projects.map((project: { slug: any; }) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+const { title, subtitle, coverImage, sections } = project.data;
+---
+
+<Layout title={`${title} — Inscape Interiors`}>
+  <!-- HERO -->
+  <section class="relative w-full h-[80vh] overflow-hidden">
+    <img src={coverImage} alt={title} class="w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-black/30"></div>
+    <div
+      class="absolute bottom-12 left-1/2 -translate-x-1/2 text-center text-white"
+    >
+      <h1 class="text-4xl md:text-6xl font-serif font-light mb-4">
+        {title}
+      </h1>
+      <p class="uppercase tracking-widest text-sm opacity-80">
+        {subtitle}
+      </p>
+    </div>
+  </section>
+
+  <!-- CASE STUDY SECTIONS -->
+  <section class="py-20 md:py-28 space-y-28">
+    {
+      sections.map((section: { type: string; content: string; image: string | null | undefined; layout: string; title: string; images: any[]; }, index: any) => {
+        /* INTRO */
+        if (section.type === "intro") {
+          return (
+            <div class="max-w-3xl mx-auto px-6 text-center fade-section opacity-0">
+              <p class="text-lg md:text-xl leading-relaxed">
+                {section.content}
+              </p>
+            </div>
+          );
+        }
+
+        /* FULL BLEED IMAGE */
+        if (section.type === "full-image") {
+          return (
+            <div class="w-full fade-section opacity-0">
+              <img
+                src={section.image}
+                alt=""
+                class="w-full h-auto object-cover cursor-zoom"
+                data-zoom
+              />
+            </div>
+          );
+        }
+
+        /* TWO COLUMN */
+        if (section.type === "two-column") {
+          const isLeft = section.layout === "left";
+
+          return (
+            <div class="max-w-[1240px] mx-auto px-6 fade-section opacity-0">
+              <div class={`grid md:grid-cols-2 gap-12 items-center`}>
+                <div class={`${isLeft ? "" : "md:order-2"}`}>
+                  <h2 class="text-3xl font-serif font-light mb-6">
+                    {section.title}
+                  </h2>
+                  <div class="prose max-w-none">
+                    <p>{section.content}</p>
+                  </div>
+                </div>
+                <div>
+                  <img
+                    src={section.image}
+                    alt={section.title}
+                    class="w-full h-auto object-cover cursor-zoom"
+                    data-zoom
+                  />
+                </div>
+              </div>
+            </div>
+          );
+        }
+
+        /* MASONRY */
+        if (section.type === "masonry") {
+          return (
+            <div class="max-w-[1240px] mx-auto px-6 fade-section opacity-0">
+              <div class="columns-1 md:columns-3 gap-6 space-y-6">
+                {section.images.map((img: string | null | undefined) => (
+                  <img
+                    src={img}
+                    alt=""
+                    class="w-full h-auto object-cover cursor-zoom mb-6"
+                    data-zoom
+                  />
+                ))}
+              </div>
+            </div>
+          );
+        }
+      })
+    }
+  </section>
+</Layout>
+
+<style>
+  .fade-section {
+    transform: translateY(40px);
+    transition:
+      opacity 1s ease,
+      transform 1s ease;
+  }
+
+  .fade-section.visible {
+    opacity: 1 !important;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  /* Section entrance animation */
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.2 },
+  );
+
+  document.querySelectorAll(".fade-section").forEach((el) => {
+    observer.observe(el);
+  });
+</script>

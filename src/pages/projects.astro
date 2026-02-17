@@ -1,54 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
 
-const projects = [
-  {
-    title: "Golbourne Road",
-    subtitle: "Apartment",
-    image: "/images/projects/golbourne-road.jpg",
-    slug: "golbourne-road-apartment-interior",
-  },
-  {
-    title: "Cassandra Goad",
-    subtitle: "Shop",
-    image: "/images/projects/cassandra-goad.jpg",
-    slug: "cassandra-goad-interior-design",
-  },
-  {
-    title: "Holland Park",
-    subtitle: "Family House",
-    image: "/images/projects/holland-park.jpg",
-    slug: "holland-park-interior-design",
-  },
-  {
-    title: "Elgin Crescent",
-    subtitle: "Loft",
-    image: "/images/projects/elgin-crescent.jpg",
-    slug: "elgin-crescent-interior",
-  },
-  {
-    title: "Notting Hill",
-    subtitle: "Townhouse",
-    image: "/images/projects/notting-hill.jpg",
-    slug: "notting-hill-townhouse-interior",
-  },
-  {
-    title: "Camden",
-    subtitle: "Family Home",
-    image: "/images/projects/camden.jpg",
-    slug: "camden-family-home-interior",
-  },
-  {
-    title: "Kensal Rise",
-    subtitle: "Tasha's Home",
-    image: "/images/projects/kensal-rise.jpg",
-    slug: "kensal-rise-interior-design",
-  },
-];
+import type { CollectionEntry } from "astro:content";
+
+const projects: CollectionEntry<"projects">[] = await getCollection("projects");
+
+// optional: sort if needed
+// projects.sort((a: { data: { order: number; }; }, b: { data: { order: number; }; }) => a.data.order - b.data.order);
 ---
 
 <Layout title="Projects — Inscape Interiors">
-  <section class="w-full">
+  <section class="w-full pb-20 md:pb-28">
     <div class="max-w-[1240px] mx-auto">
       <!-- Page heading -->
       <div class="text-center mb-16 md:mb-20">
@@ -64,7 +27,7 @@ const projects = [
         {
           projects.map((project, index) => (
             <a
-              href={`/project/${project.slug}`}
+              href={`/projects/${project.slug}`}
               class:list={[
                 "group relative block overflow-hidden fade-in-element opacity-0",
                 index === 0 ? "md:col-span-2" : "",
@@ -77,8 +40,8 @@ const projects = [
                 ]}
               >
                 <img
-                  src={project.image}
-                  alt={`${project.title} ${project.subtitle}`}
+                  src={project.data.coverImage}
+                  alt={`${project.data.title} ${project.data.subtitle}`}
                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   width="777"
                   height="1024"
@@ -88,10 +51,10 @@ const projects = [
                 <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
                   <h2 class="font-serif font-light text-white text-xl md:text-2xl lg:text-3xl tracking-wide">
-                    {project.title}
+                    {project.data.title}
                   </h2>
                   <p class="font-sans text-white/80 text-xs md:text-sm uppercase tracking-widest-plus mt-2">
-                    {project.subtitle}
+                    {project.data.subtitle}
                   </p>
                 </div>
               </div>

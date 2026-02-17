@@ -81,6 +81,58 @@
     padding-left: 15px;
     padding-right: 15px;
   }
+
+  .case-study {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 120px 24px;
+  }
+
+  .case-header {
+    text-align: center;
+    margin-bottom: 120px;
+  }
+
+  .case-body h2 {
+    display: none;
+  }
+
+  /* TEXT */
+  .case-body p {
+    max-width: 760px;
+    margin: 120px auto;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease;
+  }
+
+  .case-body p.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* FULL BLEED IMAGE */
+  .case-body img {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 120px;
+    cursor: zoom-in;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+
+  .case-body img.visible {
+    opacity: 1;
+  }
+
+  /* MASONRY GRID */
+  .case-body h2 + p + p + p {
+    column-count: 3;
+    column-gap: 24px;
+  }
 }
 
 @layer utilities {

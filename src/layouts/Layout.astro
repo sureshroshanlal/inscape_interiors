@@ -43,5 +43,58 @@ const {
       <WhatsAppButton />
     </main>
     <Footer />
+    <!-- Global Image Zoom Modal -->
+    <div
+      id="image-zoom-modal"
+      class="fixed inset-0 z-[9999] hidden items-center justify-center"
+    >
+      <div class="absolute inset-0 bg-black/90 backdrop-blur-sm"></div>
+
+      <img
+        id="zoomed-image"
+        class="relative max-h-[90vh] max-w-[95vw] rounded-lg shadow-2xl scale-95 transition-transform duration-300"
+        alt="Zoomed Image"
+      />
+    </div>
+
+    <script>
+      const modal = document.getElementById(
+        "image-zoom-modal",
+      ) as HTMLDivElement;
+      const zoomedImage = document.getElementById(
+        "zoomed-image",
+      ) as HTMLImageElement;
+
+      document.addEventListener("click", (e) => {
+        const target = e.target as HTMLElement | null;
+        if (!target) return;
+
+        const img = target.closest("img[data-zoom]") as HTMLImageElement | null;
+        if (!img) return;
+
+        zoomedImage.src = img.src;
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+
+        requestAnimationFrame(() => {
+          zoomedImage.classList.remove("scale-95");
+          zoomedImage.classList.add("scale-100");
+        });
+      });
+
+      modal.addEventListener("click", () => {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        zoomedImage.classList.add("scale-95");
+        zoomedImage.classList.remove("scale-100");
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          modal.classList.add("hidden");
+          modal.classList.remove("flex");
+        }
+      });
+    </script>
   </body>
 </html>
