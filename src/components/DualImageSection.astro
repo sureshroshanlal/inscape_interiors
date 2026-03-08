@@ -3,21 +3,19 @@
 ---
 
 <section class="w-full py-section">
-  <div class="flex flex-col md:flex-row gap-8 items-start">
-    <!-- LEFT IMAGE — taller, fixed height, label bottom-left white -->
+  <div class="flex flex-col md:flex-row gap-8 items-start justify-center">
+    <!-- LEFT IMAGE — natural portrait ratio, ~35% width, starts higher -->
     <div
-      class="w-full md:w-[45%] fade-in-element opacity-0"
+      class="w-full md:w-[35%] fade-in-element opacity-0"
       data-parallax="left"
     >
       <a href="/projects/golbourne-road" class="relative block img-hover-zoom">
-        <div class="w-full h-[70vh] overflow-hidden">
-          <img
-            src="/images/projects/golbourne-road.jpg"
-            alt="Golborne Road Interior"
-            class="w-full h-full object-cover"
-            decoding="async"
-          />
-        </div>
+        <img
+          src="/images/projects/golbourne-road.jpg"
+          alt="Golborne Road Interior"
+          class="w-full h-auto"
+          decoding="async"
+        />
         <span
           class="absolute bottom-6 left-6 text-white font-serif italic text-xl leading-tight drop-shadow-lg"
         >
@@ -26,23 +24,21 @@
       </a>
     </div>
 
-    <!-- RIGHT IMAGE — shorter, offset down significantly, label top-left dark brown -->
+    <!-- RIGHT IMAGE — natural portrait ratio, ~35% width, offset down -->
     <div
-      class="w-full md:w-[45%] md:mt-40 fade-in-element opacity-0"
+      class="w-full md:w-[35%] md:mt-32 fade-in-element opacity-0"
       data-parallax="right"
     >
       <a href="/projects/elgin-crescent" class="relative block img-hover-zoom">
-        <div class="w-full h-[50vh] overflow-hidden">
-          <img
-            src="/images/projects/elgin-crescent.jpg"
-            alt="Elgin Crescent Interior"
-            class="w-full h-full object-cover"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
+        <img
+          src="/images/projects/elgin-crescent.jpg"
+          alt="Elgin Crescent Interior"
+          class="w-full h-auto"
+          loading="lazy"
+          decoding="async"
+        />
         <span
-          class="absolute top-6 left-6 text-secondary font-serif italic text-xl leading-tight drop-shadow-sm"
+          class="absolute top-6 left-6 text-secondary font-serif italic text-xl leading-tight"
         >
           holland park<br />family home
         </span>
