@@ -4,47 +4,47 @@
 
 <section class="w-full py-section">
   <div class="flex flex-col md:flex-row gap-8 items-start">
-    <!-- LEFT IMAGE — taller, starts higher, label bottom-left white -->
+    <!-- LEFT IMAGE — taller, fixed height, label bottom-left white -->
     <div
-      class="w-full md:w-[52%] fade-in-element opacity-0"
+      class="w-full md:w-[45%] fade-in-element opacity-0"
       data-parallax="left"
     >
       <a href="/projects/golbourne-road" class="relative block img-hover-zoom">
-        <img
-          src="/images/projects/golbourne-road.jpg"
-          alt="Golborne Road Interior"
-          class="w-full h-auto"
-          width="777"
-          height="1024"
-          decoding="async"
-        />
+        <div class="w-full h-[70vh] overflow-hidden">
+          <img
+            src="/images/projects/golbourne-road.jpg"
+            alt="Golborne Road Interior"
+            class="w-full h-full object-cover"
+            decoding="async"
+          />
+        </div>
         <span
-          class="absolute bottom-4 left-4 text-white font-serif italic text-lg leading-tight drop-shadow-md"
+          class="absolute bottom-6 left-6 text-white font-serif italic text-xl leading-tight drop-shadow-lg"
         >
           artist apartment<br />golbourne rd
         </span>
       </a>
     </div>
 
-    <!-- RIGHT IMAGE — shorter, offset down, label top-left dark brown -->
+    <!-- RIGHT IMAGE — shorter, offset down significantly, label top-left dark brown -->
     <div
-      class="w-full md:w-[48%] md:mt-24 fade-in-element opacity-0"
+      class="w-full md:w-[45%] md:mt-40 fade-in-element opacity-0"
       data-parallax="right"
     >
       <a href="/projects/elgin-crescent" class="relative block img-hover-zoom">
-        <img
-          src="/images/projects/elgin-crescent.jpg"
-          alt="Elgin Crescent Interior"
-          class="w-full h-auto"
-          width="777"
-          height="1024"
-          loading="lazy"
-          decoding="async"
-        />
+        <div class="w-full h-[50vh] overflow-hidden">
+          <img
+            src="/images/projects/elgin-crescent.jpg"
+            alt="Elgin Crescent Interior"
+            class="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
         <span
-          class="absolute top-4 left-4 text-secondary font-serif italic text-lg leading-tight"
+          class="absolute top-6 left-6 text-secondary font-serif italic text-xl leading-tight drop-shadow-sm"
         >
-          elgin<br />crescent
+          holland park<br />family home
         </span>
       </a>
     </div>
@@ -87,7 +87,6 @@
   window.addEventListener("scroll", parallax, { passive: true });
   parallax();
 
-  // Fade in
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry, index) => {
