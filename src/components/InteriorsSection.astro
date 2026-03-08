@@ -1,27 +1,50 @@
+---
+
+---
+
 <section class="w-full py-section">
-  <div class="max-w-[1240px] mx-auto flex flex-col gap-24">
-    <!-- Row 1 -->
-    <div class="flex flex-col md:flex-row items-center gap-20">
+  <div class="page-padding">
+    <!-- Row 1: Text + Image -->
+    <div class="flex flex-col md:flex-row items-start gap-20">
       <!-- LEFT: TEXT -->
       <div class="w-full md:w-1/2">
-        <h3 class="text-[35px] font-light mb-8 fade-in-element opacity-0">
+        <!-- Decorative rising sun — matches reference -->
+        <svg
+          class="mb-6 fade-in-element opacity-0"
+          width="64"
+          height="44"
+          viewBox="0 0 64 44"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <!-- Center dot -->
+          <circle cx="32" cy="38" r="2.8" fill="#b5a98a" />
+          <!-- 5 rays spreading upward in a fan -->
+          <line x1="32" y1="38" x2="8"  y2="30" stroke="#b5a98a" stroke-width="2.8" stroke-linecap="round" />
+          <line x1="32" y1="38" x2="18" y2="12" stroke="#b5a98a" stroke-width="2.8" stroke-linecap="round" />
+          <line x1="32" y1="38" x2="32" y2="6"  stroke="#b5a98a" stroke-width="2.8" stroke-linecap="round" />
+          <line x1="32" y1="38" x2="46" y2="12" stroke="#b5a98a" stroke-width="2.8" stroke-linecap="round" />
+          <line x1="32" y1="38" x2="56" y2="30" stroke="#b5a98a" stroke-width="2.8" stroke-linecap="round" />
+        </svg>
+        <h3 class="text-[35px] font-normal mb-8 fade-in-element opacity-0">
           Interiors
         </h3>
 
-        <div class="space-y-6 text-[18px] font-light fade-in-element opacity-0">
+        <div class="space-y-6 text-base font-light fade-in-element opacity-0">
           <p>
             Our services range from colour consultancy and space planning to
             full-home architectural and interior design.
           </p>
           <p>
-            We develops strong relationships with clients to understand their
+            We develop strong relationships with clients to understand their
             needs, creating spaces that ease and enhance their daily lives.
           </p>
         </div>
 
         <a
           href="/projects"
-          class="inline-block mt-10 border border-black bg-[#301804] text-[#EEECE3] rounded-full hover:bg-[#EEECE3] hover:text-[#301804] transition-colors duration-300 px-8 py-3 text-[18px] tracking-wide fade-in-element opacity-0"
+          class="inline-block mt-10 border border-secondary bg-secondary text-primary rounded-full hover:bg-primary hover:text-secondary transition-colors duration-300 px-8 py-3 text-base tracking-wide fade-in-element opacity-0"
         >
           View Projects
         </a>
@@ -31,20 +54,20 @@
       <div class="w-full md:w-1/2 fade-in-element opacity-0">
         <img
           src="/images/interiors-side.jpg"
-          alt="Inscape Interiors Kensal Rise Interiors"
+          alt="Inscape Interiors"
           class="w-full h-auto"
         />
       </div>
     </div>
+  </div>
 
-    <!-- Row 2 (Wide image aligned to container) -->
-    <div>
-      <img
-        src="/images/interiors-wide.jpg"
-        alt="Inscape Interiors Interiors"
-        class="w-full h-auto"
-      />
-    </div>
+  <!-- Row 2: Full bleed wide image — outside page-padding -->
+  <div class="w-full mt-24">
+    <img
+      src="/images/interiors-wide.jpg"
+      alt="Inscape Interiors"
+      class="w-full h-auto fade-in-element opacity-0"
+    />
   </div>
 </section>
 
@@ -69,11 +92,11 @@
         if (entry.isIntersecting) {
           setTimeout(() => {
             entry.target.classList.add("visible");
-          }, index * 600); // 200ms stagger delay
+          }, index * 200);
         }
       });
     },
-    { threshold: 0.2 },
+    { threshold: 0.15 },
   );
 
   document.querySelectorAll(".fade-in-element").forEach((el) => {

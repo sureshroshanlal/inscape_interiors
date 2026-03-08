@@ -13,7 +13,7 @@
   }
 
   body {
-    @apply font-sans;
+    @apply font-serif;
   }
 
   h1,
@@ -22,7 +22,7 @@
   h4,
   h5,
   h6 {
-    @apply font-sans font-normal;
+    @apply font-serif font-normal;
   }
 
   /* Remove default margins */
@@ -57,7 +57,7 @@
 @layer components {
   /* Button Primary */
   .btn-primary {
-    @apply inline-block px-8 py-3.5 text-nav font-sans uppercase tracking-wider;
+    @apply inline-block px-8 py-3.5 text-nav font-serif uppercase tracking-wider;
     @apply border border-site-text transition-all duration-300;
   }
 
@@ -78,8 +78,8 @@
     max-width: 1240px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   .case-study {

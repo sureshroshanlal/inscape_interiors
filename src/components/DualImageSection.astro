@@ -1,34 +1,60 @@
-<section class="w-full py-section">
-  <div
-    class="max-w-[1240px] mx-auto flex flex-col md:flex-row gap-12 items-center"
-  >
-    <!-- LEFT IMAGE -->
-    <div class="w-full md:w-1/2 fade-in-element opacity-0">
-      <a href="/projects/golbourne-road">
-        <img
-          src="/images/projects/golbourne-road.jpg"
-          alt="Golborne Road Interior"
-          class="w-full h-auto parallax-left"
-          width="777"
-          height="1024"
-          decoding="async"
-        />
-      </a>
-    </div>
+---
 
-    <!-- RIGHT IMAGE -->
-    <div class="w-full md:w-1/2 fade-in-element opacity-0">
-      <a href="/projects/elgin-crescent">
-        <img
-          src="/images/projects/elgin-crescent.jpg"
-          alt="Elgin Crescent Interior"
-          class="w-full h-auto parallax-right"
-          width="777"
-          height="1024"
-          loading="lazy"
-          decoding="async"
-        />
-      </a>
+---
+
+<section class="w-full py-section">
+  <div class="page-padding">
+    <div class="flex flex-col md:flex-row gap-6 items-start">
+      <!-- LEFT IMAGE — wider, starts higher -->
+      <div
+        class="w-full md:w-[52%] fade-in-element opacity-0"
+        data-parallax="left"
+      >
+        <a
+          href="/projects/golbourne-road"
+          class="relative block img-hover-zoom"
+        >
+          <img
+            src="/images/projects/golbourne-road.jpg"
+            alt="Golborne Road Interior"
+            class="w-full h-auto"
+            width="777"
+            height="1024"
+            decoding="async"
+          />
+          <span
+            class="absolute bottom-4 left-4 text-white font-serif italic text-lg leading-tight drop-shadow-md"
+          >
+            golbourne<br />road
+          </span>
+        </a>
+      </div>
+
+      <!-- RIGHT IMAGE — narrower, offset down -->
+      <div
+        class="w-full md:w-[48%] md:mt-24 fade-in-element opacity-0"
+        data-parallax="right"
+      >
+        <a
+          href="/projects/elgin-crescent"
+          class="relative block img-hover-zoom"
+        >
+          <img
+            src="/images/projects/elgin-crescent.jpg"
+            alt="Elgin Crescent Interior"
+            class="w-full h-auto"
+            width="777"
+            height="1024"
+            loading="lazy"
+            decoding="async"
+          />
+          <span
+            class="absolute bottom-4 left-4 text-white font-serif italic text-lg leading-tight drop-shadow-md"
+          >
+            elgin<br />crescent
+          </span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -48,36 +74,40 @@
 </style>
 
 <script>
-  const leftImg = document.querySelector<HTMLImageElement>(".parallax-left");
-  const rightImg = document.querySelector<HTMLImageElement>(".parallax-right");
-  const section = document.querySelector<HTMLElement>("section");
+  // --- Parallax ---
+  // Apply to wrapper divs (data-parallax), not imgs, to avoid conflict with hover/fade transforms
+  const leftEl = document.querySelector<HTMLElement>('[data-parallax="left"]');
+  const rightEl = document.querySelector<HTMLElement>(
+    '[data-parallax="right"]',
+  );
+  const section = leftEl?.closest("section") as HTMLElement | null;
 
   function parallax() {
-    if (!leftImg || !rightImg || !section) return;
+    if (!leftEl || !rightEl || !section) return;
 
-    const sectionTop = section.offsetTop;
-    const scrollY = window.scrollY;
-    const relativeScroll = scrollY - sectionTop + window.innerHeight;
+    const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+    const relativeScroll = window.scrollY - sectionTop + window.innerHeight;
 
-    rightImg.style.transform = `translateY(${300 - relativeScroll * 0.15}px)`;
-    leftImg.style.transform = `translateY(${-300 + relativeScroll * 0.15}px)`;
+    const offset = relativeScroll * 0.05;
+    leftEl.style.transform = `translateY(${-offset}px)`;
+    rightEl.style.transform = `translateY(${offset}px)`;
   }
 
   window.addEventListener("scroll", parallax, { passive: true });
   parallax();
 
-  // Fade in observer
+  // --- Fade In ---
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
           setTimeout(() => {
             entry.target.classList.add("visible");
-          }, index * 300); // 300ms stagger between images
+          }, index * 200);
         }
       });
     },
-    { threshold: 0.2 },
+    { threshold: 0.15 },
   );
 
   document.querySelectorAll(".fade-in-element").forEach((el) => {

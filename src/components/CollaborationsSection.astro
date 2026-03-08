@@ -1,10 +1,4 @@
 ---
-interface Props {
-  title?: string;
-}
-
-const { title = "Our Collaborations" } = Astro.props;
-
 const logos = [
   "/images/clients/client-1.webp",
   "/images/clients/client-2.webp",
@@ -17,47 +11,39 @@ const logos = [
 ];
 ---
 
-<section class="w-full bg-background py-section overflow-hidden">
-  <div class="max-w-[1240px] mx-auto flex flex-col gap-24">
-    <h3 class="text-[32px] md:text-[35px] font-light text-center">
-      {title}
+<section class="w-full py-section overflow-hidden">
+  <div class="page-padding mb-12">
+    <h3 class="text-[35px] font-normal text-center tracking-wide">
+      Trusted By
     </h3>
+    <div class="w-12 h-px bg-secondary/30 mx-auto mt-4"></div>
+  </div>
 
-    <div class="relative w-full overflow-hidden">
-      <div
-        class="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10"
-      >
-      </div>
-      <div class="marquee-track">
-        <!-- First Set -->
-        {
-          logos.map((logo, i) => (
+  <div class="relative w-full overflow-hidden">
+    <!-- Left fade -->
+    <div
+      class="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10"
+    >
+    </div>
+    <!-- Right fade -->
+    <div
+      class="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent z-10"
+    >
+    </div>
+
+    <div class="marquee-track">
+      {
+        [...logos, ...logos].map((logo, i) => (
+          <div class="marquee-card">
             <img
               src={logo}
-              alt={`Client ${i + 1}`}
-              class="h-14 md:h-16 w-auto object-contain opacity-60"
+              alt={`Client ${(i % logos.length) + 1}`}
+              class="h-10 w-auto object-contain opacity-70 transition-opacity duration-300 group-hover:opacity-100"
               loading="lazy"
             />
-          ))
-        }
-
-        <!-- Duplicate for seamless loop -->
-        {
-          logos.map((logo, i) => (
-            <img
-              src={logo}
-              alt={`Client duplicate ${i + 1}`}
-              class="h-14 md:h-16 w-auto object-contain opacity-60"
-              loading="lazy"
-            />
-          ))
-        }
-      </div>
-
-      <div
-        class="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10"
-      >
-      </div>
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>
@@ -65,9 +51,33 @@ const logos = [
 <style>
   .marquee-track {
     display: flex;
-    gap: 4rem;
+    gap: 1.5rem;
     width: max-content;
-    animation: scroll 45s linear infinite;
+    animation: scroll 40s linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  .marquee-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 160px;
+    padding: 1.5rem 2rem;
+    background-color: rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(48, 24, 4, 0.08);
+    border-radius: 4px;
+    backdrop-filter: blur(4px);
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .marquee-card:hover {
+    border-color: rgba(48, 24, 4, 0.2);
+    box-shadow: 0 4px 20px rgba(48, 24, 4, 0.06);
   }
 
   @keyframes scroll {
