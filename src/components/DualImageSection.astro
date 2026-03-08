@@ -3,58 +3,50 @@
 ---
 
 <section class="w-full py-section">
-  <div class="page-padding">
-    <div class="flex flex-col md:flex-row gap-6 items-start">
-      <!-- LEFT IMAGE — wider, starts higher -->
-      <div
-        class="w-full md:w-[52%] fade-in-element opacity-0"
-        data-parallax="left"
-      >
-        <a
-          href="/projects/golbourne-road"
-          class="relative block img-hover-zoom"
+  <div class="flex flex-col md:flex-row gap-8 items-start">
+    <!-- LEFT IMAGE — taller, starts higher, label bottom-left white -->
+    <div
+      class="w-full md:w-[52%] fade-in-element opacity-0"
+      data-parallax="left"
+    >
+      <a href="/projects/golbourne-road" class="relative block img-hover-zoom">
+        <img
+          src="/images/projects/golbourne-road.jpg"
+          alt="Golborne Road Interior"
+          class="w-full h-auto"
+          width="777"
+          height="1024"
+          decoding="async"
+        />
+        <span
+          class="absolute bottom-4 left-4 text-white font-serif italic text-lg leading-tight drop-shadow-md"
         >
-          <img
-            src="/images/projects/golbourne-road.jpg"
-            alt="Golborne Road Interior"
-            class="w-full h-auto"
-            width="777"
-            height="1024"
-            decoding="async"
-          />
-          <span
-            class="absolute bottom-4 left-4 text-white font-serif italic text-lg leading-tight drop-shadow-md"
-          >
-            golbourne<br />road
-          </span>
-        </a>
-      </div>
+          artist apartment<br />golbourne rd
+        </span>
+      </a>
+    </div>
 
-      <!-- RIGHT IMAGE — narrower, offset down -->
-      <div
-        class="w-full md:w-[48%] md:mt-24 fade-in-element opacity-0"
-        data-parallax="right"
-      >
-        <a
-          href="/projects/elgin-crescent"
-          class="relative block img-hover-zoom"
+    <!-- RIGHT IMAGE — shorter, offset down, label top-left dark brown -->
+    <div
+      class="w-full md:w-[48%] md:mt-24 fade-in-element opacity-0"
+      data-parallax="right"
+    >
+      <a href="/projects/elgin-crescent" class="relative block img-hover-zoom">
+        <img
+          src="/images/projects/elgin-crescent.jpg"
+          alt="Elgin Crescent Interior"
+          class="w-full h-auto"
+          width="777"
+          height="1024"
+          loading="lazy"
+          decoding="async"
+        />
+        <span
+          class="absolute top-4 left-4 text-secondary font-serif italic text-lg leading-tight"
         >
-          <img
-            src="/images/projects/elgin-crescent.jpg"
-            alt="Elgin Crescent Interior"
-            class="w-full h-auto"
-            width="777"
-            height="1024"
-            loading="lazy"
-            decoding="async"
-          />
-          <span
-            class="absolute bottom-4 left-4 text-white font-serif italic text-lg leading-tight drop-shadow-md"
-          >
-            elgin<br />crescent
-          </span>
-        </a>
-      </div>
+          elgin<br />crescent
+        </span>
+      </a>
     </div>
   </div>
 </section>
@@ -74,8 +66,6 @@
 </style>
 
 <script>
-  // --- Parallax ---
-  // Apply to wrapper divs (data-parallax), not imgs, to avoid conflict with hover/fade transforms
   const leftEl = document.querySelector<HTMLElement>('[data-parallax="left"]');
   const rightEl = document.querySelector<HTMLElement>(
     '[data-parallax="right"]',
@@ -87,16 +77,17 @@
 
     const sectionTop = section.getBoundingClientRect().top + window.scrollY;
     const relativeScroll = window.scrollY - sectionTop + window.innerHeight;
-
     const offset = relativeScroll * 0.05;
-    leftEl.style.transform = `translateY(${-offset}px)`;
-    rightEl.style.transform = `translateY(${offset}px)`;
+
+    // scroll down: left moves DOWN (+), right moves UP (-)
+    leftEl.style.transform = `translateY(${offset}px)`;
+    rightEl.style.transform = `translateY(${-offset}px)`;
   }
 
   window.addEventListener("scroll", parallax, { passive: true });
   parallax();
 
-  // --- Fade In ---
+  // Fade in
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry, index) => {

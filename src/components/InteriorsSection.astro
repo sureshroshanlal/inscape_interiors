@@ -3,66 +3,52 @@
 ---
 
 <section class="w-full py-section">
-  <div class="page-padding">
-    <!-- Row 1: Text + Image -->
-    <div class="flex flex-col md:flex-row items-start gap-20">
-      <!-- LEFT: TEXT -->
-      <div class="w-full md:w-1/2">
-        <!-- Decorative rising sun — matches reference -->
-        <svg
-          class="mb-6 fade-in-element opacity-0"
-          width="64"
-          height="44"
-          viewBox="0 0 64 44"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-        >
-          <!-- Center dot -->
-          <circle cx="32" cy="38" r="2.8" fill="#b5a98a" />
-          <!-- 5 rays spreading upward in a fan -->
-          <line x1="32" y1="38" x2="8"  y2="30" stroke="#b5a98a" stroke-width="2.8" stroke-linecap="round" />
-          <line x1="32" y1="38" x2="18" y2="12" stroke="#b5a98a" stroke-width="2.8" stroke-linecap="round" />
-          <line x1="32" y1="38" x2="32" y2="6"  stroke="#b5a98a" stroke-width="2.8" stroke-linecap="round" />
-          <line x1="32" y1="38" x2="46" y2="12" stroke="#b5a98a" stroke-width="2.8" stroke-linecap="round" />
-          <line x1="32" y1="38" x2="56" y2="30" stroke="#b5a98a" stroke-width="2.8" stroke-linecap="round" />
-        </svg>
-        <h3 class="text-[35px] font-normal mb-8 fade-in-element opacity-0">
-          Interiors
-        </h3>
+  <div class="flex flex-col md:flex-row items-start gap-16">
+    <!-- LEFT: TEXT -->
+    <div class="w-full md:w-1/2">
+      <!-- Sunburst placeholder — client to replace with actual image -->
+      <img
+        src="/images/interiors-sunburst.png"
+        alt=""
+        class="w-16 mb-6 fade-in-element opacity-0"
+        aria-hidden="true"
+      />
 
-        <div class="space-y-6 text-base font-light fade-in-element opacity-0">
-          <p>
-            Our services range from colour consultancy and space planning to
-            full-home architectural and interior design.
-          </p>
-          <p>
-            We develop strong relationships with clients to understand their
-            needs, creating spaces that ease and enhance their daily lives.
-          </p>
-        </div>
+      <h3 class="text-[35px] font-normal mb-8 fade-in-element opacity-0">
+        Interiors
+      </h3>
 
-        <a
-          href="/projects"
-          class="inline-block mt-10 border border-secondary bg-secondary text-primary rounded-full hover:bg-primary hover:text-secondary transition-colors duration-300 px-8 py-3 text-base tracking-wide fade-in-element opacity-0"
-        >
-          View Projects
-        </a>
+      <div class="space-y-6 text-base font-light fade-in-element opacity-0">
+        <p>
+          Our services range from colour consultancy and space planning to
+          full-home architectural and interior design.
+        </p>
+        <p>
+          We develop strong relationships with clients to understand their
+          needs, creating spaces that ease and enhance their daily lives.
+        </p>
       </div>
 
-      <!-- RIGHT: IMAGE -->
-      <div class="w-full md:w-1/2 fade-in-element opacity-0">
-        <img
-          src="/images/interiors-side.jpg"
-          alt="Inscape Interiors"
-          class="w-full h-auto"
-        />
-      </div>
+      <a
+        href="/projects"
+        class="inline-block mt-10 border border-secondary bg-secondary text-primary rounded-full hover:bg-primary hover:text-secondary transition-colors duration-300 px-8 py-3 text-base tracking-wide fade-in-element opacity-0"
+      >
+        View Projects
+      </a>
+    </div>
+
+    <!-- RIGHT: IMAGE -->
+    <div class="w-full md:w-1/2 fade-in-element opacity-0">
+      <img
+        src="/images/interiors-side.jpg"
+        alt="Inscape Interiors"
+        class="w-full h-auto"
+      />
     </div>
   </div>
 
-  <!-- Row 2: Full bleed wide image — outside page-padding -->
-  <div class="w-full mt-24">
+  <!-- Wide image below — same global padding applies -->
+  <div class="w-full mt-16">
     <img
       src="/images/interiors-wide.jpg"
       alt="Inscape Interiors"

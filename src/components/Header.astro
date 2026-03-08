@@ -2,61 +2,58 @@
 
 ---
 
-<!-- Header overlays hero, transparent initially, gains bg on scroll -->
-<header class="header-hide z-50 transition-all duration-300">
-  <div class="page-padding">
-    <!-- Desktop Header -->
-    <div class="hidden md:flex items-center justify-center relative py-4">
-      <!-- Left Vertical Nav -->
-      <nav class="absolute left-0 top-1/2 -translate-y-1/2">
-        <ul class="flex flex-col gap-1 text-[11px] tracking-widest uppercase">
-          <li><a href="/projects">Projects</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-      </nav>
+<header class="header-hide w-full bg-primary z-50">
+  <!-- Desktop Header -->
+  <div class="hidden md:flex items-center justify-center relative px-5 py-3">
+    <!-- Left Vertical Nav — flush to left edge like reference -->
+    <nav class="absolute left-5 top-1/2 -translate-y-1/2">
+      <ul class="flex flex-col gap-1 text-[11px] tracking-widest uppercase">
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
 
-      <!-- Logo — client wants larger than h-36, infinity icon over "i" retained -->
-      <a href="/" class="relative inline-block">
-        <img
-          src="/images/inscape_logo.webp"
-          alt="Inscape Interiors"
-          class="h-40 w-auto block"
-        />
-        <img
-          src="/logo-infinity.svg"
-          alt=""
-          class="absolute pointer-events-none w-8 top-[22%] left-[12%]"
-        />
-      </a>
-    </div>
+    <!-- Logo — centered, client wants large, infinity icon retained -->
+    <a href="/" class="relative inline-block">
+      <img
+        src="/images/inscape_logo.webp"
+        alt="Inscape Interiors"
+        class="h-40 w-auto block"
+      />
+      <img
+        src="/logo-infinity.svg"
+        alt=""
+        class="absolute pointer-events-none w-8 top-[22%] left-[12%]"
+      />
+    </a>
+  </div>
 
-    <!-- Mobile Header -->
-    <div class="flex md:hidden items-center justify-between py-4">
-      <a href="/" class="relative inline-block">
-        <img
-          src="/images/inscape_logo.webp"
-          alt="Inscape Interiors"
-          class="h-16 w-auto block"
-        />
-        <img
-          src="/logo-infinity.svg"
-          alt=""
-          class="absolute pointer-events-none w-4 top-[22%] left-[12%]"
-        />
-      </a>
+  <!-- Mobile Header -->
+  <div class="flex md:hidden items-center justify-between px-5 py-4">
+    <a href="/" class="relative inline-block">
+      <img
+        src="/images/inscape_logo.webp"
+        alt="Inscape Interiors"
+        class="h-16 w-auto block"
+      />
+      <img
+        src="/logo-infinity.svg"
+        alt=""
+        class="absolute pointer-events-none w-4 top-[22%] left-[12%]"
+      />
+    </a>
 
-      <button id="mobile-toggle" class="p-2 -mr-2" aria-label="Toggle menu">
-        <div class="space-y-1.5">
-          <span class="block w-6 h-px bg-secondary transition-all duration-300"
-          ></span>
-          <span class="block w-6 h-px bg-secondary transition-all duration-300"
-          ></span>
-          <span class="block w-6 h-px bg-secondary transition-all duration-300"
-          ></span>
-        </div>
-      </button>
-    </div>
+    <button id="mobile-toggle" class="p-2 -mr-2" aria-label="Toggle menu">
+      <div class="space-y-1.5">
+        <span class="block w-6 h-px bg-secondary transition-all duration-300"
+        ></span>
+        <span class="block w-6 h-px bg-secondary transition-all duration-300"
+        ></span>
+        <span class="block w-6 h-px bg-secondary transition-all duration-300"
+        ></span>
+      </div>
+    </button>
   </div>
 
   <!-- Mobile Menu -->
@@ -64,7 +61,7 @@
     id="mobile-menu"
     class="hidden md:hidden bg-primary border-t border-secondary/10"
   >
-    <nav class="page-padding py-8 flex flex-col gap-6">
+    <nav class="px-5 py-8 flex flex-col gap-6">
       <a href="/projects" class="text-[11px] tracking-widest uppercase"
         >Projects</a
       >
@@ -95,15 +92,7 @@
       () => {
         const currentScroll = window.scrollY;
 
-        // Add background once past hero area
-        if (currentScroll > 80) {
-          header.classList.add("scrolled");
-        } else {
-          header.classList.remove("scrolled");
-        }
-
-        // Hide on scroll down, show on scroll up
-        if (currentScroll > lastScroll && currentScroll > 30) {
+        if (currentScroll > lastScroll && currentScroll > 80) {
           header.style.transform = "translateY(-100%)";
         } else {
           header.style.transform = "translateY(0)";
@@ -118,17 +107,8 @@
 
 <style>
   .header-hide {
-    position: fixed;
+    position: sticky;
     top: 0;
-    left: 0;
-    width: 100%;
-    background: transparent;
-    transition:
-      transform 0.3s ease,
-      background-color 0.3s ease;
-  }
-
-  .header-hide.scrolled {
-    background-color: #eeece3;
+    transition: transform 0.3s ease;
   }
 </style>

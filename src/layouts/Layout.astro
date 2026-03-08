@@ -25,29 +25,27 @@ const {
     <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;700&display=swap"
-      rel="stylesheet"
-    /> -->
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
   </head>
-  <body class="min-h-screen flex flex-col bg-background font-serif font-normal text-base">
+  <body
+    class="min-h-screen flex flex-col bg-background font-serif font-normal text-base"
+  >
     <Header />
-    <main class="flex-1">
+    <main class="flex-1 px-5 md:px-10">
       <slot />
       <WhatsAppButton />
     </main>
     <Footer />
+
     <!-- Global Image Zoom Modal -->
     <div
       id="image-zoom-modal"
       class="fixed inset-0 z-[9999] hidden items-center justify-center"
     >
       <div class="absolute inset-0 bg-black/90 backdrop-blur-sm"></div>
-
       <img
         id="zoomed-image"
         class="relative max-h-[90vh] max-w-[95vw] rounded-lg shadow-2xl scale-95 transition-transform duration-300"
@@ -66,14 +64,11 @@ const {
       document.addEventListener("click", (e) => {
         const target = e.target as HTMLElement | null;
         if (!target) return;
-
         const img = target.closest("img[data-zoom]") as HTMLImageElement | null;
         if (!img) return;
-
         zoomedImage.src = img.src;
         modal.classList.remove("hidden");
         modal.classList.add("flex");
-
         requestAnimationFrame(() => {
           zoomedImage.classList.remove("scale-95");
           zoomedImage.classList.add("scale-100");
