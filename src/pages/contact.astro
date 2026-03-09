@@ -1,52 +1,73 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+// Replace with actual Formspree form ID from formspree.io
+const FORMSPREE_ID = "YOUR_FORMSPREE_ID";
 ---
 
 <Layout title="Contact — Inscape Interiors">
   <section class="w-full py-section">
-    <div
-      class="max-w-[1240px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16"
-    >
+    <div class="flex flex-col md:flex-row gap-16 items-start">
       <!-- Left: Image -->
-      <div class="overflow-hidden hidden md:block fade-in-element opacity-0">
+      <div class="hidden md:block w-full md:w-[45%] fade-in-element opacity-0">
         <img
           src="/images/interiors-side.jpg"
-          alt="Inscape Interiors Interior"
-          class="w-full h-full object-cover"
-          width="777"
-          height="1024"
+          alt="Inscape Interiors"
+          class="w-full h-auto"
           loading="eager"
           decoding="async"
         />
       </div>
 
-      <!-- Right: Contact form & details -->
-      <div class="flex flex-col justify-center">
+      <!-- Right: Contact details + Form -->
+      <div class="w-full md:w-[55%] flex flex-col justify-start">
         <h1
-          class="text-[42px] md:text-[56px] font-light leading-tight mb-8 font-serif text-hyperlink fade-in-element opacity-0"
+          class="text-[48px] md:text-[56px] font-normal font-serif text-hyperlink leading-tight mb-10 fade-in-element opacity-0"
         >
           Contact
         </h1>
 
-        <div class="space-y-2 mb-10 fade-in-element opacity-0">
-          <p class="text-base md:text-lg text-hyperlink">Address Line 1</p>
-          <p class="text-base md:text-lg text-hyperlink">
-            Inscape Interiors Ltd
+        <!-- Contact Details -->
+        <div class="space-y-2 mb-12 fade-in-element opacity-0">
+          <p class="text-lg font-light text-hyperlink">Inscape Interiors</p>
+          <p class="text-lg font-light text-hyperlink">
+            3rd Floor, Road No. 2, beside Talwar Hyundai,
           </p>
-          <p class="text-base md:text-lg text-hyperlink">Address Line 2</p>
-          <p class="text-base md:text-lg text-hyperlink">Address Line 3</p>
+          <p class="text-lg font-light text-hyperlink">
+            Park View Enclave, Banjara Hills,
+          </p>
+          <p class="text-lg font-light text-hyperlink">
+            Hyderabad, Telangana 500034
+          </p>
+          <p class="text-lg font-light text-hyperlink mt-4">
+            <a
+              href="mailto:dezinekraft.studio@gmail.com"
+              class="hover:opacity-60 transition-opacity duration-300"
+            >
+              dezinekraft.studio@gmail.com
+            </a>
+          </p>
+          <p class="text-lg font-light text-hyperlink">
+            <a
+              href="tel:+918885555548"
+              class="hover:opacity-60 transition-opacity duration-300"
+            >
+              +91 88855 55548
+            </a>
+          </p>
         </div>
 
+        <!-- Form -->
         <form
-          class="space-y-6 fade-in-element opacity-0"
-          action="#"
-          method="post"
+          action={`https://formspree.io/f/${FORMSPREE_ID}`}
+          method="POST"
+          class="space-y-8 fade-in-element opacity-0"
         >
           <!-- Name -->
           <div>
             <label
               for="name"
-              class="text-sm uppercase tracking-widest text-hyperlink block mb-2"
+              class="text-[11px] uppercase tracking-widest text-hyperlink block mb-2"
               >Name</label
             >
             <input
@@ -54,7 +75,7 @@ import Layout from "../layouts/Layout.astro";
               id="name"
               name="name"
               required
-              class="w-full bg-transparent border-b border-[#301804]/30 pb-2 text-sm text-hyperlink focus:outline-none focus:border-[#301804] transition-colors placeholder:text-[#301804]/40"
+              class="w-full bg-transparent border-b border-hyperlink/30 pb-2 text-base text-hyperlink focus:outline-none focus:border-hyperlink transition-colors placeholder:text-hyperlink/40"
               placeholder="Your name"
             />
           </div>
@@ -63,7 +84,7 @@ import Layout from "../layouts/Layout.astro";
           <div>
             <label
               for="email"
-              class="text-sm uppercase tracking-widest text-hyperlink block mb-2"
+              class="text-[11px] uppercase tracking-widest text-hyperlink block mb-2"
               >Email</label
             >
             <input
@@ -71,7 +92,7 @@ import Layout from "../layouts/Layout.astro";
               id="email"
               name="email"
               required
-              class="w-full bg-transparent border-b border-[#301804]/30 pb-2 text-sm text-hyperlink focus:outline-none focus:border-[#301804] transition-colors placeholder:text-[#301804]/40"
+              class="w-full bg-transparent border-b border-hyperlink/30 pb-2 text-base text-hyperlink focus:outline-none focus:border-hyperlink transition-colors placeholder:text-hyperlink/40"
               placeholder="Your email"
             />
           </div>
@@ -80,14 +101,14 @@ import Layout from "../layouts/Layout.astro";
           <div>
             <label
               for="phone"
-              class="text-sm uppercase tracking-widest text-hyperlink block mb-2"
+              class="text-[11px] uppercase tracking-widest text-hyperlink block mb-2"
               >Phone</label
             >
             <input
               type="tel"
               id="phone"
               name="phone"
-              class="w-full bg-transparent border-b border-[#301804]/30 pb-2 text-sm text-hyperlink focus:outline-none focus:border-[#301804] transition-colors placeholder:text-[#301804]/40"
+              class="w-full bg-transparent border-b border-hyperlink/30 pb-2 text-base text-hyperlink focus:outline-none focus:border-hyperlink transition-colors placeholder:text-hyperlink/40"
               placeholder="Your phone number"
             />
           </div>
@@ -96,7 +117,7 @@ import Layout from "../layouts/Layout.astro";
           <div>
             <label
               for="enquiry"
-              class="text-sm uppercase tracking-widest text-hyperlink block mb-2"
+              class="text-[11px] uppercase tracking-widest text-hyperlink block mb-2"
               >Enquiry</label
             >
             <textarea
@@ -104,15 +125,15 @@ import Layout from "../layouts/Layout.astro";
               name="enquiry"
               rows="5"
               required
-              class="w-full bg-transparent border-b border-[#301804]/30 pb-2 text-sm text-hyperlink focus:outline-none focus:border-[#301804] transition-colors resize-none placeholder:text-[#301804]/40"
+              class="w-full bg-transparent border-b border-hyperlink/30 pb-2 text-base text-hyperlink focus:outline-none focus:border-hyperlink transition-colors resize-none placeholder:text-hyperlink/40"
               placeholder="Tell us about your project..."></textarea>
           </div>
 
           <!-- Submit -->
-          <div class="pt-4">
+          <div class="pt-2">
             <button
               type="submit"
-              class="inline-block px-8 py-3 bg-[#301804] text-[#EEECE3] rounded-full hover:bg-[#EEECE3] hover:text-[#301804] transition-colors duration-300"
+              class="inline-block px-8 py-3 bg-secondary text-primary rounded-full border border-secondary hover:bg-primary hover:text-secondary transition-colors duration-300 text-base"
             >
               Send Enquiry
             </button>
@@ -148,7 +169,7 @@ import Layout from "../layouts/Layout.astro";
         }
       });
     },
-    { threshold: 0.2 },
+    { threshold: 0.15 },
   );
 
   document.querySelectorAll(".fade-in-element").forEach((el) => {
