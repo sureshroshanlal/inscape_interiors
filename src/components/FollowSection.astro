@@ -37,11 +37,10 @@ const images = [
 ---
 
 <section class="w-full py-section">
-  <!-- Heading links to profile -->
-  <div class="flex items-center justify-center gap-2 mb-8">
+  <div class="flex items-center justify-center gap-3 mb-8">
     <svg
-      width="18"
-      height="18"
+      width="24"
+      height="24"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -60,14 +59,13 @@ const images = [
       href={INSTAGRAM_PROFILE}
       target="_blank"
       rel="noopener noreferrer"
-      class="text-base font-serif text-secondary"
+      class="text-xl font-serif text-secondary"
     >
       Follow
     </a>
   </div>
-
   <!-- 6 square images — each links to its own post -->
-  <div class="w-full grid grid-cols-6 gap-1">
+  <div class="w-full grid grid-cols-6 gap-2">
     {
       images.map((image) => (
         <a
