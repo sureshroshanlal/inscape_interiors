@@ -1,0 +1,172 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Sourcing — Inscape Interiors">
+  <!-- HERO IMAGE -->
+  <section class="w-full">
+    <div class="w-full h-[80vh] overflow-hidden fade-in-element opacity-0">
+      <img
+        src="/images/sourcing/hero.webp"
+        alt="Inscape Sourcing"
+        class="w-full h-full object-cover"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="w-full py-section">
+    <div class="max-w-[760px] mx-auto text-center">
+      <h1
+        class="text-[48px] md:text-[56px] font-normal font-serif text-hyperlink leading-tight mb-8 fade-in-element opacity-0"
+      >
+        Sourcing
+      </h1>
+      <p class="text-lg font-light text-hyperlink fade-in-element opacity-0">
+        At Inscape, sourcing is a curated process — not procurement. We handpick
+        premium materials, bespoke furniture, lighting, and décor from trusted
+        vendors and master craftsmen to ensure uncompromising quality and
+        timeless elegance.
+      </p>
+    </div>
+  </section>
+
+  <!-- ROW 1: Image left, Text right -->
+  <section class="w-full py-section">
+    <div class="flex flex-col md:flex-row gap-16 items-start">
+      <div class="w-full md:w-[52%] fade-in-element opacity-0">
+        <img
+          src="/images/sourcing/sourcing-1.webp"
+          alt="Inscape Material Sourcing"
+          class="w-full h-auto"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <div
+        class="w-full md:w-[44%] flex flex-col justify-center py-8 space-y-6 fade-in-element opacity-0"
+      >
+        <h2
+          class="text-[36px] font-normal font-serif text-hyperlink leading-tight"
+        >
+          Curated Materials
+        </h2>
+        <p class="text-lg font-light text-hyperlink">
+          Every element is thoughtfully selected to align with the design
+          vision, performance standards, and refined aesthetic our clients
+          expect.
+        </p>
+        <p class="text-lg font-light text-hyperlink">
+          From rare finishes to custom-made pieces, we source with precision,
+          authenticity, and meticulous attention to detail — transforming
+          concepts into complete, elevated spaces.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROW 2: Text left, Image right -->
+  <section class="w-full py-section">
+    <div class="flex flex-col md:flex-row gap-16 items-start">
+      <div
+        class="w-full md:w-[44%] flex flex-col justify-center py-8 space-y-6 fade-in-element opacity-0"
+      >
+        <h2
+          class="text-[36px] font-normal font-serif text-hyperlink leading-tight"
+        >
+          Global Furniture Sourcing
+        </h2>
+        <p class="text-lg font-light text-hyperlink">
+          With an established international network of trusted suppliers and
+          artisans, Inscape sources distinctive furniture and materials from
+          around the world.
+        </p>
+        <p class="text-lg font-light text-hyperlink">
+          We curate pieces that reflect quality craftsmanship, innovative
+          design, and timeless appeal — ensuring every project is truly unique.
+        </p>
+      </div>
+      <div class="w-full md:w-[52%] fade-in-element opacity-0">
+        <img
+          src="/images/sourcing/sourcing-2.webp"
+          alt="Global Furniture Sourcing"
+          class="w-full h-auto"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ROW 3: Image left, Text right -->
+  <section class="w-full py-section">
+    <div class="flex flex-col md:flex-row gap-16 items-start">
+      <div class="w-full md:w-[52%] fade-in-element opacity-0">
+        <img
+          src="/images/sourcing/sourcing-3.webp"
+          alt="Inscape Sourcing Detail"
+          class="w-full h-auto"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <div
+        class="w-full md:w-[44%] flex flex-col justify-center py-8 space-y-6 fade-in-element opacity-0"
+      >
+        <h2
+          class="text-[36px] font-normal font-serif text-hyperlink leading-tight"
+        >
+          Precision & Authenticity
+        </h2>
+        <p class="text-lg font-light text-hyperlink">
+          Sourcing at Inscape means going beyond standard procurement. We build
+          long-term relationships with artisans, fabricators, and international
+          suppliers who share our commitment to excellence.
+        </p>
+        <p class="text-lg font-light text-hyperlink">
+          The result — spaces defined by sophistication, enduring value, and an
+          unmistakable design language.
+        </p>
+        <div class="pt-4">
+          <a
+            href="/contact"
+            class="inline-block border border-secondary bg-secondary text-primary rounded-full hover:bg-primary hover:text-secondary transition-colors duration-300 px-8 py-3 text-base"
+          >
+            Begin Your Bespoke Journey
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .fade-in-element {
+    transition:
+      opacity 1.2s ease-out,
+      transform 1.2s ease-out;
+    transform: translateY(20px);
+  }
+  .fade-in-element.visible {
+    opacity: 1 !important;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add("visible"), index * 200);
+        }
+      });
+    },
+    { threshold: 0.15 },
+  );
+  document
+    .querySelectorAll(".fade-in-element")
+    .forEach((el) => observer.observe(el));
+</script>
