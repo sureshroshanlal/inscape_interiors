@@ -5,16 +5,16 @@
 <header class="header-hide w-full bg-primary z-50">
   <!-- Desktop Header -->
   <div class="hidden md:flex items-center justify-center relative px-5 py-3">
-    <!-- Left Vertical Nav — flush to left edge like reference -->
+    <!-- Left Vertical Nav -->
     <nav class="absolute left-5 top-1/2 -translate-y-1/2">
-      <ul class="flex flex-col gap-1 text-[11px] tracking-widest uppercase">
+      <ul class="flex flex-col gap-1.5 text-[14px] font-serif">
         <li><a href="/projects">Projects</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>
     </nav>
 
-    <!-- Logo — centered, client wants large, infinity icon retained -->
+    <!-- Logo -->
     <a href="/" class="relative inline-block">
       <img
         src="/images/inscape_logo.webp"
@@ -62,13 +62,9 @@
     class="hidden md:hidden bg-primary border-t border-secondary/10"
   >
     <nav class="px-5 py-8 flex flex-col gap-6">
-      <a href="/projects" class="text-[11px] tracking-widest uppercase"
-        >Projects</a
-      >
-      <a href="/about" class="text-[11px] tracking-widest uppercase">About</a>
-      <a href="/contact" class="text-[11px] tracking-widest uppercase"
-        >Contact</a
-      >
+      <a href="/projects" class="text-[14px] font-serif">Projects</a>
+      <a href="/about" class="text-[14px] font-serif">About</a>
+      <a href="/contact" class="text-[14px] font-serif">Contact</a>
     </nav>
   </div>
 </header>
@@ -91,13 +87,11 @@
       "scroll",
       () => {
         const currentScroll = window.scrollY;
-
         if (currentScroll > lastScroll && currentScroll > 80) {
           header.style.transform = "translateY(-100%)";
         } else {
           header.style.transform = "translateY(0)";
         }
-
         lastScroll = currentScroll;
       },
       { passive: true },
