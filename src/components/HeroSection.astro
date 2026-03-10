@@ -1,16 +1,20 @@
+---
+
+---
+
 <section class="w-full">
-  <!-- Hero: full bleed, fixed height, covers behind transparent header -->
-  <!-- <div class="w-full h-[35vh] md:h-[85vh] overflow-hidden"> -->
+  <!-- Hero image -->
   <div class="w-full h-[40vh] md:h-[80vh] overflow-hidden">
     <img
       src="/images/hero-banner.jpg"
       alt="Inscape Interiors"
-      class="w-full h-auto object-cover fade-in-element opacity-0"
+      class="w-full h-full object-cover fade-in-element opacity-0"
       loading="eager"
     />
   </div>
+
   <!-- Intro text -->
-  <div class="page-padding py-section text-center">
+  <div class="py-section text-center">
     <h1
       class="text-[38px] md:text-[52px] font-normal leading-tight mb-8 font-serif text-hyperlink fade-in-element opacity-0 max-w-[700px] mx-auto"
     >
@@ -19,7 +23,8 @@
     <p
       class="text-base max-w-[480px] mx-auto text-hyperlink fade-in-element opacity-0"
     >
-      Transforming interiors through architecture, handcrafted detail, and global sourcing.
+      Transforming interiors through architecture, handcrafted detail, and
+      global sourcing.
     </p>
   </div>
 </section>
@@ -45,11 +50,11 @@
         if (entry.isIntersecting) {
           setTimeout(() => {
             entry.target.classList.add("visible");
-          }, index * 200); // 200ms stagger delay
+          }, index * 200);
         }
       });
     },
-    { threshold: 0.2 },
+    { threshold: 0 },
   );
 
   document.querySelectorAll(".fade-in-element").forEach((el) => {
