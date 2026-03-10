@@ -5,7 +5,6 @@
 <header class="header-hide w-full bg-primary z-50">
   <!-- Desktop Header -->
   <div class="hidden md:flex items-center justify-center relative px-5 py-3">
-    <!-- Left Vertical Nav -->
     <nav class="absolute left-5 top-1/2 -translate-y-1/2">
       <ul class="flex flex-col gap-1 text-[16px] font-serif">
         <li><a href="/projects">Projects</a></li>
@@ -14,8 +13,6 @@
         <li><a href="/about">About</a></li>
       </ul>
     </nav>
-
-    <!-- Logo — centered -->
     <a href="/" class="relative inline-block">
       <img
         src="/images/inscape_logo.webp"
@@ -31,10 +28,10 @@
     </a>
   </div>
 
-  <!-- Mobile Header — burger left, logo centered, empty div right for balance -->
-  <div class="flex md:hidden items-center justify-between px-5 py-4">
-    <!-- Burger -->
-    <button id="mobile-toggle" class="p-2" aria-label="Toggle menu">
+  <!-- Mobile Header — burger left, logo centered -->
+  <div class="relative flex md:hidden items-center justify-between px-5 py-4">
+    <!-- Burger left -->
+    <button id="mobile-toggle" class="p-2 z-10" aria-label="Toggle menu">
       <div class="space-y-1.5">
         <span class="block w-6 h-px bg-secondary transition-all duration-300"
         ></span>
@@ -45,11 +42,8 @@
       </div>
     </button>
 
-    <!-- Logo centered -->
-    <a
-      href="/"
-      class="relative inline-block absolute left-1/2 -translate-x-1/2"
-    >
+    <!-- Logo — absolutely centered within the relative parent -->
+    <a href="/" class="absolute left-1/2 -translate-x-1/2">
       <img
         src="/images/inscape_logo.webp"
         alt="Inscape Interiors"
@@ -63,8 +57,8 @@
       />
     </a>
 
-    <!-- Empty div to balance burger -->
-    <div class="w-10"></div>
+    <!-- Spacer to balance burger -->
+    <div class="w-10 z-10"></div>
   </div>
 
   <!-- Mobile Menu -->
@@ -84,16 +78,12 @@
 <script>
   const toggle = document.getElementById("mobile-toggle");
   const menu = document.getElementById("mobile-menu");
-
-  toggle?.addEventListener("click", () => {
-    menu?.classList.toggle("hidden");
-  });
+  toggle?.addEventListener("click", () => menu?.classList.toggle("hidden"));
 </script>
 
 <script>
   const header = document.querySelector<HTMLElement>(".header-hide");
   let lastScroll = 0;
-
   if (header) {
     window.addEventListener(
       "scroll",
