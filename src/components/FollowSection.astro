@@ -65,8 +65,35 @@ const images = [
     </a>
   </div>
 
-  <!-- 2 cols on mobile, 6 on desktop -->
-  <div class="w-full grid grid-cols-2 md:grid-cols-6 gap-2">
+  <!-- Mobile: horizontal scroll, 2 images visible at a time -->
+  <!-- Desktop: 6 col grid -->
+  <div
+    class="md:hidden flex overflow-x-auto snap-x snap-mandatory gap-2 scrollbar-hide"
+  >
+    {
+      images.map((image) => (
+        <a
+          href={image.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="relative flex-none w-[48%] aspect-square overflow-hidden group snap-start"
+          aria-label="View post on Instagram"
+        >
+          <img
+            src={image.src}
+            alt={image.alt}
+            class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-500 ease-out pointer-events-none" />
+        </a>
+      ))
+    }
+  </div>
+
+  <!-- Desktop grid -->
+  <div class="hidden md:grid grid-cols-6 gap-2">
     {
       images.map((image) => (
         <a
@@ -89,3 +116,13 @@ const images = [
     }
   </div>
 </section>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
