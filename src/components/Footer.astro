@@ -3,22 +3,76 @@
 ---
 
 <footer class="bg-secondary py-16">
-  <!-- Emblem — centered, full width, above links on mobile -->
-  <div class="flex justify-center mb-12">
-    <a
-      href="/"
-      class="inline-block hover:opacity-80 transition-opacity duration-300"
-    >
-      <img
-        src="/images/footer_emblem-1.webp"
-        alt="Inscape Interiors"
-        class="h-24 md:h-28 w-auto"
-      />
-    </a>
+  <!-- MOBILE: emblem centered above 2-col grid -->
+  <div class="md:hidden">
+    <div class="flex justify-center mb-12">
+      <a
+        href="/"
+        class="inline-block hover:opacity-80 transition-opacity duration-300"
+      >
+        <img
+          src="/images/footer_emblem-1.webp"
+          alt="Inscape Interiors"
+          class="h-24 w-auto"
+        />
+      </a>
+    </div>
+    <div class="grid grid-cols-2 gap-6 mb-12">
+      <div class="flex flex-col gap-4 items-center">
+        <a
+          href="/projects"
+          class="text-[16px] font-serif text-primary hover:opacity-60 transition-opacity duration-300"
+          >Projects</a
+        >
+        <a
+          href="/about"
+          class="text-[16px] font-serif text-primary hover:opacity-60 transition-opacity duration-300"
+          >About</a
+        >
+      </div>
+      <div class="flex flex-col gap-4 items-center">
+        <a
+          href="/craftsmanship"
+          class="text-[16px] font-serif text-primary hover:opacity-60 transition-opacity duration-300"
+          >Craftsmanship</a
+        >
+        <a
+          href="/sourcing"
+          class="text-[16px] font-serif text-primary hover:opacity-60 transition-opacity duration-300"
+          >Sourcing</a
+        >
+      </div>
+      <div class="flex flex-col gap-4 items-center">
+        <a
+          href="https://www.instagram.com/inscape.interiors/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-[16px] font-serif text-primary hover:opacity-60 transition-opacity duration-300"
+          >Instagram</a
+        >
+        <a
+          href="/contact"
+          class="text-[16px] font-serif text-primary hover:opacity-60 transition-opacity duration-300"
+          >Contact</a
+        >
+      </div>
+      <div class="flex flex-col gap-4 items-center">
+        <a
+          href="/terms"
+          class="text-[16px] font-serif text-primary hover:opacity-60 transition-opacity duration-300"
+          >Terms</a
+        >
+        <a
+          href="/privacy-policy"
+          class="text-[16px] font-serif text-primary hover:opacity-60 transition-opacity duration-300"
+          >Privacy Policy</a
+        >
+      </div>
+    </div>
   </div>
 
-  <!-- Nav links grid -->
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-12">
+  <!-- DESKTOP: 5-col grid, emblem in center col -->
+  <div class="hidden md:grid grid-cols-5 gap-8 items-center mb-16">
     <!-- Col 1 -->
     <div class="flex flex-col gap-4 items-center">
       <a
@@ -32,7 +86,6 @@
         >About</a
       >
     </div>
-
     <!-- Col 2 -->
     <div class="flex flex-col gap-4 items-center">
       <a
@@ -46,8 +99,20 @@
         >Sourcing</a
       >
     </div>
-
-    <!-- Col 3 -->
+    <!-- Col 3: Emblem -->
+    <div class="flex justify-center items-center">
+      <a
+        href="/"
+        class="inline-block hover:opacity-80 transition-opacity duration-300"
+      >
+        <img
+          src="/images/footer_emblem-1.webp"
+          alt="Inscape Interiors"
+          class="h-28 w-auto"
+        />
+      </a>
+    </div>
+    <!-- Col 4 -->
     <div class="flex flex-col gap-4 items-center">
       <a
         href="https://www.instagram.com/inscape.interiors/"
@@ -62,8 +127,7 @@
         >Contact</a
       >
     </div>
-
-    <!-- Col 4 -->
+    <!-- Col 5 -->
     <div class="flex flex-col gap-4 items-center">
       <a
         href="/terms"

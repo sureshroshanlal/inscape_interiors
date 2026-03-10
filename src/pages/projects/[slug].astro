@@ -5,8 +5,7 @@ import type { CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
-
-  return projects.map((project: { slug: any; }) => ({
+  return projects.map((project: { slug: any }) => ({
     params: { slug: project.slug },
     props: { project },
   }));
@@ -15,6 +14,8 @@ export async function getStaticPaths() {
 interface Props {
   project: CollectionEntry<"projects">;
 }
+
+type Section = CollectionEntry<"projects">["data"]["sections"][number];
 
 const { project } = Astro.props;
 const { title, subtitle, coverImage, sections } = project.data;
@@ -28,24 +29,20 @@ const { title, subtitle, coverImage, sections } = project.data;
     <div
       class="absolute bottom-12 left-1/2 -translate-x-1/2 text-center text-white"
     >
-      <h1 class="text-4xl md:text-6xl font-serif font-light mb-4">
-        {title}
-      </h1>
-      <p class="uppercase tracking-widest text-sm opacity-80">
-        {subtitle}
-      </p>
+      <h1 class="text-4xl md:text-6xl font-serif font-normal mb-4">{title}</h1>
+      <p class="uppercase tracking-widest text-sm opacity-80">{subtitle}</p>
     </div>
   </section>
 
   <!-- CASE STUDY SECTIONS -->
   <section class="py-20 md:py-28 space-y-28">
     {
-      sections.map((section: { type: string; content: string; image: string | null | undefined; layout: string; title: string; images: any[]; }, index: any) => {
+      (sections as Section[]).map((section) => {
         /* INTRO */
         if (section.type === "intro") {
           return (
-            <div class="max-w-3xl mx-auto px-6 text-center fade-section opacity-0">
-              <p class="text-lg md:text-xl leading-relaxed">
+            <div class="max-w-3xl mx-auto text-center fade-section opacity-0">
+              <p class="text-lg md:text-xl font-light leading-relaxed text-hyperlink">
                 {section.content}
               </p>
             </div>
@@ -59,8 +56,10 @@ const { title, subtitle, coverImage, sections } = project.data;
               <img
                 src={section.image}
                 alt=""
-                class="w-full h-auto object-cover cursor-zoom"
+                class="w-full h-auto block cursor-zoom"
                 data-zoom
+                loading="lazy"
+                decoding="async"
               />
             </div>
           );
@@ -68,25 +67,25 @@ const { title, subtitle, coverImage, sections } = project.data;
 
         /* TWO COLUMN */
         if (section.type === "two-column") {
-          const isLeft = section.layout === "left";
-
           return (
-            <div class="max-w-[1240px] mx-auto px-6 fade-section opacity-0">
-              <div class={`grid md:grid-cols-2 gap-12 items-center`}>
-                <div class={`${isLeft ? "" : "md:order-2"}`}>
-                  <h2 class="text-3xl font-serif font-light mb-6">
+            <div class="fade-section opacity-0">
+              <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class={section.layout === "left" ? "" : "md:order-2"}>
+                  <h2 class="text-3xl font-serif font-normal text-hyperlink mb-6">
                     {section.title}
                   </h2>
-                  <div class="prose max-w-none">
-                    <p>{section.content}</p>
-                  </div>
+                  <p class="text-lg font-light text-hyperlink leading-relaxed">
+                    {section.content}
+                  </p>
                 </div>
                 <div>
                   <img
                     src={section.image}
                     alt={section.title}
-                    class="w-full h-auto object-cover cursor-zoom"
+                    class="w-full h-auto block cursor-zoom"
                     data-zoom
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
               </div>
@@ -97,14 +96,16 @@ const { title, subtitle, coverImage, sections } = project.data;
         /* MASONRY */
         if (section.type === "masonry") {
           return (
-            <div class="max-w-[1240px] mx-auto px-6 fade-section opacity-0">
+            <div class="fade-section opacity-0">
               <div class="columns-1 md:columns-3 gap-6 space-y-6">
-                {section.images.map((img: string | null | undefined) => (
+                {section.images.map((img: string) => (
                   <img
                     src={img}
                     alt=""
-                    class="w-full h-auto object-cover cursor-zoom mb-6"
+                    class="w-full h-auto block cursor-zoom mb-6"
                     data-zoom
+                    loading="lazy"
+                    decoding="async"
                   />
                 ))}
               </div>
@@ -123,7 +124,6 @@ const { title, subtitle, coverImage, sections } = project.data;
       opacity 1s ease,
       transform 1s ease;
   }
-
   .fade-section.visible {
     opacity: 1 !important;
     transform: translateY(0);
@@ -131,19 +131,15 @@ const { title, subtitle, coverImage, sections } = project.data;
 </style>
 
 <script>
-  /* Section entrance animation */
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
+        if (entry.isIntersecting) entry.target.classList.add("visible");
       });
     },
-    { threshold: 0.2 },
+    { threshold: 0.15 },
   );
-
-  document.querySelectorAll(".fade-section").forEach((el) => {
-    observer.observe(el);
-  });
+  document
+    .querySelectorAll(".fade-section")
+    .forEach((el) => observer.observe(el));
 </script>
