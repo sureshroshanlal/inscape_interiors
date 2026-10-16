@@ -1,44 +1,37 @@
 ---
 ---
 
-<header class="header-hide sticky top-0 z-50 w-full bg-[#f8f6f0] transition-transform duration-300 ease-out">
-  <!-- Desktop -->
-  <div class="relative hidden h-[120px] items-center justify-center px-8 md:flex">
-    
-    <!-- Left Navigation -->
-    <nav class="absolute left-8 top-1/2 -translate-y-1/2">
-      <ul class="flex flex-col gap-1.5 font-serif text-[17px] font-semibold tracking-wide text-[#1a1208]">
-        <li><a href="/projects" class="hover:text-[#a67c1a] transition-colors duration-200">Projects</a></li>
-        <li><a href="/services" class="hover:text-[#a67c1a] transition-colors duration-200">Services</a></li>
-        <li><a href="/craftsmanship" class="hover:text-[#a67c1a] transition-colors duration-200">Craftsmanship</a></li>
-        <li><a href="/sourcing" class="hover:text-[#a67c1a] transition-colors duration-200">Sourcing</a></li>
-        <li><a href="/about" class="hover:text-[#a67c1a] transition-colors duration-200">About</a></li>
+<header class="header-hide w-full bg-primary z-50">
+  <!-- Desktop Header -->
+  <div class="hidden md:flex items-center justify-center relative px-5 py-3">
+    <nav class="absolute left-5 top-1/2 -translate-y-1/2">
+      <ul class="flex flex-col gap-1 text-[18px] font-serif font-bold">
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/craftsmanship">Craftsmanship</a></li>
+        <li><a href="/sourcing">Sourcing</a></li>
+        <li><a href="/about">About</a></li>
       </ul>
     </nav>
 
-    <!-- Center Logo (dead center) -->
-    <a href="/" class="relative z-10 flex flex-col items-center">
+    <!-- Center Logo (unchanged) -->
+    <a href="/" class="relative inline-block">
       <img
         src="/images/inscape_logo.webp"
         alt="Inscape Interiors"
-        class="h-[72px] w-auto"
-        width="220"
-        height="72"
+        class="h-40 w-auto block"
       />
-      <!-- infinity mark overlay if needed -->
       <img
         src="/logo-infinity.svg"
         alt=""
-        class="pointer-events-none absolute"
-        style="width: 18px; top: 4px; left: 28px;"
-        width="18"
-        height="12"
+        class="absolute pointer-events-none w-8"
+        style="top: 18px; left: 44px;"
       />
     </a>
 
-    <!-- Right Experience Badge (hard right) -->
+    <!-- RIGHT SIDE: Experience Badge (only addition) -->
     <div
-      class="gold-badge absolute right-8 top-1/2 -translate-y-1/2"
+      class="gold-badge absolute right-5 top-1/2 -translate-y-1/2"
       role="note"
       aria-label="20 plus years of experience with 170 plus projects delivered"
     >
@@ -46,7 +39,6 @@
       <span class="spark spark-2" aria-hidden="true"></span>
       <span class="spark spark-3" aria-hidden="true"></span>
       <span class="spark spark-4" aria-hidden="true"></span>
-      
       <div class="gold-badge-inner">
         <div class="stat">
           <span class="num">20+</span>
@@ -61,19 +53,13 @@
     </div>
   </div>
 
-  <!-- Mobile -->
-  <div class="relative flex items-center justify-between px-5 py-4 md:hidden">
-    <button
-      id="mobile-toggle"
-      class="z-10 p-2"
-      aria-label="Toggle menu"
-      aria-expanded="false"
-      aria-controls="mobile-menu"
-    >
+  <!-- Mobile Header — burger left, logo centered -->
+  <div class="relative flex md:hidden items-center justify-between px-5 py-4">
+    <button id="mobile-toggle" class="p-2 z-10" aria-label="Toggle menu">
       <div class="space-y-1.5">
-        <span class="block h-px w-6 bg-[#1a1208] transition-all duration-300"></span>
-        <span class="block h-px w-7 bg-[#1a1208] transition-all duration-300"></span>
-        <span class="block h-px w-6 bg-[#1a1208] transition-all duration-300"></span>
+        <span class="block w-6 h-px bg-secondary transition-all duration-300"></span>
+        <span class="block w-7 h-px bg-secondary transition-all duration-300"></span>
+        <span class="block w-6 h-px bg-secondary transition-all duration-300"></span>
       </div>
     </button>
 
@@ -81,26 +67,28 @@
       <img
         src="/images/inscape_logo.webp"
         alt="Inscape Interiors"
-        class="h-12 w-auto"
-        width="140"
-        height="48"
+        class="h-16 w-auto block"
+      />
+      <img
+        src="/logo-infinity.svg"
+        alt=""
+        class="absolute pointer-events-none"
+        style="width: 0.75rem; top: 7px; left: 18px;"
       />
     </a>
 
-    <div class="w-10" aria-hidden="true"></div>
+    <div class="w-10 z-10"></div>
   </div>
 
   <!-- Mobile experience strip -->
-  <div class="flex justify-center px-5 pb-3 md:hidden">
+  <div class="md:hidden flex justify-center px-5 pb-3">
     <div class="gold-badge gold-badge-mobile" role="note">
       <span class="spark spark-1" aria-hidden="true"></span>
       <span class="spark spark-3" aria-hidden="true"></span>
       <div class="gold-badge-inner">
-        <span class="num">20+</span>
-        <span class="lbl">Yrs Experience</span>
+        <span class="num">20+</span><span class="lbl">Yrs Experience</span>
         <span class="divider" aria-hidden="true"></span>
-        <span class="num">170+</span>
-        <span class="lbl">Projects Delivered</span>
+        <span class="num">170+</span><span class="lbl">Projects Delivered</span>
       </div>
     </div>
   </div>
@@ -108,14 +96,14 @@
   <!-- Mobile Menu -->
   <div
     id="mobile-menu"
-    class="hidden border-t border-[#1a1208]/10 bg-[#f8f6f0] md:hidden"
+    class="hidden md:hidden bg-primary border-t border-secondary/10"
   >
-    <nav class="flex flex-col gap-4 px-5 py-8">
-      <a href="/projects" class="font-serif text-[16px] font-semibold text-[#1a1208]">Projects</a>
-      <a href="/services" class="font-serif text-[16px] font-semibold text-[#1a1208]">Services</a>
-      <a href="/craftsmanship" class="font-serif text-[16px] font-semibold text-[#1a1208]">Craftsmanship</a>
-      <a href="/sourcing" class="font-serif text-[16px] font-semibold text-[#1a1208]">Sourcing</a>
-      <a href="/about" class="font-serif text-[16px] font-semibold text-[#1a1208]">About</a>
+    <nav class="px-5 py-8 flex flex-col gap-4">
+      <a href="/projects" class="text-[16px] font-serif font-bold">Projects</a>
+      <a href="/services" class="text-[16px] font-serif font-bold">Services</a>
+      <a href="/craftsmanship" class="text-[16px] font-serif font-bold">Craftsmanship</a>
+      <a href="/sourcing" class="text-[16px] font-serif font-bold">Sourcing</a>
+      <a href="/about" class="text-[16px] font-serif font-bold">About</a>
     </nav>
   </div>
 </header>
@@ -123,65 +111,53 @@
 <script>
   const toggle = document.getElementById("mobile-toggle");
   const menu = document.getElementById("mobile-menu");
-
-  toggle?.addEventListener("click", () => {
-    const isOpen = !menu?.classList.contains("hidden");
-    menu?.classList.toggle("hidden");
-    toggle.setAttribute("aria-expanded", String(!isOpen));
-  });
+  toggle?.addEventListener("click", () => menu?.classList.toggle("hidden"));
 </script>
 
 <script>
   const header = document.querySelector<HTMLElement>(".header-hide");
   let lastScroll = 0;
-
   if (header) {
     window.addEventListener(
       "scroll",
       () => {
-        const current = window.scrollY;
-        if (current > lastScroll && current > 80) {
+        const currentScroll = window.scrollY;
+        if (currentScroll > lastScroll && currentScroll > 80) {
           header.style.transform = "translateY(-100%)";
         } else {
           header.style.transform = "translateY(0)";
         }
-        lastScroll = current;
+        lastScroll = currentScroll;
       },
-      { passive: true }
+      { passive: true },
     );
   }
 </script>
 
 <style>
-  :root {
-    --gold-1: #a67c1a;
-    --gold-2: #e8c766;
-    --gold-3: #f1d27a;
-    --gold-dark: #7a5a0e;
-    --gold-brown: #301804;
-    --gold-divider: #b8923a;
-    --badge-bg: #faf8f2;
+  .header-hide {
+    position: sticky;
+    top: 0;
+    transition: transform 0.3s ease;
   }
 
-  /* Gold badge */
+  /* ---------- Gold experience badge ---------- */
   .gold-badge {
-    position: relative;
-    padding: 1.5px;
-    border-radius: 3px;
+    padding: 2px;
+    border-radius: 4px;
     background: linear-gradient(
       110deg,
-      var(--gold-1) 0%,
-      var(--gold-2) 25%,
-      var(--gold-1) 50%,
-      var(--gold-2) 75%,
-      var(--gold-1) 100%
+      #a67c1a 0%,
+      #e8c766 25%,
+      #a67c1a 50%,
+      #e8c766 75%,
+      #a67c1a 100%
     );
     background-size: 250% 100%;
     animation:
       gold-flow 5s linear infinite,
       gold-glow 2.8s ease-in-out infinite;
   }
-
   .gold-badge-inner {
     position: relative;
     display: flex;
@@ -189,10 +165,9 @@
     gap: 16px;
     padding: 10px 18px;
     border-radius: 2px;
-    background: var(--badge-bg);
+    background: #faf8f2;
     overflow: hidden;
   }
-
   .gold-badge-inner::after {
     content: "";
     position: absolute;
@@ -209,67 +184,61 @@
     transform: skewX(-20deg);
     animation: gold-sweep 4.5s ease-in-out infinite;
   }
-
   .gold-badge .stat {
     display: flex;
     flex-direction: column;
     align-items: center;
     line-height: 1.05;
   }
-
   .gold-badge .num {
     font-weight: 700;
     font-size: 26px;
-    color: var(--gold-dark);
+    color: #7a5a0e;
     letter-spacing: 0.01em;
   }
-
   .gold-badge .lbl {
-    margin-top: 2px;
     font-weight: 700;
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--gold-brown);
+    color: #301804;
+    margin-top: 2px;
     text-align: center;
   }
-
   .gold-badge .divider {
     width: 1px;
     align-self: stretch;
-    background: var(--gold-divider);
-    opacity: 0.65;
+    background: #b8923a;
+    opacity: 0.7;
   }
 
-  /* Sparks */
   .gold-badge .spark {
     position: absolute;
-    z-index: 2;
     width: 12px;
     height: 12px;
-    background: var(--gold-3);
+    background: #f1d27a;
     clip-path: polygon(
       50% 0%, 60% 40%, 100% 50%, 60% 60%,
       50% 100%, 40% 60%, 0% 50%, 40% 40%
     );
     opacity: 0;
+    z-index: 2;
     animation: twinkle 3s ease-in-out infinite;
   }
-
-  .spark-1 { top: -7px; left: 12%; animation-delay: 0s; }
-  .spark-2 { top: -5px; right: 10%; width: 10px; height: 10px; animation-delay: 0.9s; }
+  .spark-1 { top: -7px;  left: 10%;  animation-delay: 0s; }
+  .spark-2 { top: -5px;  right: 8%;  animation-delay: 0.9s; width: 10px; height: 10px; }
   .spark-3 { bottom: -7px; right: 20%; animation-delay: 1.7s; }
-  .spark-4 { bottom: -5px; left: 8%; width: 10px; height: 10px; animation-delay: 2.3s; }
+  .spark-4 { bottom: -5px; left: 6%;  animation-delay: 2.3s; width: 10px; height: 10px; }
 
-  /* Mobile badge */
+  /* Mobile compact version */
   .gold-badge-mobile .gold-badge-inner {
     gap: 6px;
     padding: 6px 12px;
   }
   .gold-badge-mobile .num { font-size: 16px; }
   .gold-badge-mobile .lbl {
-    margin-top: 0;
     font-size: 9px;
+    margin-top: 0;
     letter-spacing: 0.08em;
   }
   .gold-badge-mobile .divider { margin: 0 3px; }
@@ -279,7 +248,7 @@
   }
   @keyframes gold-glow {
     0%, 100% { box-shadow: 0 0 4px rgba(200, 160, 50, 0.3); }
-    50%      { box-shadow: 0 0 14px rgba(220, 180, 70, 0.65); }
+    50%      { box-shadow: 0 0 14px rgba(220, 180, 70, 0.7); }
   }
   @keyframes gold-sweep {
     0%, 55% { left: -60%; }
@@ -296,6 +265,6 @@
     .gold-badge .spark {
       animation: none;
     }
-    .gold-badge .spark { opacity: 0.75; }
+    .gold-badge .spark { opacity: 0.8; }
   }
 </style>
