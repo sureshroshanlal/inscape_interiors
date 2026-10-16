@@ -14,7 +14,8 @@
   }
 
   body {
-    @apply font-serif;
+    @apply font-serif font-bold;
+    font-weight: 700;
   }
 
   h1,
@@ -23,7 +24,8 @@
   h4,
   h5,
   h6 {
-    @apply font-serif font-normal;
+    @apply font-serif font-bold;
+    font-weight: 700;
   }
 
   /* Remove default margins */
@@ -40,9 +42,24 @@
     padding: 0;
   }
 
+  /* Description paragraphs: increased by 2 pts from 18px to 20.5px and bold */
+  p {
+    font-size: 20.5px;
+    line-height: 1.7;
+    font-weight: 700;
+  }
+
   /* Links */
   a {
-    @apply text-[#301804] no-underline transition-opacity duration-300;
+    @apply text-[#301804] no-underline transition-opacity duration-300 font-bold;
+    font-weight: 700;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font-weight: 700;
   }
 
   a:hover {
@@ -59,7 +76,7 @@
 
   /* Button Primary */
   .btn-primary {
-    @apply inline-block px-8 py-3.5 text-nav font-serif uppercase tracking-wider;
+    @apply inline-block px-8 py-3.5 text-nav font-serif uppercase tracking-wider font-bold;
     @apply border border-site-text transition-all duration-300;
   }
 
@@ -103,8 +120,9 @@
   .case-body p {
     max-width: 760px;
     margin: 120px auto;
-    font-size: 1.2rem;
+    font-size: 1.35rem;
     line-height: 1.8;
+    font-weight: 700;
     opacity: 0;
     transform: translateY(40px);
     transition: all 1s ease;

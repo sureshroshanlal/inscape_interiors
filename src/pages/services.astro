@@ -1,0 +1,535 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const services = [
+  {
+    id: "bespoke-interiors",
+    menuTitle: "Bespoke Interiors",
+    title: "Bespoke Interior Design",
+    category: "Residential & Commercial Interiors",
+    summary:
+      "Crafting unique living spaces that harmonize architectural volume, tactile materials, and personal identity into timeless luxury.",
+    description1:
+      "At Inscape, interior design is an intentional translation of lifestyle, emotion, and architectural proportion into enduring reality. We design unique, elegant spaces that evoke calm and creativity, pairing restrained luxury with functional clarity.",
+    description2:
+      "Every detail is meticulously conceived — from spatial geometry and natural lighting interplay to customized joinery, millwork, and tactile materiality. We do not apply repetitive templates; each residence is an original commission.",
+    deliverables: [
+      "Custom Millwork, Cabinetry & Architectural Joinery",
+      "Concept Strategy & 3D Spatial Visualisation",
+      "Curated Material, Texture & Color Schemas",
+      "Space Planning & Spatial Circulation Flow",
+      "Fine Art Selection, Soft Furnishing & Styling",
+    ],
+    metric: "170+ Projects Delivered",
+    image: "/images/sourcing/sourcing-1.webp",
+    alt: "Inscape Bespoke Interior Design",
+  },
+  {
+    id: "architectural-planning",
+    menuTitle: "Architecture & Planning",
+    title: "Architectural & Spatial Planning",
+    category: "Spatial Design & Structural Harmony",
+    summary:
+      "Bridging structural integrity with contemporary elegance to create fluid, daylight-rich environments connected to nature.",
+    description1:
+      "Great interiors begin with architectural integrity. Our architectural design practice bridges contemporary forms and tropical climatic responsiveness, sculpting environments that feel connected to nature and daylight.",
+    description2:
+      "We re-imagine layouts to maximize flow, ceiling heights, ventilation, and functional zoning. Whether designing a contemporary luxury villa or revitalizing an existing architectural floor plate, we ensure structural cohesion from foundation to ceiling.",
+    deliverables: [
+      "Comprehensive Architectural Floor Plan Schematics",
+      "Facade Treatments, Fenestration & Spatial Volume",
+      "Indoor-Outdoor Living & Landscape Integration",
+      "Daylight Harvesting & Climate-Responsive Layouts",
+      "Structural Coordination & Regulatory Documentation",
+    ],
+    metric: "20 Years of Architectural Mastery",
+    image: "/images/about/about-hero.webp",
+    alt: "Inscape Architectural and Spatial Planning",
+  },
+  {
+    id: "turnkey-execution",
+    menuTitle: "Turnkey Execution",
+    title: "Turnkey Execution & Project Management",
+    category: "End-to-End Build & Site Supervision",
+    summary:
+      "Seamless single-point accountability from concept to handover, with rigorous quality controls and transparent delivery.",
+    description1:
+      "A great design is only as good as its execution. Inscape's integrated design-build model eliminates the common friction between designers, engineers, and contractors by providing single-point accountability from concept to final styling.",
+    description2:
+      "With veteran project managers and seasoned site supervisors on-site daily, we uphold rigorous construction tolerances, transparent milestone tracking, and strict adherence to timelines and budgets.",
+    deliverables: [
+      "Single-Point Design-Build Accountability",
+      "Daily On-Site Supervision & Quality Assurance",
+      "Specialized Vendor & Artisan Contractor Coordination",
+      "Transparent Milestone Tracking & Budget Governance",
+      "White-Glove Snag-Free Handover & Final Commissioning",
+    ],
+    metric: "100% On-Time Turnkey Delivery",
+    image: "/images/craftsmanship/craft-1.webp",
+    alt: "Inscape Turnkey Execution and Project Management",
+  },
+  {
+    id: "sourcing",
+    menuTitle: "Global Sourcing",
+    title: "Global Sourcing & Curation",
+    category: "Materials, Furniture & Finishes",
+    summary:
+      "Curating rare imported marbles, master-crafted furniture, and exclusive finishes from trusted international artisans.",
+    description1:
+      "At Inscape, sourcing is a bespoke curation process — not conventional procurement. We leverage long-standing relationships with master craftsmen, international stone quarries, and boutique design houses across the globe.",
+    description2:
+      "We handpick rare imported marbles, bespoke lighting fixtures, handcrafted furniture, and collectible décor that cannot be purchased off the shelf, ensuring every space possesses an irreplaceable aesthetic character.",
+    deliverables: [
+      "Rare Natural Stone & Bookmatched Marble Curation",
+      "Direct Artisan Procurement Across Europe & Asia",
+      "Bespoke Furnishings & Collector-Grade Décor",
+      "Material Authenticity & Performance Certification",
+      "White-Glove Shipping, Clearance & Site Installation",
+    ],
+    metric: "Direct Global Artisan Network",
+    image: "/images/sourcing/sourcing-2.webp",
+    alt: "Inscape Global Sourcing and Material Curation",
+  },
+  {
+    id: "surfaces-lighting",
+    menuTitle: "Surfaces & Lighting",
+    title: "Luxury Surface & Lighting Solutions",
+    category: "Tactile Finishes & Layered Illumination",
+    summary:
+      "Sculpting sensory atmospheres through architectural illumination, artisanal plasters, and fluted stonework.",
+    description1:
+      "Illumination and surface textures define the emotional atmosphere of an interior. We craft layered lighting compositions — balancing ambient warmth, architectural accents, and functional luminescence — that transform throughout the day.",
+    description2:
+      "We pair bespoke lighting with sensory wall finishes: lime plasters, fluted stonework, micro-topped screeds, and acoustic fabrics that imbue spaces with warmth, depth, and quiet sophistication.",
+    deliverables: [
+      "Multi-Layered Architectural Lighting Schematics",
+      "Artisanal Plasters, Stucco & Textured Wall Finishes",
+      "Fluted Stonework, Acoustic Paneling & Custom Veneers",
+      "Precision Lux Calculations & Fixture Specification",
+      "Decorative Fixture Curation & Accent Illumination",
+    ],
+    metric: "Layered Sensory Atmospheres",
+    image: "/images/craftsmanship/craft-3.webp",
+    alt: "Inscape Luxury Surface and Lighting Solutions",
+  },
+  {
+    id: "smart-automation",
+    menuTitle: "Smart & Sustainable",
+    title: "Smart Home Automation & Sustainable Living",
+    category: "Intelligent Living & Eco-Conscious Design",
+    summary:
+      "Subtle integration of intelligent home technologies and sustainable materials for future-ready residences.",
+    description1:
+      "Modern luxury is effortless and intelligent. We integrate sophisticated home automation where technology serves comfort quietly in the background — managing circadian lighting, climate zoning, automated shading, and security seamlessly.",
+    description2:
+      "We simultaneously embed sustainable principles: non-toxic natural finishes, thermal mass optimization, and energy-conserving automation that future-proof your residence for decades of elevated living.",
+    deliverables: [
+      "Centralized Lighting, Climate, Shading & Audio Automation",
+      "Circadian Rhythm & Sensor-Driven Environmental Control",
+      "Low-VOC, Non-Toxic & Sustainable Material Specifications",
+      "Concealed Hardware & Minimalist Architectural Integration",
+      "Energy Efficiency Optimization & Smart Resource Monitoring",
+    ],
+    metric: "Future-Ready Intelligent Homes",
+    image: "/images/sourcing/sourcing-3.webp",
+    alt: "Inscape Smart Home Automation and Sustainable Living",
+  },
+];
+---
+
+<Layout
+  title="Services — Inscape Interiors"
+  description="Discover Inscape Interiors' comprehensive design-build services: Bespoke Interior Design, Architectural Planning, Turnkey Execution, Global Sourcing, Surfaces & Lighting, and Smart Automation."
+>
+  <!-- HERO INTRO -->
+  <section class="w-full py-12 md:py-16 text-center">
+    <div class="max-w-[800px] mx-auto">
+      <span
+        class="inline-block text-[12px] uppercase tracking-[0.25em] text-hyperlink/70 mb-3 font-serif"
+      >
+        Comprehensive Design-Build Expertise
+      </span>
+      <h1
+        class="text-[44px] md:text-[56px] font-bold font-serif text-hyperlink leading-tight mb-6 fade-in-element opacity-0"
+      >
+        Our Services
+      </h1>
+      <p
+        class="text-lg max-w-[620px] mx-auto text-hyperlink fade-in-element opacity-0 font-bold"
+      >
+        From spatial conceptualisation and structural planning to global sourcing and turnkey execution, we provide an integrated suite of architectural and interior services defined by 20 years of craftsmanship.
+      </p>
+    </div>
+  </section>
+
+  <!-- TOGGLE MENU IMPLEMENTATION (All on the same screen) -->
+  <section class="w-full pb-20 md:pb-28">
+    <div class="max-w-[1140px] mx-auto">
+      <!-- Mobile Compact Service Dropdown Picker (Visible on Mobile only) -->
+      <div class="block md:hidden w-full max-w-sm mx-auto mb-8 px-2">
+        <label
+          for="mobile-service-select"
+          class="block text-xs uppercase tracking-[0.2em] font-serif font-bold text-secondary/70 mb-2 text-center"
+        >
+          Select Service
+        </label>
+        <div class="relative">
+          <select
+            id="mobile-service-select"
+            class="w-full appearance-none bg-primary/90 border-2 border-secondary/30 rounded-full px-5 py-3 text-sm font-serif font-bold text-secondary focus:outline-none focus:border-secondary shadow-sm transition-all duration-300 pr-10 cursor-pointer"
+            aria-label="Select Service"
+          >
+            {
+              services.map((svc, i) => (
+                <option value={i} class="bg-primary text-secondary font-serif font-bold py-2">
+                  {svc.title}
+                </option>
+              ))
+            }
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-secondary">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop Single Row Toggle Menu (All 6 Services in 1 Row on desktop) -->
+      <nav
+        class="hidden md:grid grid-cols-6 gap-2 lg:gap-3 w-full mb-10"
+        aria-label="Services Toggle Menu"
+      >
+        {
+          services.map((svc, i) => (
+            <button
+              class="service-toggle-btn flex items-center justify-center text-center px-2 py-3 rounded-full border border-secondary/25 text-xs md:text-[13.5px] lg:text-[14.5px] font-serif font-bold tracking-normal leading-tight transition-all duration-300 cursor-pointer whitespace-nowrap"
+              data-service-index={i}
+              data-service-id={svc.id}
+              role="tab"
+              aria-selected={i === 0 ? "true" : "false"}
+            >
+              {svc.menuTitle}
+            </button>
+          ))
+        }
+      </nav>
+
+      <!-- Active Service Display Card (Updates in place on the same screen) -->
+      <div
+        id="active-service-card"
+        class="bg-primary/40 border border-secondary/15 rounded-2xl p-6 md:p-12 shadow-sm"
+      >
+        <div
+          id="service-content-wrapper"
+          class="space-y-8 transition-opacity duration-300"
+        >
+          <!-- Header Row -->
+          <div
+            class="flex flex-wrap items-start justify-between gap-4 border-b border-secondary/15 pb-6"
+          >
+            <div>
+              <span
+                id="svc-category"
+                class="text-xs uppercase tracking-[0.2em] font-serif font-bold text-secondary/70 block mb-2"
+              >
+                Residential & Commercial Interiors
+              </span>
+              <h2
+                id="svc-title"
+                class="text-[34px] md:text-[44px] font-bold font-serif text-hyperlink leading-tight"
+              >
+                Bespoke Interior Design
+              </h2>
+              <p
+                id="svc-subtitle"
+                class="text-base md:text-lg text-secondary/80 font-serif italic font-bold mt-2"
+              >
+                Refined spatial balance, material harmony, and customized living environments.
+              </p>
+            </div>
+            <div class="shrink-0">
+              <span
+                id="svc-metric"
+                class="inline-block px-4 py-1.5 rounded-full border border-secondary/20 bg-secondary/5 text-xs font-serif font-bold text-secondary tracking-wider uppercase"
+              >
+                170+ Projects Delivered
+              </span>
+            </div>
+          </div>
+
+          <!-- Image Showcase -->
+          <div
+            class="relative overflow-hidden rounded-xl aspect-[16/9] bg-secondary/10"
+          >
+            <img
+              id="svc-image"
+              src="/images/sourcing/sourcing-1.webp"
+              alt="Inscape Bespoke Interior Design"
+              class="w-full h-full object-cover transition-all duration-700 hover:scale-105 cursor-zoom"
+              data-zoom
+              loading="eager"
+            />
+            <div
+              class="absolute bottom-3 right-3 bg-primary/85 backdrop-blur-sm px-3 py-1 rounded-md text-[11px] font-serif font-bold text-secondary border border-secondary/15"
+            >
+              Click to Expand Image
+            </div>
+          </div>
+
+          <!-- Description Paragraphs (Enlarged by 2 pts across all pages) -->
+          <div class="space-y-4 text-hyperlink">
+            <p
+              id="svc-desc1"
+              class="text-lg font-bold leading-relaxed"
+            >
+              At Inscape, interior design is an intentional translation of lifestyle, emotion, and architectural proportion into enduring reality. We design unique, elegant spaces that evoke calm and creativity, pairing restrained luxury with functional clarity.
+            </p>
+            <p
+              id="svc-desc2"
+              class="text-lg font-bold leading-relaxed"
+            >
+              Every detail is meticulously conceived — from spatial geometry and natural lighting interplay to customized joinery, millwork, and tactile materiality. We do not apply repetitive templates; each residence is an original commission.
+            </p>
+          </div>
+
+          <!-- Deliverables Checklist -->
+          <div class="pt-2">
+            <h3
+              class="text-xs uppercase tracking-[0.2em] font-serif text-secondary/70 mb-4"
+            >
+              Key Scope & Deliverables
+            </h3>
+            <ul
+              id="svc-deliverables"
+              class="grid grid-cols-1 md:grid-cols-2 gap-3 text-base text-hyperlink/90"
+            >
+              <!-- Populated by JS -->
+            </ul>
+          </div>
+
+          <!-- Bottom Actions -->
+          <div
+            class="pt-6 border-t border-secondary/15 flex flex-wrap items-center justify-between gap-4"
+          >
+            <a
+              id="svc-cta"
+              href="/contact"
+              class="inline-block border border-secondary bg-secondary text-primary rounded-full hover:bg-primary hover:text-secondary transition-colors duration-300 px-8 py-3 text-base font-serif"
+            >
+              Begin Your Bespoke Journey
+            </a>
+
+            <!-- Prev / Next Navigation -->
+            <div class="flex items-center gap-3">
+              <button
+                id="btn-prev-service"
+                class="px-5 py-2.5 rounded-full border border-secondary/20 text-xs font-serif uppercase tracking-wider text-secondary hover:bg-secondary hover:text-primary transition-all duration-300 cursor-pointer"
+                aria-label="Previous Service"
+              >
+                ← Previous
+              </button>
+              <button
+                id="btn-next-service"
+                class="px-5 py-2.5 rounded-full border border-secondary/20 text-xs font-serif uppercase tracking-wider text-secondary hover:bg-secondary hover:text-primary transition-all duration-300 cursor-pointer"
+                aria-label="Next Service"
+              >
+                Next →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER AT BOTTOM -->
+  <section class="w-full py-16 md:py-20 text-center border-t border-secondary/15">
+    <div class="max-w-[700px] mx-auto space-y-6">
+      <h2
+        class="text-[36px] md:text-[46px] font-bold font-serif text-hyperlink leading-tight"
+      >
+        Ready to Transform Your Space?
+      </h2>
+      <p class="text-lg font-bold text-hyperlink max-w-[520px] mx-auto">
+        Speak with our design architects about your upcoming residence, commercial space, or bespoke procurement project.
+      </p>
+      <div class="pt-2">
+        <a
+          href="/contact"
+          class="inline-block border border-secondary bg-secondary text-primary rounded-full hover:bg-primary hover:text-secondary transition-colors duration-300 px-9 py-3 text-base font-serif font-bold"
+        >
+          Schedule a Consultation
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script define:vars={{ services }}>
+  let currentIndex = 0;
+
+  // DOM Elements
+  const categoryEl = document.getElementById("svc-category");
+  const titleEl = document.getElementById("svc-title");
+  const subtitleEl = document.getElementById("svc-subtitle");
+  const metricEl = document.getElementById("svc-metric");
+  const imageEl = document.getElementById("svc-image");
+  const desc1El = document.getElementById("svc-desc1");
+  const desc2El = document.getElementById("svc-desc2");
+  const deliverablesEl = document.getElementById("svc-deliverables");
+  const contentWrapper = document.getElementById("service-content-wrapper");
+
+  const toggleBtns = document.querySelectorAll(".service-toggle-btn");
+  const mobileSelectEl = document.getElementById("mobile-service-select");
+  const prevBtn = document.getElementById("btn-prev-service");
+  const nextBtn = document.getElementById("btn-next-service");
+
+  function renderService(index, animate = true) {
+    if (index < 0 || index >= services.length) return;
+    currentIndex = index;
+    const svc = services[index];
+
+    if (animate && contentWrapper) {
+      contentWrapper.style.opacity = "0";
+      contentWrapper.style.transform = "translateY(8px)";
+    }
+
+    setTimeout(() => {
+      if (categoryEl) categoryEl.textContent = svc.category;
+      if (titleEl) titleEl.textContent = svc.title;
+      if (subtitleEl) subtitleEl.textContent = svc.summary;
+      if (metricEl) metricEl.textContent = svc.metric;
+      if (imageEl) {
+        imageEl.src = svc.image;
+        imageEl.alt = svc.alt;
+      }
+      if (desc1El) desc1El.textContent = svc.description1;
+      if (desc2El) desc2El.textContent = svc.description2;
+
+      if (deliverablesEl) {
+        deliverablesEl.innerHTML = svc.deliverables
+          .map(
+            (item) => `
+            <li class="flex items-start gap-2.5">
+              <span class="text-secondary/70 mt-1 text-xs shrink-0">✦</span>
+              <span class="font-bold">${item}</span>
+            </li>
+          `,
+          )
+          .join("");
+      }
+
+      // Update Desktop Toggle Buttons Active State
+      toggleBtns.forEach((btn, i) => {
+        if (i === index) {
+          btn.classList.add("bg-secondary", "text-primary", "border-secondary", "shadow-sm");
+          btn.classList.remove("text-secondary", "border-secondary/25", "bg-primary/40");
+          btn.setAttribute("aria-selected", "true");
+        } else {
+          btn.classList.remove("bg-secondary", "text-primary", "border-secondary", "shadow-sm");
+          btn.classList.add("text-secondary", "border-secondary/25", "bg-primary/40");
+          btn.setAttribute("aria-selected", "false");
+        }
+      });
+
+      // Update Mobile Dropdown Selected Value
+      if (mobileSelectEl) {
+        mobileSelectEl.value = String(index);
+      }
+
+      if (animate && contentWrapper) {
+        contentWrapper.style.transition = "opacity 0.35s ease, transform 0.35s ease";
+        contentWrapper.style.opacity = "1";
+        contentWrapper.style.transform = "translateY(0)";
+      }
+    }, animate ? 140 : 0);
+  }
+
+  // Mobile dropdown select handler
+  mobileSelectEl?.addEventListener("change", (e) => {
+    const target = e.target;
+    if (target) {
+      const idx = parseInt(target.value, 10);
+      renderService(idx, true);
+    }
+  });
+
+  // Click handlers for toggle buttons
+  toggleBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const idx = parseInt(btn.getAttribute("data-service-index") || "0", 10);
+      renderService(idx, true);
+    });
+  });
+
+  // Prev / Next button handlers
+  prevBtn?.addEventListener("click", () => {
+    const nextIdx = (currentIndex - 1 + services.length) % services.length;
+    renderService(nextIdx, true);
+  });
+
+  nextBtn?.addEventListener("click", () => {
+    const nextIdx = (currentIndex + 1) % services.length;
+    renderService(nextIdx, true);
+  });
+
+  // URL Hash or query param pre-selection (e.g. /services#sourcing or /services?service=sourcing)
+  function checkUrlForService() {
+    const hash = window.location.hash.replace("#", "").toLowerCase();
+    const urlParams = new URLSearchParams(window.location.search);
+    const serviceParam = (urlParams.get("service") || "").toLowerCase();
+    const target = hash || serviceParam;
+
+    if (target) {
+      const foundIdx = services.findIndex(
+        (s) => s.id.toLowerCase() === target,
+      );
+      if (foundIdx !== -1) {
+        renderService(foundIdx, false);
+        return;
+      }
+    }
+    // Default to first service
+    renderService(0, false);
+  }
+
+  // Initial render
+  checkUrlForService();
+  window.addEventListener("hashchange", checkUrlForService);
+</script>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .fade-in-element {
+    transition:
+      opacity 1s ease-out,
+      transform 1s ease-out;
+    transform: translateY(20px);
+  }
+  .fade-in-element.visible {
+    opacity: 1 !important;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add("visible"), index * 120);
+        }
+      });
+    },
+    { threshold: 0.1 },
+  );
+  document.querySelectorAll(".fade-in-element").forEach((el) => observer.observe(el));
+</script>

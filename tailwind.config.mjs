@@ -16,14 +16,20 @@ export default {
         serif: ['"Cormorant Garamond"', "serif"],
       },
       fontSize: {
-        base: "18px",
-        nav: "11px", // add - for nav links
-        h1: ["42px", { lineHeight: "1.15", letterSpacing: "-0.01em" }], // bump up
-        h2: ["32px", { lineHeight: "1.2" }], // add
-        h3: ["24px", { lineHeight: "1.3" }], // add
+        base: "18px", // standard base for buttons, inputs, and general body
+        lg: ["20.5px", { lineHeight: "1.7" }], // increased by 2 pts for description paragraphs
+        xl: ["22.5px", { lineHeight: "1.6" }], // enlarged descriptions
+        nav: "11px", // nav links
+        h1: ["42px", { lineHeight: "1.15", letterSpacing: "-0.01em" }],
+        h2: ["32px", { lineHeight: "1.2" }],
+        h3: ["24px", { lineHeight: "1.3" }],
       },
       fontWeight: {
-        light: "300",
+        light: "700",
+        normal: "700",
+        medium: "700",
+        semibold: "700",
+        bold: "700",
       },
       colors: {
         background: "#EEECE3",
