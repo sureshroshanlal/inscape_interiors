@@ -4,44 +4,88 @@
 <header class="header-hide w-full bg-primary z-50">
   <!-- Desktop Header -->
   <div class="hidden md:flex items-center justify-center relative px-5 py-3">
+    <!-- Left Navigation -->
     <nav class="absolute left-5 top-1/2 -translate-y-1/2">
       <ul class="flex flex-col gap-1 text-[18px] font-serif font-bold">
         <li><a href="/projects">Projects</a></li>
         <li><a href="/services">Services</a></li>
         <li><a href="/craftsmanship">Craftsmanship</a></li>
-        <li><a href="/services">Services</a></li>
+        <li><a href="/sourcing">Sourcing</a></li>
         <li><a href="/about">About</a></li>
       </ul>
     </nav>
 
-    <!-- Center Logo (unchanged) -->
+    <!-- Center Logo -->
     <a href="/" class="relative inline-block">
       <img
-        src="/images/inscape_logo.png"
+        src="/images/inscape_logo.webp"
         alt="Inscape Interiors"
         class="h-40 w-auto block"
       />
+      <img
+        src="/logo-infinity.svg"
+        alt=""
+        class="absolute pointer-events-none w-8"
+        style="top: 18px; left: 44px;"
+      />
     </a>
 
-    <!-- Desktop Header Ticker (Right Side) -->
-    <div class="absolute right-5 top-1/2 -translate-y-1/2 flex items-center">
-      <div
-        class="header-ticker-box w-[250px] lg:w-[280px] overflow-hidden rounded-full border border-secondary/25 bg-primary/70 py-1.5 px-3 select-none"
-        title="20 Years Of Experience, 170+ Projects Delivered"
-      >
-        <div class="header-ticker-track flex">
-          <div class="header-ticker-item flex items-center shrink-0">
-            <span class="font-serif text-[13.5px] lg:text-[14.5px] tracking-widest uppercase font-bold text-secondary whitespace-nowrap">
-              20 Years Of Experience &nbsp;✦&nbsp; 170+ Projects Delivered &nbsp;✦&nbsp;&nbsp;
-            </span>
-          </div>
-          <div class="header-ticker-item flex items-center shrink-0" aria-hidden="true">
-            <span class="font-serif text-[13.5px] lg:text-[14.5px] tracking-widest uppercase font-bold text-secondary whitespace-nowrap">
-              20 Years Of Experience &nbsp;✦&nbsp; 170+ Projects Delivered &nbsp;✦&nbsp;&nbsp;
-            </span>
-          </div>
+    <!-- RIGHT SIDE: Premium Experience Badge -->
+    <div
+      class="gold-badge absolute right-5 top-1/2 -translate-y-1/2"
+      role="note"
+      aria-label="20 plus years of experience with 170 plus projects delivered"
+    >
+      <!-- Decorative leaves (left) -->
+      <svg class="leaf leaf-left" viewBox="0 0 40 60" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f0d78c" />
+            <stop offset="50%" stop-color="#c9a227" />
+            <stop offset="100%" stop-color="#8a6a12" />
+          </linearGradient>
+        </defs>
+        <path d="M20 5 C12 18 8 30 12 42 C16 52 22 55 20 58 C18 55 24 52 28 42 C32 30 28 18 20 5Z" fill="url(#goldGrad)" opacity="0.9"/>
+        <path d="M20 12 C16 22 14 32 17 40" stroke="#c9a227" stroke-width="1.2" fill="none"/>
+        <path d="M8 28 C14 26 18 30 20 34" stroke="#c9a227" stroke-width="1" fill="none" opacity="0.7"/>
+      </svg>
+
+      <!-- Decorative leaves (right) -->
+      <svg class="leaf leaf-right" viewBox="0 0 40 60" fill="none" aria-hidden="true">
+        <path d="M20 5 C28 18 32 30 28 42 C24 52 18 55 20 58 C22 55 16 52 12 42 C8 30 12 18 20 5Z" fill="url(#goldGrad)" opacity="0.9"/>
+        <path d="M20 12 C24 22 26 32 23 40" stroke="#c9a227" stroke-width="1.2" fill="none"/>
+        <path d="M32 28 C26 26 22 30 20 34" stroke="#c9a227" stroke-width="1" fill="none" opacity="0.7"/>
+      </svg>
+
+      <div class="gold-badge-inner">
+        <div class="stat">
+          <span class="num">20+</span>
+          <span class="lbl">
+            <span class="diamond">✦</span>
+            YEARS OF EXPERIENCE
+            <span class="diamond">✦</span>
+          </span>
+        </div>
+
+        <div class="divider">
+          <span class="sparkle">✦</span>
+        </div>
+
+        <div class="stat">
+          <span class="num">170+</span>
+          <span class="lbl">
+            <span class="diamond">✦</span>
+            PROJECTS DELIVERED
+            <span class="diamond">✦</span>
+          </span>
         </div>
       </div>
+
+      <!-- Soft floating sparkles -->
+      <span class="spark spark-1" aria-hidden="true"></span>
+      <span class="spark spark-2" aria-hidden="true"></span>
+      <span class="spark spark-3" aria-hidden="true"></span>
+      <span class="spark spark-4" aria-hidden="true"></span>
     </div>
   </div>
 
@@ -57,28 +101,35 @@
 
     <a href="/" class="absolute left-1/2 -translate-x-1/2">
       <img
-        src="/images/inscape_logo.png"
+        src="/images/inscape_logo.webp"
         alt="Inscape Interiors"
         class="h-16 w-auto block"
+      />
+      <img
+        src="/logo-infinity.svg"
+        alt=""
+        class="absolute pointer-events-none"
+        style="width: 0.75rem; top: 7px; left: 18px;"
       />
     </a>
 
     <div class="w-10 z-10"></div>
   </div>
 
-  <!-- Mobile Ticker Bar -->
-  <div class="md:hidden w-full border-t border-b border-secondary/15 py-1.5 px-2 bg-primary/95 overflow-hidden">
-    <div class="header-ticker-box w-full max-w-[340px] mx-auto overflow-hidden">
-      <div class="header-ticker-track flex">
-        <div class="header-ticker-item flex items-center shrink-0">
-          <span class="font-serif text-[13px] tracking-wider uppercase font-bold text-secondary whitespace-nowrap">
-            20 Years Of Experience &nbsp;✦&nbsp; 170+ Projects Delivered &nbsp;✦&nbsp;&nbsp;
-          </span>
+  <!-- Mobile experience strip -->
+  <div class="md:hidden flex justify-center px-5 pb-3">
+    <div class="gold-badge gold-badge-mobile" role="note">
+      <div class="gold-badge-inner">
+        <div class="stat">
+          <span class="num">20+</span>
+          <span class="lbl">YRS EXPERIENCE</span>
         </div>
-        <div class="header-ticker-item flex items-center shrink-0" aria-hidden="true">
-          <span class="font-serif text-[13px] tracking-wider uppercase font-bold text-secondary whitespace-nowrap">
-            20 Years Of Experience &nbsp;✦&nbsp; 170+ Projects Delivered &nbsp;✦&nbsp;&nbsp;
-          </span>
+        <div class="divider">
+          <span class="sparkle">✦</span>
+        </div>
+        <div class="stat">
+          <span class="num">170+</span>
+          <span class="lbl">PROJECTS</span>
         </div>
       </div>
     </div>
@@ -93,7 +144,7 @@
       <a href="/projects" class="text-[16px] font-serif font-bold">Projects</a>
       <a href="/services" class="text-[16px] font-serif font-bold">Services</a>
       <a href="/craftsmanship" class="text-[16px] font-serif font-bold">Craftsmanship</a>
-      <a href="/services" class="text-[16px] font-serif font-bold">Services</a>
+      <a href="/sourcing" class="text-[16px] font-serif font-bold">Sourcing</a>
       <a href="/about" class="text-[16px] font-serif font-bold">About</a>
     </nav>
   </div>
@@ -132,35 +183,200 @@
     transition: transform 0.3s ease;
   }
 
-  /* Header Ticker Styles */
-  .header-ticker-box {
+  /* ---------- Premium Gold Badge ---------- */
+  .gold-badge {
     position: relative;
-    mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
-    -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
+    padding: 3px;
+    border-radius: 12px;
+    background: linear-gradient(
+      135deg,
+      #c9a227 0%,
+      #f0d78c 25%,
+      #a67c1a 50%,
+      #f0d78c 75%,
+      #c9a227 100%
+    );
+    background-size: 300% 300%;
+    animation: gold-border 6s ease infinite;
+    box-shadow:
+      0 0 20px rgba(201, 162, 39, 0.45),
+      0 4px 16px rgba(0, 0, 0, 0.08);
   }
 
-  .header-ticker-track {
-    width: max-content;
-    animation: header-ticker-slide 14s linear infinite;
-    will-change: transform;
+  .gold-badge-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 14px 28px;
+    border-radius: 10px;
+    background: 
+      radial-gradient(ellipse at 30% 40%, rgba(255, 248, 220, 0.9) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 60%, rgba(255, 240, 200, 0.7) 0%, transparent 55%),
+      linear-gradient(160deg, #fdf8ec 0%, #f7f0dc 50%, #f3e9c9 100%);
+    overflow: hidden;
   }
 
-  .header-ticker-box:hover .header-ticker-track {
-    animation-play-state: paused;
+  /* soft light sweep */
+  .gold-badge-inner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.35) 45%,
+      transparent 70%
+    );
+    animation: light-sweep 5s ease-in-out infinite;
   }
 
-  @keyframes header-ticker-slide {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
+  /* Numbers */
+  .gold-badge .num {
+    display: block;
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 1;
+    background: linear-gradient(180deg, #f8e7a0 0%, #c9a227 45%, #8a6a12 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 1px 1px rgba(139, 105, 20, 0.3));
+    letter-spacing: -0.02em;
+  }
+
+  /* Labels */
+  .gold-badge .lbl {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #5c3d0e;
+  }
+
+  .gold-badge .diamond {
+    font-size: 7px;
+    color: #c9a227;
+    opacity: 0.8;
+  }
+
+  /* Elegant divider */
+  .gold-badge .divider {
+    position: relative;
+    width: 1px;
+    height: 42px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      #c9a227 20%,
+      #c9a227 80%,
+      transparent
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gold-badge .sparkle {
+    position: absolute;
+    font-size: 11px;
+    color: #e8c766;
+    text-shadow: 0 0 8px rgba(232, 199, 102, 0.9);
+    animation: pulse-sparkle 2.4s ease-in-out infinite;
+  }
+
+  /* Leaf decorations */
+  .gold-badge .leaf {
+    position: absolute;
+    width: 28px;
+    height: 42px;
+    z-index: 2;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 4px rgba(201, 162, 39, 0.4));
+  }
+  .leaf-left {
+    left: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .leaf-right {
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%) scaleX(-1);
+  }
+
+  /* Floating sparkles */
+  .gold-badge .spark {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #fff8dc;
+    border-radius: 50%;
+    box-shadow: 0 0 8px 2px rgba(255, 230, 150, 0.8);
+    opacity: 0;
+    z-index: 3;
+    animation: twinkle 3.2s ease-in-out infinite;
+  }
+  .spark-1 { top: 8px;  left: 18%; animation-delay: 0s; }
+  .spark-2 { top: 12px; right: 22%; animation-delay: 0.8s; width: 5px; height: 5px; }
+  .spark-3 { bottom: 10px; left: 28%; animation-delay: 1.6s; }
+  .spark-4 { bottom: 14px; right: 15%; animation-delay: 2.2s; width: 4px; height: 4px; }
+
+  /* Mobile version */
+  .gold-badge-mobile {
+    padding: 2px;
+    border-radius: 8px;
+  }
+  .gold-badge-mobile .gold-badge-inner {
+    gap: 12px;
+    padding: 8px 16px;
+  }
+  .gold-badge-mobile .num {
+    font-size: 22px;
+  }
+  .gold-badge-mobile .lbl {
+    font-size: 8px;
+    letter-spacing: 0.1em;
+    margin-top: 3px;
+    gap: 4px;
+  }
+  .gold-badge-mobile .divider {
+    height: 32px;
+  }
+  .gold-badge-mobile .leaf {
+    display: none;
+  }
+
+  /* Animations */
+  @keyframes gold-border {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  @keyframes light-sweep {
+    0%, 60% { transform: translateX(-120%); }
+    100% { transform: translateX(120%); }
+  }
+  @keyframes pulse-sparkle {
+    0%, 100% { opacity: 0.6; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.15); }
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.3); }
+    40%, 60% { opacity: 1; transform: scale(1); }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .header-ticker-track {
+    .gold-badge,
+    .gold-badge-inner::before,
+    .gold-badge .spark,
+    .gold-badge .sparkle {
       animation: none;
     }
+    .gold-badge .spark { opacity: 0.7; }
   }
 </style>
