@@ -1,76 +1,126 @@
 ---
-
 ---
 
-<header class="header-hide w-full bg-primary z-50">
-  <!-- Desktop Header -->
-  <div class="hidden md:flex items-center justify-center relative px-5 py-3">
+<header class="header-hide sticky top-0 z-50 w-full bg-primary transition-transform duration-300 ease-out">
+  <!-- Desktop -->
+  <div class="relative hidden items-center justify-center px-5 py-3 md:flex">
+    <!-- Left nav -->
     <nav class="absolute left-5 top-1/2 -translate-y-1/2">
-      <ul class="flex flex-col gap-1 text-[18px] font-serif font-bold">
-        <li><a href="/projects">Projects</a></li>
-        <li><a href="/craftsmanship">Craftsmanship</a></li>
-        <li><a href="/sourcing">Sourcing</a></li>
-        <li><a href="/about">About</a></li>
+      <ul class="flex flex-col gap-1 font-serif text-[18px] font-bold text-white">
+        <li><a href="/projects" class="hover:text-secondary transition-colors">Projects</a></li>
+        <li><a href="/services" class="hover:text-secondary transition-colors">Services</a></li>
+        <li><a href="/craftsmanship" class="hover:text-secondary transition-colors">Craftsmanship</a></li>
+        <li><a href="/sourcing" class="hover:text-secondary transition-colors">Sourcing</a></li>
+        <li><a href="/about" class="hover:text-secondary transition-colors">About</a></li>
       </ul>
     </nav>
+
+    <!-- Center logo -->
     <a href="/" class="relative inline-block">
       <img
         src="/images/inscape_logo.webp"
         alt="Inscape Interiors"
-        class="h-40 w-auto block"
+        class="block h-40 w-auto"
+        width="280"
+        height="160"
       />
       <img
         src="/logo-infinity.svg"
         alt=""
-        class="absolute pointer-events-none w-8"
+        class="pointer-events-none absolute w-8"
         style="top: 18px; left: 44px;"
+        width="32"
+        height="16"
       />
     </a>
+
+    <!-- Right experience badge -->
+    <div
+      class="gold-badge absolute right-5 top-1/2 -translate-y-1/2"
+      role="note"
+      aria-label="20 plus years of experience with 170 plus projects delivered"
+    >
+      <span class="spark spark-1" aria-hidden="true"></span>
+      <span class="spark spark-2" aria-hidden="true"></span>
+      <span class="spark spark-3" aria-hidden="true"></span>
+      <span class="spark spark-4" aria-hidden="true"></span>
+      <div class="gold-badge-inner">
+        <div class="stat">
+          <span class="num">20+</span>
+          <span class="lbl">Years of Experience</span>
+        </div>
+        <span class="divider" aria-hidden="true"></span>
+        <div class="stat">
+          <span class="num">170+</span>
+          <span class="lbl">Projects Delivered</span>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- Mobile Header — burger left, logo centered -->
-  <div class="relative flex md:hidden items-center justify-between px-5 py-4">
-    <!-- Burger left -->
-    <button id="mobile-toggle" class="p-2 z-10" aria-label="Toggle menu">
+  <!-- Mobile -->
+  <div class="relative flex items-center justify-between px-5 py-4 md:hidden">
+    <button
+      id="mobile-toggle"
+      class="z-10 p-2"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
       <div class="space-y-1.5">
-        <span class="block w-6 h-px bg-secondary transition-all duration-300"
-        ></span>
-        <span class="block w-7 h-px bg-secondary transition-all duration-300"
-        ></span>
-        <span class="block w-6 h-px bg-secondary transition-all duration-300"
-        ></span>
+        <span class="block h-px w-6 bg-secondary transition-all duration-300"></span>
+        <span class="block h-px w-7 bg-secondary transition-all duration-300"></span>
+        <span class="block h-px w-6 bg-secondary transition-all duration-300"></span>
       </div>
     </button>
 
-    <!-- Logo — absolutely centered within the relative parent -->
     <a href="/" class="absolute left-1/2 -translate-x-1/2">
       <img
         src="/images/inscape_logo.webp"
         alt="Inscape Interiors"
-        class="h-16 w-auto block"
+        class="block h-16 w-auto"
+        width="120"
+        height="64"
       />
       <img
         src="/logo-infinity.svg"
         alt=""
-        class="absolute pointer-events-none"
+        class="pointer-events-none absolute"
         style="width: 0.75rem; top: 7px; left: 18px;"
+        width="12"
+        height="8"
       />
     </a>
 
-    <!-- Spacer to balance burger -->
-    <div class="w-10 z-10"></div>
+    <div class="z-10 w-10" aria-hidden="true"></div>
   </div>
 
-  <!-- Mobile Menu -->
+  <!-- Mobile experience strip -->
+  <div class="flex justify-center px-5 pb-3 md:hidden">
+    <div class="gold-badge gold-badge-mobile" role="note">
+      <span class="spark spark-1" aria-hidden="true"></span>
+      <span class="spark spark-3" aria-hidden="true"></span>
+      <div class="gold-badge-inner">
+        <span class="num">20+</span>
+        <span class="lbl">Yrs Experience</span>
+        <span class="divider" aria-hidden="true"></span>
+        <span class="num">170+</span>
+        <span class="lbl">Projects Delivered</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden bg-primary border-t border-secondary/10"
+    class="hidden border-t border-secondary/10 bg-primary md:hidden"
   >
-    <nav class="px-5 py-8 flex flex-col gap-4">
-      <a href="/projects" class="text-[16px] font-serif font-bold">Projects</a>
-      <a href="/craftsmanship" class="text-[16px] font-serif font-bold">Craftsmanship</a>
-      <a href="/sourcing" class="text-[16px] font-serif font-bold">Sourcing</a>
-      <a href="/about" class="text-[16px] font-serif font-bold">About</a>
+    <nav class="flex flex-col gap-4 px-5 py-8">
+      <a href="/projects" class="font-serif text-[16px] font-bold text-white">Projects</a>
+      <a href="/services" class="font-serif text-[16px] font-bold text-white">Services</a>
+      <a href="/craftsmanship" class="font-serif text-[16px] font-bold text-white">Craftsmanship</a>
+      <a href="/sourcing" class="font-serif text-[16px] font-bold text-white">Sourcing</a>
+      <a href="/about" class="font-serif text-[16px] font-bold text-white">About</a>
     </nav>
   </div>
 </header>
@@ -78,33 +128,180 @@
 <script>
   const toggle = document.getElementById("mobile-toggle");
   const menu = document.getElementById("mobile-menu");
-  toggle?.addEventListener("click", () => menu?.classList.toggle("hidden"));
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = menu?.classList.toggle("hidden") === false;
+    toggle.setAttribute("aria-expanded", String(isOpen));
+  });
 </script>
 
 <script>
   const header = document.querySelector<HTMLElement>(".header-hide");
   let lastScroll = 0;
+
   if (header) {
     window.addEventListener(
       "scroll",
       () => {
-        const currentScroll = window.scrollY;
-        if (currentScroll > lastScroll && currentScroll > 80) {
+        const current = window.scrollY;
+        if (current > lastScroll && current > 80) {
           header.style.transform = "translateY(-100%)";
         } else {
           header.style.transform = "translateY(0)";
         }
-        lastScroll = currentScroll;
+        lastScroll = current;
       },
-      { passive: true },
+      { passive: true }
     );
   }
 </script>
 
 <style>
-  .header-hide {
-    position: sticky;
+  /* Gold theme tokens */
+  :root {
+    --gold-1: #a67c1a;
+    --gold-2: #e8c766;
+    --gold-3: #f1d27a;
+    --gold-dark: #7a5a0e;
+    --gold-brown: #301804;
+    --gold-divider: #b8923a;
+    --badge-bg: #eeece3;
+  }
+
+  /* ---------- Gold experience badge ---------- */
+  .gold-badge {
+    position: relative;
+    padding: 2px;
+    border-radius: 4px;
+    background: linear-gradient(
+      110deg,
+      var(--gold-1) 0%,
+      var(--gold-2) 25%,
+      var(--gold-1) 50%,
+      var(--gold-2) 75%,
+      var(--gold-1) 100%
+    );
+    background-size: 250% 100%;
+    animation:
+      gold-flow 5s linear infinite,
+      gold-glow 2.8s ease-in-out infinite;
+  }
+
+  .gold-badge-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 12px 20px;
+    border-radius: 2px;
+    background: var(--badge-bg);
+    overflow: hidden;
+  }
+
+  .gold-badge-inner::after {
+    content: "";
+    position: absolute;
     top: 0;
-    transition: transform 0.3s ease;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(
+      100deg,
+      transparent,
+      rgba(232, 199, 102, 0.45),
+      transparent
+    );
+    transform: skewX(-20deg);
+    animation: gold-sweep 4.5s ease-in-out infinite;
+  }
+
+  .gold-badge .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.05;
+  }
+
+  .gold-badge .num {
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--gold-dark);
+    letter-spacing: 0.01em;
+  }
+
+  .gold-badge .lbl {
+    margin-top: 3px;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-brown);
+    text-align: center;
+  }
+
+  .gold-badge .divider {
+    width: 1px;
+    align-self: stretch;
+    background: var(--gold-divider);
+    opacity: 0.7;
+  }
+
+  /* Sparkles */
+  .gold-badge .spark {
+    position: absolute;
+    z-index: 2;
+    width: 14px;
+    height: 14px;
+    background: var(--gold-3);
+    clip-path: polygon(
+      50% 0%, 60% 40%, 100% 50%, 60% 60%,
+      50% 100%, 40% 60%, 0% 50%, 40% 40%
+    );
+    opacity: 0;
+    animation: twinkle 3s ease-in-out infinite;
+  }
+
+  .spark-1 { top: -8px; left: 10%; animation-delay: 0s; }
+  .spark-2 { top: -6px; right: 8%; width: 11px; height: 11px; animation-delay: 0.9s; }
+  .spark-3 { bottom: -8px; right: 22%; animation-delay: 1.7s; }
+  .spark-4 { bottom: -6px; left: 6%; width: 11px; height: 11px; animation-delay: 2.3s; }
+
+  /* Mobile compact badge */
+  .gold-badge-mobile .gold-badge-inner {
+    gap: 6px;
+    padding: 6px 12px;
+  }
+  .gold-badge-mobile .num { font-size: 18px; }
+  .gold-badge-mobile .lbl {
+    margin-top: 0;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+  .gold-badge-mobile .divider { margin: 0 4px; }
+
+  /* Animations */
+  @keyframes gold-flow {
+    to { background-position: -250% 0; }
+  }
+  @keyframes gold-glow {
+    0%, 100% { box-shadow: 0 0 4px rgba(200, 160, 50, 0.35); }
+    50%      { box-shadow: 0 0 16px rgba(220, 180, 70, 0.75); }
+  }
+  @keyframes gold-sweep {
+    0%, 55% { left: -60%; }
+    100%    { left: 130%; }
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.3) rotate(0deg); }
+    50%      { opacity: 1; transform: scale(1) rotate(45deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gold-badge,
+    .gold-badge-inner::after,
+    .gold-badge .spark {
+      animation: none;
+    }
+    .gold-badge .spark { opacity: 0.8; }
   }
 </style>
