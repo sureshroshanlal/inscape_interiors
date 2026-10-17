@@ -3,12 +3,13 @@
 ---
 
 <header class="header-hide relative z-50 w-full bg-primary">
+
   <!-- Desktop Header -->
   <div class="desktop-header hidden md:flex items-center justify-center relative px-5 py-3">
 
     <!-- Left Navigation -->
-    <nav class="desktop-nav absolute left-5 top-1/2 -translate-y-1/2">
-      <ul class="flex flex-col gap-1 text-[16px] lg:text-[18px] font-serif font-bold">
+    <nav class="desktop-nav absolute left-5 top-1/2 -translate-y-1/2" aria-label="Main navigation">
+      <ul class="flex flex-col gap-1 text-[18px] font-serif font-bold">
         <li><a href="/projects" class="header-link">Projects</a></li>
         <li><a href="/services" class="header-link">Services</a></li>
         <li><a href="/craftsmanship" class="header-link">Craftsmanship</a></li>
@@ -17,26 +18,18 @@
       </ul>
     </nav>
 
-    <!-- Centered Desktop Logo -->
-    <a href="/" class="desktop-logo relative inline-flex items-center justify-center shrink-0"
-       aria-label="Inscape Interiors home">
-
+    <!-- Original Desktop Logo: no design changes -->
+    <a href="/" class="desktop-logo relative inline-block shrink-0" aria-label="Inscape Interiors home">
       <img
         src="/images/inscape_logo.webp"
-        alt="Inscape Interiors"
-        class="brand-logo h-32 lg:h-36 w-auto object-contain"
+        alt="Inscape Interiors — Design. Architecture. Sourcing."
+        class="h-40 w-auto block object-contain"
       />
-
-      <span class="logo-fallback hidden" aria-hidden="true">
-        <span class="logo-fallback-name">Inscape</span>
-        <span class="logo-fallback-subtitle">INTERIORS</span>
-      </span>
-
       <img
         src="/logo-infinity.svg"
         alt=""
         aria-hidden="true"
-        class="infinity-logo absolute pointer-events-none w-8"
+        class="absolute pointer-events-none w-8"
         style="top: 18px; left: 44px;"
       />
     </a>
@@ -62,55 +55,50 @@
       <span class="stats-spark stats-spark-one" aria-hidden="true">✦</span>
       <span class="stats-spark stats-spark-two" aria-hidden="true">✧</span>
     </aside>
+
   </div>
 
-  <!-- Mobile Header -->
+  <!-- Mobile Header: Burger Left, Original Logo Center -->
   <div class="relative flex md:hidden items-center justify-between px-5 py-4">
 
-    <!-- Burger Menu -->
     <button
       id="mobile-toggle"
-      class="mobile-toggle relative z-10 p-2"
+      class="p-2 z-10"
       aria-label="Toggle navigation menu"
       aria-controls="mobile-menu"
       aria-expanded="false"
       type="button"
     >
-      <span class="burger-lines space-y-1.5 block">
+      <span class="space-y-1.5 block">
         <span class="block w-6 h-px bg-secondary transition-all duration-300"></span>
         <span class="block w-7 h-px bg-secondary transition-all duration-300"></span>
         <span class="block w-6 h-px bg-secondary transition-all duration-300"></span>
       </span>
     </button>
 
-    <!-- Centered Mobile Logo -->
+    <!-- Original Mobile Logo -->
     <a
       href="/"
-      class="mobile-logo absolute left-1/2 -translate-x-1/2"
+      class="absolute left-1/2 -translate-x-1/2"
       aria-label="Inscape Interiors home"
     >
       <img
         src="/images/inscape_logo.webp"
-        alt="Inscape Interiors"
-        class="brand-logo h-16 w-auto object-contain"
+        alt="Inscape Interiors — Design. Architecture. Sourcing."
+        class="h-16 w-auto block object-contain"
       />
-
-      <span class="logo-fallback hidden" aria-hidden="true">
-        <span class="logo-fallback-name">Inscape</span>
-        <span class="logo-fallback-subtitle">INTERIORS</span>
-      </span>
-
       <img
         src="/logo-infinity.svg"
         alt=""
         aria-hidden="true"
-        class="infinity-logo absolute pointer-events-none"
+        class="absolute pointer-events-none"
         style="width: 0.75rem; top: 7px; left: 18px;"
       />
     </a>
 
     <!-- Balancing Spacer -->
     <div class="w-10 z-10" aria-hidden="true"></div>
+
   </div>
 
   <!-- Mobile Navigation -->
@@ -126,58 +114,44 @@
       <a href="/about" class="mobile-nav-link">About</a>
     </nav>
   </div>
+
 </header>
 
 <script>
-  // Logo fallback: prevent a broken-image icon if the asset is missing.
-  document.querySelectorAll(".brand-logo").forEach((element) => {
-    const logo = element as HTMLImageElement;
-    const wrapper = logo.closest("a");
-    const fallback = wrapper?.querySelector(".logo-fallback");
-    const infinity = wrapper?.querySelector(".infinity-logo");
+  // Mobile menu
+  const mobileToggle = document.getElementById("mobile-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
 
-    const showFallback = () => {
-      logo.classList.add("hidden");
-      fallback?.classList.remove("hidden");
-      infinity?.classList.add("hidden");
-    };
+  if (
+    mobileToggle &&
+    mobileMenu &&
+    !mobileToggle.hasAttribute("data-initialized")
+  ) {
+    mobileToggle.setAttribute("data-initialized", "true");
 
-    logo.addEventListener("error", showFallback);
+    mobileToggle.addEventListener("click", () => {
+      const isOpening = mobileMenu.classList.contains("hidden");
 
-    if (logo.complete && logo.naturalWidth === 0) {
-      showFallback();
-    }
-  });
-
-  // Mobile menu toggle
-  const toggle = document.getElementById("mobile-toggle");
-  const menu = document.getElementById("mobile-menu");
-
-  if (toggle && menu && !toggle.hasAttribute("data-initialized")) {
-    toggle.setAttribute("data-initialized", "true");
-
-    toggle.addEventListener("click", () => {
-      const isOpening = menu.classList.contains("hidden");
-
-      menu.classList.toggle("hidden", !isOpening);
-      toggle.setAttribute("aria-expanded", String(isOpening));
+      mobileMenu.classList.toggle("hidden", !isOpening);
+      mobileToggle.setAttribute("aria-expanded", String(isOpening));
     });
 
-    menu.querySelectorAll("a").forEach((link) => {
+    mobileMenu.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
-        menu.classList.add("hidden");
-        toggle.setAttribute("aria-expanded", "false");
+        mobileMenu.classList.add("hidden");
+        mobileToggle.setAttribute("aria-expanded", "false");
       });
     });
   }
-</script>
 
-<script>
-  // Hide on scroll down; reveal on scroll up.
-  const header = document.querySelector<HTMLElement>(".header-hide");
+  // Header hide on scroll down, reveal on scroll up
+  const siteHeader = document.querySelector(".header-hide");
 
-  if (header && !header.hasAttribute("data-scroll-initialized")) {
-    header.setAttribute("data-scroll-initialized", "true");
+  if (
+    siteHeader &&
+    !siteHeader.hasAttribute("data-scroll-initialized")
+  ) {
+    siteHeader.setAttribute("data-scroll-initialized", "true");
 
     let lastScroll = window.scrollY;
     let ticking = false;
@@ -191,16 +165,18 @@
 
         window.requestAnimationFrame(() => {
           const currentScroll = window.scrollY;
-          const mobileMenu = document.getElementById("mobile-menu");
+          const menuElement = document.getElementById("mobile-menu");
+          const isMobileMenuOpen =
+            menuElement && !menuElement.classList.contains("hidden");
 
           if (currentScroll <= 80) {
-            header.style.transform = "translateY(0)";
+            siteHeader.style.transform = "translateY(0)";
           } else if (currentScroll > lastScroll) {
-            if (!mobileMenu || mobileMenu.classList.contains("hidden")) {
-              header.style.transform = "translateY(-100%)";
+            if (!isMobileMenuOpen) {
+              siteHeader.style.transform = "translateY(-100%)";
             }
           } else {
-            header.style.transform = "translateY(0)";
+            siteHeader.style.transform = "translateY(0)";
           }
 
           lastScroll = currentScroll;
@@ -213,7 +189,7 @@
 </script>
 
 <style>
-  /* Main header */
+  /* Sticky header and scroll transition */
   .header-hide {
     position: sticky;
     top: 0;
@@ -221,7 +197,7 @@
     will-change: transform;
   }
 
-  /* Navigation */
+  /* Navigation links */
   .header-link,
   .mobile-nav-link {
     display: inline-block;
@@ -241,58 +217,17 @@
     font-weight: 700;
   }
 
-  /* Desktop logo */
+  /* Desktop logo: retain original image proportions */
   .desktop-logo {
-    min-width: 160px;
-    min-height: 80px;
+    line-height: 0;
   }
 
-  /* Mobile logo */
-  .mobile-logo {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 120px;
-    min-height: 48px;
-  }
-
-  .brand-logo {
-    display: block;
+  .desktop-logo > img:first-child {
     max-width: 100%;
+    object-fit: contain;
   }
 
-  /* Brand fallback used only if the logo image fails */
-  .logo-fallback {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #5d4822;
-    font-family: Georgia, "Times New Roman", serif;
-    line-height: 1.05;
-    white-space: nowrap;
-  }
-
-  .logo-fallback:not(.hidden) {
-    display: flex;
-  }
-
-  .logo-fallback-name {
-    font-size: 25px;
-    font-weight: 600;
-    letter-spacing: 0.4px;
-  }
-
-  .logo-fallback-subtitle {
-    margin-top: 4px;
-    font-size: 8px;
-    letter-spacing: 3px;
-  }
-
-  .mobile-logo .logo-fallback-name {
-    font-size: 20px;
-  }
-
-  /* Gold statistics card */
+  /* Statistics card: right-side desktop placement */
   .stats-card {
     position: absolute;
     right: 24px;
@@ -387,6 +322,7 @@
     align-self: stretch;
     width: 1px;
     margin: 4px 2px;
+
     background: linear-gradient(
       to bottom,
       transparent,
@@ -409,7 +345,7 @@
     box-shadow: 0 0 8px rgba(219, 176, 53, 0.65);
   }
 
-  /* Animated shimmer */
+  /* Subtle golden shimmer */
   .stats-glint {
     position: absolute;
     z-index: 1;
@@ -486,7 +422,7 @@
     }
   }
 
-  /* Tablet */
+  /* Tablet: keep logo and navigation clear of the statistics card */
   @media (min-width: 768px) and (max-width: 1279px) {
     .desktop-header {
       min-height: 120px;
@@ -496,7 +432,7 @@
       left: 20px;
     }
 
-    .desktop-logo img.brand-logo {
+    .desktop-logo > img:first-child {
       max-height: 110px;
     }
   }
@@ -508,17 +444,17 @@
     }
   }
 
-  /* Accessibility */
+  /* Respect reduced-motion preferences */
   @media (prefers-reduced-motion: reduce) {
-    .stats-glint,
-    .stats-spark {
-      animation: none;
-    }
-
     .header-hide,
     .header-link,
     .mobile-nav-link {
       transition: none;
+    }
+
+    .stats-glint,
+    .stats-spark {
+      animation: none;
     }
   }
 </style>
