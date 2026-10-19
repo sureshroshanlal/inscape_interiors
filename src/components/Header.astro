@@ -22,21 +22,21 @@
       />
     </a>
 
-    <!-- Desktop Header Ticker (Right Side) -->
+    <!-- Desktop Header Ticker (Right Side with Golden Ambient Glow) -->
     <div class="absolute right-5 top-1/2 -translate-y-1/2 flex items-center">
       <div
-        class="header-ticker-box w-[250px] lg:w-[280px] overflow-hidden rounded-full border border-secondary/25 bg-primary/70 py-1.5 px-3 select-none"
+        class="header-ticker-box header-ticker-glow w-[255px] lg:w-[290px] overflow-hidden rounded-full py-1.5 px-3.5 select-none transition-all duration-300"
         title="20 Years Of Experience, 170+ Projects Delivered"
       >
         <div class="header-ticker-track flex">
           <div class="header-ticker-item flex items-center shrink-0">
             <span class="font-serif text-[13.5px] lg:text-[14.5px] tracking-widest uppercase font-bold text-secondary whitespace-nowrap">
-              20 Years Of Experience &nbsp;✦&nbsp; 170+ Projects Delivered &nbsp;✦&nbsp;&nbsp;
+              <span class="ticker-num">20</span> Years Of Experience &nbsp;<span class="ticker-spark">✦</span>&nbsp; <span class="ticker-num">170+</span> Projects Delivered &nbsp;<span class="ticker-spark">✦</span>&nbsp;&nbsp;
             </span>
           </div>
           <div class="header-ticker-item flex items-center shrink-0" aria-hidden="true">
             <span class="font-serif text-[13.5px] lg:text-[14.5px] tracking-widest uppercase font-bold text-secondary whitespace-nowrap">
-              20 Years Of Experience &nbsp;✦&nbsp; 170+ Projects Delivered &nbsp;✦&nbsp;&nbsp;
+              <span class="ticker-num">20</span> Years Of Experience &nbsp;<span class="ticker-spark">✦</span>&nbsp; <span class="ticker-num">170+</span> Projects Delivered &nbsp;<span class="ticker-spark">✦</span>&nbsp;&nbsp;
             </span>
           </div>
         </div>
@@ -68,18 +68,18 @@
     <div class="w-10 z-10"></div>
   </div>
 
-  <!-- Mobile Ticker Bar -->
-  <div class="md:hidden w-full border-t border-b border-secondary/15 py-1.5 px-2 bg-primary/95 overflow-hidden">
-    <div class="header-ticker-box w-full max-w-[340px] mx-auto overflow-hidden">
+  <!-- Mobile Ticker Bar with warm gold accent and glow -->
+  <div class="md:hidden w-full border-t border-b border-amber-900/15 py-1.5 px-2 bg-gradient-to-r from-primary via-[#f7ecd2] to-primary overflow-hidden shadow-inner">
+    <div class="header-ticker-box header-ticker-glow-mobile w-full max-w-[340px] mx-auto overflow-hidden rounded-full py-1 px-3">
       <div class="header-ticker-track flex">
         <div class="header-ticker-item flex items-center shrink-0">
           <span class="font-serif text-[13px] tracking-wider uppercase font-bold text-secondary whitespace-nowrap">
-            20 Years Of Experience &nbsp;✦&nbsp; 170+ Projects Delivered &nbsp;✦&nbsp;&nbsp;
+            <span class="ticker-num">20</span> Years Of Experience &nbsp;<span class="ticker-spark">✦</span>&nbsp; <span class="ticker-num">170+</span> Projects Delivered &nbsp;<span class="ticker-spark">✦</span>&nbsp;&nbsp;
           </span>
         </div>
         <div class="header-ticker-item flex items-center shrink-0" aria-hidden="true">
           <span class="font-serif text-[13px] tracking-wider uppercase font-bold text-secondary whitespace-nowrap">
-            20 Years Of Experience &nbsp;✦&nbsp; 170+ Projects Delivered &nbsp;✦&nbsp;&nbsp;
+            <span class="ticker-num">20</span> Years Of Experience &nbsp;<span class="ticker-spark">✦</span>&nbsp; <span class="ticker-num">170+</span> Projects Delivered &nbsp;<span class="ticker-spark">✦</span>&nbsp;&nbsp;
           </span>
         </div>
       </div>
@@ -136,8 +136,60 @@
   /* Header Ticker Styles */
   .header-ticker-box {
     position: relative;
-    mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
-    -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+  }
+
+  /* Desktop Ticker Glow Container */
+  .header-ticker-glow {
+    background: linear-gradient(135deg, rgba(255, 252, 244, 0.95) 0%, rgba(247, 237, 210, 0.9) 100%);
+    border: 1.5px solid rgba(197, 155, 69, 0.65);
+    box-shadow:
+      0 0 14px rgba(212, 168, 83, 0.45),
+      0 0 28px rgba(212, 168, 83, 0.22),
+      inset 0 0 8px rgba(255, 248, 225, 0.6);
+    animation: ticker-ambient-pulse 3.5s ease-in-out infinite alternate;
+  }
+
+  .header-ticker-glow:hover {
+    border-color: rgba(181, 138, 59, 0.95);
+    box-shadow:
+      0 0 22px rgba(212, 168, 83, 0.7),
+      0 0 40px rgba(212, 168, 83, 0.35),
+      inset 0 0 12px rgba(255, 248, 225, 0.9);
+    transform: scale(1.02);
+  }
+
+  /* Mobile Ticker Glow */
+  .header-ticker-glow-mobile {
+    background: rgba(255, 252, 243, 0.95);
+    border: 1px solid rgba(197, 155, 69, 0.55);
+    box-shadow: 0 0 10px rgba(212, 168, 83, 0.35);
+  }
+
+  /* Golden Spark Symbols with radiant glint */
+  .ticker-spark {
+    color: #b58228;
+    text-shadow:
+      0 0 6px rgba(212, 168, 83, 0.8),
+      0 0 12px rgba(181, 138, 59, 0.5);
+    display: inline-block;
+    filter: drop-shadow(0 0 3px rgba(205, 150, 40, 0.6));
+    animation: spark-twinkle 2.5s ease-in-out infinite alternate;
+  }
+
+  /* Ticker numbers: scale up to match capital letter cap-height and use lining figures */
+  .ticker-num {
+    font-variant-numeric: lining-nums tabular-nums;
+    -moz-font-feature-settings: "lnum" 1;
+    -webkit-font-feature-settings: "lnum" 1;
+    font-feature-settings: "lnum" 1;
+    font-size: 1.28em;
+    font-weight: 700;
+    display: inline-block;
+    vertical-align: -0.04em;
+    line-height: 1;
+    letter-spacing: 0.02em;
   }
 
   .header-ticker-track {
@@ -150,6 +202,35 @@
     animation-play-state: paused;
   }
 
+  @keyframes ticker-ambient-pulse {
+    0% {
+      border-color: rgba(197, 155, 69, 0.5);
+      box-shadow:
+        0 0 12px rgba(212, 168, 83, 0.4),
+        0 0 24px rgba(212, 168, 83, 0.18),
+        inset 0 0 6px rgba(255, 248, 225, 0.5);
+    }
+    100% {
+      border-color: rgba(218, 165, 32, 0.88);
+      box-shadow:
+        0 0 18px rgba(218, 165, 32, 0.65),
+        0 0 34px rgba(218, 165, 32, 0.28),
+        inset 0 0 10px rgba(255, 248, 225, 0.75);
+    }
+  }
+
+  @keyframes spark-twinkle {
+    0% {
+      opacity: 0.85;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1.15);
+      filter: drop-shadow(0 0 6px rgba(218, 165, 32, 0.9));
+    }
+  }
+
   @keyframes header-ticker-slide {
     0% {
       transform: translateX(0);
@@ -160,7 +241,9 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .header-ticker-track {
+    .header-ticker-track,
+    .header-ticker-glow,
+    .ticker-spark {
       animation: none;
     }
   }
