@@ -1,84 +1,101 @@
 ---
 ---
 
-<header class="site-header header-hide">
-  <!-- Desktop / tablet header -->
-  <div class="desktop-header">
-    <nav class="desktop-nav" aria-label="Main navigation">
-      <a href="/projects" class="nav-link">Projects</a>
-      <a href="/services" class="nav-link">Services</a>
-      <a href="/craftsmanship" class="nav-link">Craftsmanship</a>
-      <a href="/sourcing" class="nav-link">Sourcing</a>
-      <a href="/about" class="nav-link">About</a>
+<header class="header-hide w-full bg-primary z-50">
+  <!-- Desktop Header -->
+  <div class="hidden md:flex items-center justify-center relative px-5 py-3">
+    <nav class="absolute left-5 top-1/2 -translate-y-1/2">
+      <ul class="flex flex-col gap-1 text-[18px] font-serif font-bold">
+        <li><a href="/projects" class="hover:opacity-70 transition-opacity">Projects</a></li>
+        <li><a href="/craftsmanship" class="hover:opacity-70 transition-opacity">Craftsmanship</a></li>
+        <li><a href="/services" class="hover:opacity-70 transition-opacity">Services</a></li>
+        <li><a href="/about" class="hover:opacity-70 transition-opacity">About</a></li>
+      </ul>
     </nav>
 
-    <!-- Original client logo. Keep this image unchanged. -->
-    <a href="/" class="desktop-brand" aria-label="Inscape Interiors home">
+    <!-- Center Logo -->
+    <a href="/" class="relative inline-block" aria-label="Inscape Interiors home">
       <img
-        src="/images/inscape_logo.webp"
-        alt="INSCAPE — Design. Architecture. Sourcing."
-        width="678"
-        height="243"
-        fetchpriority="high"
+        src="/images/inscape_logo.png"
+        alt="Inscape Interiors"
+        class="h-40 w-auto block"
       />
     </a>
 
-    <!-- Restrained luxury statistics treatment -->
-    <aside class="stats-card" aria-label="Company achievements">
-      <span class="stats-glint" aria-hidden="true"></span>
-      <span class="stats-spark spark-one" aria-hidden="true">✦</span>
-      <span class="stats-spark spark-two" aria-hidden="true">✧</span>
-
-      <div class="stats-item">
-        <span class="stats-number">20+</span>
-        <span class="stats-label">Years of Experience</span>
+    <!-- Desktop Header Ticker (Right Side) -->
+    <div class="absolute right-5 top-1/2 -translate-y-1/2 flex items-center">
+      <div
+        class="header-ticker-box w-[250px] lg:w-[280px] overflow-hidden rounded-full border border-secondary/25 bg-primary/70 py-1.5 px-3 select-none"
+        title="20 Years Of Experience, 170+ Projects Delivered"
+      >
+        <div class="header-ticker-track flex">
+          <div class="header-ticker-item flex items-center shrink-0">
+            <span class="font-serif text-[13.5px] lg:text-[14.5px] tracking-widest uppercase font-bold text-secondary whitespace-nowrap">
+              20 Years Of Experience &nbsp;✦&nbsp; 170+ Projects Delivered &nbsp;✦&nbsp;&nbsp;
+            </span>
+          </div>
+          <div class="header-ticker-item flex items-center shrink-0" aria-hidden="true">
+            <span class="font-serif text-[13.5px] lg:text-[14.5px] tracking-widest uppercase font-bold text-secondary whitespace-nowrap">
+              20 Years Of Experience &nbsp;✦&nbsp; 170+ Projects Delivered &nbsp;✦&nbsp;&nbsp;
+            </span>
+          </div>
+        </div>
       </div>
-
-      <span class="stats-divider" aria-hidden="true">
-        <span class="divider-diamond"></span>
-      </span>
-
-      <div class="stats-item">
-        <span class="stats-number">170+</span>
-        <span class="stats-label">Projects Delivered</span>
-      </div>
-    </aside>
+    </div>
   </div>
 
-  <!-- Mobile header -->
-  <div class="mobile-header">
-    <button
-      id="mobile-toggle"
-      class="menu-toggle"
-      type="button"
-      aria-label="Open navigation menu"
-      aria-controls="mobile-menu"
-      aria-expanded="false"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
+  <!-- Mobile Header — burger left, logo centered -->
+  <div class="relative flex md:hidden items-center justify-between px-5 py-4">
+    <!-- Burger left -->
+    <button id="mobile-toggle" class="p-2 z-10" aria-label="Toggle menu">
+      <div class="space-y-1.5">
+        <span class="block w-6 h-px bg-secondary transition-all duration-300"></span>
+        <span class="block w-7 h-px bg-secondary transition-all duration-300"></span>
+        <span class="block w-6 h-px bg-secondary transition-all duration-300"></span>
+      </div>
     </button>
 
-    <a href="/" class="mobile-brand" aria-label="Inscape Interiors home">
+    <!-- Logo centered -->
+    <a href="/" class="absolute left-1/2 -translate-x-1/2" aria-label="Inscape Interiors home">
       <img
-        src="/images/inscape_logo.webp"
-        alt="INSCAPE — Design. Architecture. Sourcing."
-        width="678"
-        height="243"
+        src="/images/inscape_logo.png"
+        alt="Inscape Interiors"
+        class="h-16 w-auto block"
       />
     </a>
 
-    <span class="mobile-balance" aria-hidden="true"></span>
+    <!-- Spacer to balance burger -->
+    <div class="w-10 z-10"></div>
   </div>
 
-  <div id="mobile-menu" class="mobile-menu" hidden>
-    <nav aria-label="Mobile navigation">
-      <a href="/projects" class="mobile-nav-link">Projects</a>
-      <a href="/services" class="mobile-nav-link">Services</a>
-      <a href="/craftsmanship" class="mobile-nav-link">Craftsmanship</a>
-      <a href="/sourcing" class="mobile-nav-link">Sourcing</a>
-      <a href="/about" class="mobile-nav-link">About</a>
+  <!-- Mobile Ticker Bar -->
+  <div class="md:hidden w-full border-t border-b border-secondary/15 py-1.5 px-2 bg-primary/95 overflow-hidden">
+    <div class="header-ticker-box w-full max-w-[340px] mx-auto overflow-hidden">
+      <div class="header-ticker-track flex">
+        <div class="header-ticker-item flex items-center shrink-0">
+          <span class="font-serif text-[13px] tracking-wider uppercase font-bold text-secondary whitespace-nowrap">
+            20 Years Of Experience &nbsp;✦&nbsp; 170+ Projects Delivered &nbsp;✦&nbsp;&nbsp;
+          </span>
+        </div>
+        <div class="header-ticker-item flex items-center shrink-0" aria-hidden="true">
+          <span class="font-serif text-[13px] tracking-wider uppercase font-bold text-secondary whitespace-nowrap">
+            20 Years Of Experience &nbsp;✦&nbsp; 170+ Projects Delivered &nbsp;✦&nbsp;&nbsp;
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-primary border-t border-secondary/10"
+  >
+    <nav class="px-5 py-8 flex flex-col gap-4">
+      <a href="/projects" class="text-[16px] font-serif font-bold">Projects</a>
+      <a href="/craftsmanship" class="text-[16px] font-serif font-bold">Craftsmanship</a>
+      <a href="/services" class="text-[16px] font-serif font-bold">Services</a>
+      <a href="/about" class="text-[16px] font-serif font-bold">About</a>
     </nav>
   </div>
 </header>
@@ -86,458 +103,64 @@
 <script>
   const toggle = document.getElementById("mobile-toggle");
   const menu = document.getElementById("mobile-menu");
+  toggle?.addEventListener("click", () => menu?.classList.toggle("hidden"));
+</script>
 
-  if (toggle && menu && !toggle.hasAttribute("data-initialized")) {
-    toggle.setAttribute("data-initialized", "true");
-
-    const closeMenu = () => {
-      menu.hidden = true;
-      toggle.setAttribute("aria-expanded", "false");
-      toggle.setAttribute("aria-label", "Open navigation menu");
-    };
-
-    toggle.addEventListener("click", () => {
-      const opening = menu.hidden;
-      menu.hidden = !opening;
-      toggle.setAttribute("aria-expanded", String(opening));
-      toggle.setAttribute(
-        "aria-label",
-        opening ? "Close navigation menu" : "Open navigation menu"
-      );
-    });
-
-    menu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", closeMenu);
-    });
-
-    window.addEventListener("resize", () => {
-      if (window.innerWidth >= 768) closeMenu();
-    });
-  }
-
-  // Hide the header on downward scroll; reveal it on upward scroll.
-  const header = document.querySelector(".header-hide");
-
-  if (header && !header.hasAttribute("data-scroll-initialized")) {
-    header.setAttribute("data-scroll-initialized", "true");
-
-    let previousY = window.scrollY;
-    let ticking = false;
-
+<script>
+  const header = document.querySelector<HTMLElement>(".header-hide");
+  let lastScroll = 0;
+  if (header) {
     window.addEventListener(
       "scroll",
       () => {
-        if (ticking) return;
-        ticking = true;
-
-        window.requestAnimationFrame(() => {
-          const currentY = window.scrollY;
-          const mobileMenu = document.getElementById("mobile-menu");
-          const menuOpen = mobileMenu && !mobileMenu.hidden;
-
-          if (currentY <= 80 || currentY < previousY || menuOpen) {
-            header.style.transform = "translateY(0)";
-          } else {
-            header.style.transform = "translateY(-100%)";
-          }
-
-          previousY = currentY;
-          ticking = false;
-        });
+        const currentScroll = window.scrollY;
+        if (currentScroll > lastScroll && currentScroll > 80) {
+          header.style.transform = "translateY(-100%)";
+        } else {
+          header.style.transform = "translateY(0)";
+        }
+        lastScroll = currentScroll;
       },
-      { passive: true }
+      { passive: true },
     );
   }
 </script>
 
 <style>
-  .site-header {
-    --gold: #b18a3b;
-    --gold-light: #e8d39a;
-    --gold-dark: #76551f;
-    --ink: #35251f;
-    --header-bg: var(--color-primary, #eeece2);
-
+  .header-hide {
     position: sticky;
     top: 0;
-    z-index: 50;
-    width: 100%;
-    background: var(--header-bg);
-    border-top: 1px solid rgba(177, 138, 59, 0.38);
-    border-bottom: 1px solid rgba(177, 138, 59, 0.5);
-    transition: transform 0.32s ease;
+    transition: transform 0.3s ease;
+  }
+
+  /* Header Ticker Styles */
+  .header-ticker-box {
+    position: relative;
+    mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
+  }
+
+  .header-ticker-track {
+    width: max-content;
+    animation: header-ticker-slide 14s linear infinite;
     will-change: transform;
   }
 
-  .desktop-header {
-    position: relative;
-    display: none;
-    min-height: 184px;
-    align-items: center;
-    justify-content: center;
-    padding: 16px 24px;
+  .header-ticker-box:hover .header-ticker-track {
+    animation-play-state: paused;
   }
 
-  .desktop-nav {
-    position: absolute;
-    z-index: 2;
-    top: 50%;
-    left: clamp(24px, 2.4vw, 42px);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 9px;
-    transform: translateY(-50%);
-  }
-
-  .nav-link,
-  .mobile-nav-link {
-    position: relative;
-    display: inline-block;
-    width: fit-content;
-    color: var(--ink);
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 0.15px;
-    line-height: 1.35;
-    text-decoration: none;
-    transition: color 220ms ease, transform 220ms ease, text-shadow 220ms ease;
-  }
-
-  .nav-link::after {
-    position: absolute;
-    right: 100%;
-    bottom: -3px;
-    left: 0;
-    height: 1px;
-    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
-    content: "";
-    transition: right 240ms ease;
-  }
-
-  .nav-link:hover,
-  .nav-link:focus-visible {
-    color: var(--gold-dark);
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
-    transform: translateX(2px);
-  }
-
-  .nav-link:hover::after,
-  .nav-link:focus-visible::after {
-    right: 0;
-  }
-
-  /* Center the original wide logo independently of the side elements. */
-  .desktop-brand {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    display: block;
-    width: clamp(300px, 29vw, 430px);
-    transform: translate(-50%, -50%);
-    line-height: 0;
-  }
-
-  .desktop-brand img,
-  .mobile-brand img {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    /* Blends the logo's white image background into the warm header.
-       The original brown logo artwork itself is not recoloured. */
-    mix-blend-mode: multiply;
-  }
-
-  /* Premium statistics: thin champagne frame, inset highlight and restrained depth. */
-  .stats-card {
-    position: absolute;
-    top: 50%;
-    right: clamp(24px, 2.2vw, 40px);
-    display: flex;
-    width: clamp(320px, 27vw, 370px);
-    min-height: 82px;
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 10px;
-    overflow: hidden;
-    padding: 13px 17px;
-    border: 1px solid rgba(177, 138, 59, 0.82);
-    border-radius: 5px;
-    background:
-      linear-gradient(135deg, rgba(255,255,255,0.72), transparent 42%),
-      linear-gradient(115deg, #f8f0d9 0%, #fffdf6 48%, #f2e5bf 100%);
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.95),
-      inset 0 -1px 0 rgba(177,138,59,0.12),
-      0 8px 22px rgba(63, 45, 18, 0.09);
-    transform: translateY(-50%);
-    isolation: isolate;
-  }
-
-  .stats-card::before {
-    position: absolute;
-    inset: 4px;
-    border: 1px solid rgba(177, 138, 59, 0.18);
-    content: "";
-    pointer-events: none;
-  }
-
-  .stats-item {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    min-width: 0;
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    text-align: center;
-  }
-
-  .stats-number {
-    display: block;
-    color: #a77b2b;
-    background: linear-gradient(180deg, #d7b65f 0%, #a47727 48%, #80571e 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-family: "Times New Roman", Georgia, serif;
-    font-size: clamp(27px, 2.2vw, 33px);
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    line-height: 1;
-    filter: drop-shadow(0 1px 0 rgba(255,255,255,0.8));
-  }
-
-  .stats-label {
-    display: block;
-    color: #72562c;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 8px;
-    font-weight: 600;
-    letter-spacing: 1.05px;
-    line-height: 1.35;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-
-  .stats-divider {
-    position: relative;
-    z-index: 2;
-    align-self: stretch;
-    width: 1px;
-    margin: 3px 2px;
-    background: linear-gradient(
-      to bottom,
-      transparent,
-      rgba(177,138,59,0.65) 24%,
-      rgba(177,138,59,0.65) 76%,
-      transparent
-    );
-  }
-
-  .divider-diamond {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 6px;
-    height: 6px;
-    border: 1px solid #b58a3b;
-    background: #fff9e8;
-    box-shadow: 0 0 7px rgba(181,138,59,0.28);
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-
-  .stats-glint {
-    position: absolute;
-    z-index: 1;
-    top: -60%;
-    left: -45%;
-    width: 24%;
-    height: 220%;
-    background: linear-gradient(
-      105deg,
-      transparent,
-      rgba(255,255,255,0.68),
-      rgba(255,248,220,0.25),
-      transparent
-    );
-    pointer-events: none;
-    transform: skewX(-20deg);
-    animation: restrained-shimmer 9s ease-in-out 2s infinite;
-  }
-
-  .stats-spark {
-    position: absolute;
-    z-index: 2;
-    color: #c6a254;
-    font-size: 9px;
-    pointer-events: none;
-    animation: soft-twinkle 4.8s ease-in-out infinite;
-  }
-
-  .spark-one {
-    top: 15px;
-    left: 9%;
-  }
-
-  .spark-two {
-    right: 8%;
-    bottom: 14px;
-    animation-delay: 2.1s;
-  }
-
-  @keyframes restrained-shimmer {
-    0%, 16% { left: -45%; opacity: 0; }
-    22% { opacity: 0.6; }
-    42% { left: 125%; opacity: 0; }
-    100% { left: 125%; opacity: 0; }
-  }
-
-  @keyframes soft-twinkle {
-    0%, 100% { opacity: 0.45; transform: scale(0.9); }
-    50% { opacity: 0.9; transform: scale(1.08); }
-  }
-
-  .mobile-header {
-    position: relative;
-    display: flex;
-    min-height: 86px;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 20px;
-  }
-
-  .menu-toggle {
-    z-index: 2;
-    display: flex;
-    width: 42px;
-    height: 42px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    border: 1px solid rgba(177,138,59,0.35);
-    border-radius: 2px;
-    background: transparent;
-    cursor: pointer;
-  }
-
-  .menu-toggle span {
-    display: block;
-    width: 20px;
-    height: 1px;
-    background: #4b392a;
-    transition: width 180ms ease, background 180ms ease;
-  }
-
-  .menu-toggle span:nth-child(2) {
-    width: 15px;
-  }
-
-  .menu-toggle:hover span {
-    width: 20px;
-    background: var(--gold-dark);
-  }
-
-  .mobile-brand {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: min(58vw, 230px);
-    line-height: 0;
-    transform: translate(-50%, -50%);
-  }
-
-  .mobile-balance {
-    width: 42px;
-    height: 42px;
-  }
-
-  .mobile-menu {
-    border-top: 1px solid rgba(177,138,59,0.25);
-    background: var(--header-bg);
-  }
-
-  .mobile-menu[hidden] {
-    display: none;
-  }
-
-  .mobile-menu nav {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 22px 24px 26px;
-  }
-
-  .mobile-nav-link {
-    font-size: 17px;
-  }
-
-  .mobile-nav-link:hover,
-  .mobile-nav-link:focus-visible {
-    color: var(--gold-dark);
-    transform: translateX(2px);
-  }
-
-  @media (min-width: 768px) {
-    .desktop-header {
-      display: flex;
+  @keyframes header-ticker-slide {
+    0% {
+      transform: translateX(0);
     }
-
-    .mobile-header,
-    .mobile-menu {
-      display: none;
-    }
-  }
-
-  @media (min-width: 768px) and (max-width: 1279px) {
-    .desktop-header {
-      min-height: 145px;
-    }
-
-    .desktop-brand {
-      width: clamp(265px, 34vw, 350px);
-    }
-
-    .stats-card {
-      display: none;
-    }
-
-    .desktop-nav {
-      gap: 7px;
-    }
-
-    .nav-link {
-      font-size: 15px;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    .desktop-header {
-      min-height: 184px;
-    }
-  }
-
-  @media (max-width: 767px) {
-    .site-header {
-      position: sticky;
+    100% {
+      transform: translateX(-50%);
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .site-header,
-    .nav-link,
-    .mobile-nav-link,
-    .menu-toggle span {
-      transition: none;
-    }
-
-    .stats-glint,
-    .stats-spark {
+    .header-ticker-track {
       animation: none;
     }
   }
