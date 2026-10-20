@@ -18,12 +18,32 @@ export interface ProjectItem {
  * Exactly 11 projects in order.
  * All unknown details left blank until provided by user in Phase 2.
  */
-export const projectsData: ProjectItem[] = [
+export const projectsData = [
   {
     id: "aparna-county",
+    slug: "aparna-county",
     name: "Aparna County",
-    category: "",
-    coverImage: "",
+    category: "Residential",
+    location: "Janapriya Nagar, Hafeezpet, Hyderabad, Telangana 500049",
+    scope: "Luxury Modular Kitchen & Interior Architecture",
+    style: "Contemporary Warm Minimalist",
+    summary:
+      "A warm and timeless residential interior blending matte anthracite cabinetry, fluted glass vitrines, woven cane accents, and architectural track illumination.",
+    highlights: [
+      "Custom matte anthracite & fluted glass modular kitchen joinery",
+      "Woven cane wicker cabinetry accents & natural oak textures",
+      "Recessed architectural track lighting & integrated LED cove profiles",
+      "Seamless quartz countertop with undermount dual workstation sink",
+      "Built-in smart microwave, oven tower & integrated appliance concealment",
+    ],
+    coverImage: "/images/projects/aparna-county/cover.jpg",
+    gallery: [
+      "/images/projects/aparna-county/cover.jpg",
+      "/images/projects/aparna-county/1.jpg",
+      "/images/projects/aparna-county/2.jpg",
+      "/images/projects/aparna-county/3.jpg",
+      "/images/projects/aparna-county/4.jpg",
+    ],
   },
   {
     id: "aparna-serene",
