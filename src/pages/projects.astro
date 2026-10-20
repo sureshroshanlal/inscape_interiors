@@ -1,68 +1,257 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
 
-const projects: CollectionEntry<"projects">[] = await getCollection("projects");
+// Central Projects Data Array — Phase 1
+// Exactly 11 projects in order. Images and descriptions left blank until provided in Phase 2.
+const projects = [
+  {
+    id: "aparna-county",
+    name: "Aparna County",
+    category: "",
+    coverImage: "",
+  },
+  {
+    id: "aparna-serene",
+    name: "Aparna Serene",
+    category: "",
+    coverImage: "",
+  },
+  {
+    id: "apilla",
+    name: "Apilla",
+    category: "",
+    coverImage: "",
+  },
+  {
+    id: "la-paloma",
+    name: "La Paloma",
+    category: "",
+    coverImage: "",
+  },
+  {
+    id: "la-paloma-villas",
+    name: "La Paloma Villas",
+    category: "",
+    coverImage: "",
+  },
+  {
+    id: "myhome-bhuja",
+    name: "MyHome Bhuja",
+    category: "",
+    coverImage: "",
+  },
+  {
+    id: "myhome-avtar",
+    name: "MyHome Avtar",
+    category: "",
+    coverImage: "",
+  },
+  {
+    id: "praneeth-villas",
+    name: "Praneeth Villas",
+    category: "",
+    coverImage: "",
+  },
+  {
+    id: "rainbow-vistas",
+    name: "Rainbow Vistas",
+    category: "",
+    coverImage: "",
+  },
+  {
+    id: "raja-pushpa-prestinia",
+    name: "Raja Pushpa Prestinia",
+    category: "",
+    coverImage: "",
+  },
+  {
+    id: "sark-one-villas",
+    name: "SARK One Villas",
+    category: "",
+    coverImage: "",
+  },
+];
+
+const filterTabs = ["All", "Residential", "Commercial", "Hospitality", "Renovation"];
 ---
 
-<Layout title="Projects — Inscape Interiors">
-  <section class="w-full py-12 md:py-section">
-    <!-- Page heading -->
-    <div class="text-center mb-16 md:mb-20">
+<Layout
+  title="Projects — Inscape Interiors | Spaces That Inspire Everyday Living"
+  description="Explore Inscape Interiors' curated architectural and interior design projects across luxury residences, bespoke villas, and contemporary living spaces."
+>
+  <!-- PROJECTS HERO SECTION -->
+  <section class="w-full pt-12 pb-8 md:pt-16 md:pb-12 text-center">
+    <div class="max-w-[840px] mx-auto px-4">
       <h1
-        class="text-[42px] md:text-[56px] font-bold leading-tight font-serif text-hyperlink fade-in-element opacity-0 max-w-[600px] mx-auto"
+        class="text-[44px] md:text-[58px] font-bold font-serif text-hyperlink leading-tight mb-2 fade-in-element opacity-0"
       >
         Projects
       </h1>
-    </div>
+      <p
+        class="text-xs md:text-[13px] font-serif uppercase tracking-[0.25em] font-bold text-secondary/70 mb-8 fade-in-element opacity-0"
+      >
+        Spaces That Inspire Everyday Living
+      </p>
 
-    <!-- Projects grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      <!-- Category Filter Pills -->
+      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
+        {
+          filterTabs.map((tab, idx) => (
+            <button
+              class={`filter-tab-btn px-5 py-2 rounded-full text-xs sm:text-sm font-serif font-bold transition-all duration-300 cursor-pointer ${
+                idx === 0
+                  ? "bg-secondary text-primary shadow-sm"
+                  : "bg-primary/90 text-secondary/75 hover:bg-secondary/15 hover:text-secondary border border-secondary/15"
+              }`}
+              data-filter={tab}
+            >
+              {tab}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 PROJECTS RESPONSIVE GRID -->
+  <section class="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-24 md:pb-32">
+    <div
+      id="projects-grid"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-7"
+    >
       {
         projects.map((project, index) => (
-          <a
-            href={`/projects/${project.slug}`}
-            class:list={[
-              "group relative block overflow-hidden fade-in-element opacity-0",
-              index === 0 ? "md:col-span-2" : "",
-            ]}
+          <article
+            class="project-card group bg-primary/40 border border-secondary/15 rounded-2xl overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col"
+            data-category={project.category || "All"}
           >
-            <div
-              class:list={[
-                "relative overflow-hidden",
-                index === 0 ? "aspect-[16/9]" : "aspect-[3/4]",
-              ]}
-            >
-              <img
-                src={project.data.coverImage}
-                alt={`${project.data.title} ${project.data.subtitle}`}
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                loading={index === 0 ? "eager" : "lazy"}
-                decoding="async"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              {/* <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                <h2 class="font-serif font-normal text-white text-xl md:text-2xl lg:text-3xl tracking-wide">
-                  {project.data.title}
-                </h2>
-                <p class="font-sans text-white/80 text-xs md:text-sm uppercase tracking-widest mt-2">
-                  {project.data.subtitle}
-                </p>
-              </div> */}
+            <!-- Project Image Viewport / Phase 1 Placeholder -->
+            <div class="relative aspect-[4/5] w-full overflow-hidden bg-secondary/10 border-b border-secondary/10 flex items-center justify-center">
+              {project.coverImage ? (
+                <img
+                  src={project.coverImage}
+                  alt={project.name}
+                  width="800"
+                  height="1000"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-gradient-to-b from-secondary/5 to-secondary/15 group-hover:from-secondary/10 group-hover:to-secondary/20 transition-colors relative">
+                  <div class="w-14 h-14 rounded-full border border-secondary/20 bg-primary/80 backdrop-blur-xs flex items-center justify-center text-secondary mb-3 shadow-xs transition-transform duration-500 group-hover:scale-110">
+                    <svg
+                      class="w-6 h-6 stroke-[1.5]"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </div>
+                  <span class="text-[11px] font-serif uppercase tracking-[0.2em] font-semibold text-secondary/80 block">
+                    Phase 1 Placeholder
+                  </span>
+                  <span class="text-[12px] font-serif text-secondary/60 mt-1 max-w-[160px] leading-tight">
+                    Awaiting project imagery
+                  </span>
+                  <span class="absolute top-3.5 right-3.5 text-[11px] font-serif font-bold tracking-widest text-secondary/40 bg-primary/80 px-2.5 py-0.5 rounded-full border border-secondary/10">
+                    {(index + 1).toString().padStart(2, "0")}
+                  </span>
+                </div>
+              )}
             </div>
-          </a>
+
+            <!-- Project Card Content -->
+            <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div>
+                {project.category ? (
+                  <span class="text-[11px] uppercase tracking-[0.2em] font-serif font-bold text-secondary/70 block mb-1">
+                    {project.category}
+                  </span>
+                ) : (
+                  <span class="text-[10px] uppercase tracking-[0.2em] font-serif font-semibold text-secondary/40 block mb-1">
+                    Inscape Portfolio
+                  </span>
+                )}
+                <h3 class="text-xl sm:text-[22px] font-bold font-serif text-hyperlink group-hover:text-secondary transition-colors leading-snug">
+                  {project.name}
+                </h3>
+              </div>
+
+              <!-- View Project Call to Action -->
+              <div class="pt-2">
+                <a
+                  href={`#project-${project.id}`}
+                  class="inline-flex items-center gap-2.5 text-hyperlink group-hover:text-secondary transition-colors cursor-pointer"
+                >
+                  <span class="w-7 h-7 rounded-full bg-secondary text-primary flex items-center justify-center shrink-0 shadow-xs transition-transform duration-300 group-hover:scale-105">
+                    <svg
+                      class="w-3.5 h-3.5 stroke-[2.5]"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </span>
+                  <span class="text-sm font-serif font-medium tracking-wide">
+                    View Project
+                  </span>
+                </a>
+              </div>
+            </div>
+          </article>
         ))
       }
     </div>
   </section>
 </Layout>
 
+<script>
+  // Category tab filtering support
+  const filterBtns = document.querySelectorAll(".filter-tab-btn");
+  const projectCards = document.querySelectorAll(".project-card");
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const targetFilter = btn.getAttribute("data-filter") || "All";
+
+      filterBtns.forEach((b) => {
+        if (b === btn) {
+          b.classList.add("bg-secondary", "text-primary", "shadow-sm");
+          b.classList.remove("bg-primary/90", "text-secondary/75");
+        } else {
+          b.classList.remove("bg-secondary", "text-primary", "shadow-sm");
+          b.classList.add("bg-primary/90", "text-secondary/75");
+        }
+      });
+
+      projectCards.forEach((card) => {
+        const cat = card.getAttribute("data-category");
+        if (targetFilter === "All" || cat === targetFilter) {
+          (card as HTMLElement).style.display = "flex";
+        } else {
+          (card as HTMLElement).style.display = "none";
+        }
+      });
+    });
+  });
+</script>
+
 <style>
   .fade-in-element {
     transition:
-      opacity 1.2s ease-out,
-      transform 1.2s ease-out;
+      opacity 1s ease-out,
+      transform 1s ease-out;
     transform: translateY(20px);
   }
   .fade-in-element.visible {
@@ -70,19 +259,3 @@ const projects: CollectionEntry<"projects">[] = await getCollection("projects");
     transform: translateY(0);
   }
 </style>
-
-<script>
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add("visible"), index * 150);
-        }
-      });
-    },
-    { threshold: 0.15 },
-  );
-  document
-    .querySelectorAll(".fade-in-element")
-    .forEach((el) => observer.observe(el));
-</script>
