@@ -1,145 +1,206 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
+import { projectsData } from "../../data/projectsData";
 
 export async function getStaticPaths() {
-  const projects = await getCollection("projects");
-  return projects.map((project: { slug: any }) => ({
-    params: { slug: project.slug },
+  return projectsData.map((project) => ({
+    params: { slug: project.id },
     props: { project },
   }));
 }
 
-interface Props {
-  project: CollectionEntry<"projects">;
-}
-
-type Section = CollectionEntry<"projects">["data"]["sections"][number];
-
 const { project } = Astro.props;
-const { title, subtitle, coverImage, sections } = project.data;
+const images = project.gallery && project.gallery.length > 0
+  ? project.gallery
+  : project.coverImage
+  ? [project.coverImage]
+  : [];
 ---
 
-<Layout title={`${title} — Inscape Interiors`}>
-  <!-- HERO -->
-  <section class="relative w-full h-[80vh] overflow-hidden">
-    <img src={coverImage} alt={title} class="w-full h-full object-cover" />
-    <div class="absolute inset-0 bg-black/30"></div>
-    <!-- <div
-      class="absolute bottom-12 left-1/2 -translate-x-1/2 text-center text-white"
-    >
-      <h1 class="text-4xl md:text-6xl font-serif font-normal mb-4">{title}</h1>
-      <p class="uppercase tracking-widest text-sm opacity-80">{subtitle}</p>
-    </div> -->
-  </section>
+<Layout
+  title={`${project.name} — Inscape Interiors`}
+  description={project.summary || `Explore ${project.name} by Inscape Interiors.`}
+>
+  <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
+    <!-- Breadcrumb / Back Link -->
+    <div class="mb-6">
+      <a
+        href="/projects"
+        class="inline-flex items-center gap-2 text-xs font-serif uppercase tracking-widest text-secondary/70 hover:text-secondary transition-colors py-1 cursor-pointer"
+      >
+        <span>← Back to All Projects</span>
+      </a>
+    </div>
 
-  <!-- CASE STUDY SECTIONS -->
-  <section class="py-20 md:py-28 space-y-28">
-    {
-      (sections as Section[]).map((section) => {
-        /* INTRO */
-        if (section.type === "intro") {
-          return (
-            <div class="max-w-3xl mx-auto text-center fade-section opacity-0">
-              <p class="text-lg md:text-xl font-bold leading-relaxed text-hyperlink">
-                {section.content}
-              </p>
-            </div>
-          );
-        }
+    <!-- Project Header Row -->
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-secondary/15">
+      <div class="max-w-3xl space-y-3">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rotate-45 bg-[#B38E46]"></span>
+          <span class="text-xs uppercase tracking-[0.2em] font-serif font-bold text-[#8C6D37]">
+            {project.category || "Luxury Commission"}
+          </span>
+        </div>
 
-        /* FULL BLEED IMAGE */
-        if (section.type === "full-image") {
-          return (
-            <div class="w-full fade-section opacity-0">
-              <img
-                src={section.image}
-                alt=""
-                class="w-full h-auto block cursor-zoom"
-                data-zoom
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-          );
-        }
+        <h1 class="text-[36px] sm:text-[46px] md:text-[54px] font-bold font-serif text-secondary leading-tight">
+          {project.name}
+        </h1>
 
-        /* TWO COLUMN */
-        if (section.type === "two-column") {
-          return (
-            <div class="fade-section opacity-0">
-              <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class={section.layout === "left" ? "" : "md:order-2"}>
-                  <h2 class="text-3xl font-serif font-bold text-hyperlink mb-6">
-                    {section.title}
-                  </h2>
-                  <p class="text-lg font-bold text-hyperlink leading-relaxed">
-                    {section.content}
-                  </p>
-                </div>
-                <div>
-                  <img
-                    src={section.image}
-                    alt={section.title}
-                    class="w-full h-auto block cursor-zoom"
-                    data-zoom
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-              </div>
-            </div>
-          );
-        }
+        <p class="text-base sm:text-lg font-serif text-secondary/85 italic leading-relaxed">
+          {project.summary || `A bespoke interior commission by Inscape Interiors.`}
+        </p>
+      </div>
 
-        /* MASONRY */
-        if (section.type === "masonry") {
-          return (
-            <div class="fade-section opacity-0">
-              <div class="columns-1 md:columns-3 gap-6 space-y-6">
-                {section.images.map((img: string) => (
-                  <img
-                    src={img}
-                    alt=""
-                    class="w-full h-auto block cursor-zoom mb-6"
-                    data-zoom
-                    loading="lazy"
-                    decoding="async"
-                  />
-                ))}
-              </div>
+      <div class="shrink-0">
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-secondary text-primary font-serif text-sm font-semibold tracking-wide shadow-md hover:bg-secondary/90 transition-all duration-300"
+        >
+          <span>Enquire About This Project</span>
+          <span class="text-base">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Quick Meta Strip -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-b border-secondary/15 text-secondary">
+      <div>
+        <span class="text-[10.5px] uppercase tracking-wider text-secondary/50 font-serif block">Category</span>
+        <span class="text-sm font-serif font-bold">{project.category || "Residential"}</span>
+      </div>
+      <div>
+        <span class="text-[10.5px] uppercase tracking-wider text-secondary/50 font-serif block">Location</span>
+        <span class="text-sm font-serif font-bold truncate block">{project.location || "Hyderabad, Telangana"}</span>
+      </div>
+      <div>
+        <span class="text-[10.5px] uppercase tracking-wider text-secondary/50 font-serif block">Year</span>
+        <span class="text-sm font-serif font-bold">{project.year || "2024"}</span>
+      </div>
+      <div>
+        <span class="text-[10.5px] uppercase tracking-wider text-secondary/50 font-serif block">Scope</span>
+        <span class="text-sm font-serif font-bold">{project.scope || "Interior Architecture & Joinery"}</span>
+      </div>
+    </div>
+
+    <!-- Gallery / Main Image Viewport -->
+    <div class="pt-8 space-y-4">
+      {images.length > 0 ? (
+        <div>
+          <!-- Main Hero Image with Zoom support -->
+          <div class="relative aspect-[16/9] sm:aspect-[21/10] w-full rounded-2xl overflow-hidden bg-black shadow-lg">
+            <img
+              id="main-project-image"
+              src={images[0]}
+              alt={project.name}
+              class="w-full h-full object-cover transition-all duration-500 cursor-zoom"
+              data-zoom
+            />
+            <div class="absolute bottom-4 left-4 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-xs text-white text-xs font-mono font-medium tracking-wider">
+              <span id="active-image-index">01</span> / {images.length.toString().padStart(2, "0")}
             </div>
-          );
-        }
-      })
-    }
-  </section>
+          </div>
+
+          <!-- Thumbnail Strip -->
+          {images.length > 1 && (
+            <div class="flex items-center gap-3 overflow-x-auto py-3">
+              {images.map((img, idx) => (
+                <button
+                  class={`thumbnail-btn relative w-24 sm:w-28 aspect-[4/3] rounded-xl overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${idx === 0 ? "border-[#8C6D37] opacity-100" : "border-transparent opacity-60 hover:opacity-100"}`}
+                  data-src={img}
+                  data-index={idx + 1}
+                >
+                  <img src={img} alt={`Thumbnail ${idx + 1}`} class="w-full h-full object-cover" />
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      ) : (
+        <div class="p-16 rounded-2xl bg-primary/40 border border-secondary/15 text-center space-y-3">
+          <span class="text-xs font-serif uppercase tracking-widest text-[#8C6D37] font-semibold">Phase 1 Standby</span>
+          <h3 class="text-2xl font-serif font-bold text-secondary">Photography Awaiting Upload</h3>
+          <p class="text-sm font-serif text-secondary/70 max-w-md mx-auto">
+            Images for {project.name} will display here once added to the repository.
+          </p>
+        </div>
+      )}
+    </div>
+
+    <!-- Project Highlights & Details -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 pt-12 border-t border-secondary/15 mt-10">
+      <div class="space-y-5">
+        <h3 class="text-2xl font-serif font-bold text-secondary">Project Highlights</h3>
+        <ul class="space-y-3.5">
+          {(project.highlights && project.highlights.length > 0
+            ? project.highlights
+            : [
+                "Custom bespoke modular joinery with soft-close German fittings",
+                "Recessed architectural lighting and ambient cove illumination",
+                "High-performance quartz countertop surfaces with seamless splashbacks",
+                "Integrated smart appliance towers and concealed refrigeration",
+                "Natural oak textures and tactile materials creating everyday luxury",
+              ]
+          ).map((highlight) => (
+            <li class="flex items-start gap-3">
+              <span class="text-[#B38E46] mt-0.5 text-base shrink-0">✦</span>
+              <span class="text-base font-serif text-secondary/90 leading-snug">{highlight}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="space-y-5">
+        <h3 class="text-2xl font-serif font-bold text-secondary">Project Details</h3>
+        <div class="divide-y divide-secondary/10 border-y border-secondary/15">
+          <div class="py-3 flex items-start justify-between gap-4 text-sm font-serif">
+            <span class="text-secondary/60 font-medium">Category</span>
+            <span class="text-secondary font-semibold text-right">{project.category || "Residential"}</span>
+          </div>
+          <div class="py-3 flex items-start justify-between gap-4 text-sm font-serif">
+            <span class="text-secondary/60 font-medium">Location</span>
+            <span class="text-secondary font-semibold text-right max-w-xs">{project.location || "Hyderabad, Telangana"}</span>
+          </div>
+          <div class="py-3 flex items-start justify-between gap-4 text-sm font-serif">
+            <span class="text-secondary/60 font-medium">Year</span>
+            <span class="text-secondary font-semibold text-right">{project.year || "2024"}</span>
+          </div>
+          <div class="py-3 flex items-start justify-between gap-4 text-sm font-serif">
+            <span class="text-secondary/60 font-medium">Scope</span>
+            <span class="text-secondary font-semibold text-right">{project.scope || "Bespoke Interior Architecture"}</span>
+          </div>
+          <div class="py-3 flex items-start justify-between gap-4 text-sm font-serif">
+            <span class="text-secondary/60 font-medium">Style</span>
+            <span class="text-secondary font-semibold text-right">{project.style || "Contemporary Warm Minimalist"}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </Layout>
 
-<style>
-  .fade-section {
-    transform: translateY(40px);
-    transition:
-      opacity 1s ease,
-      transform 1s ease;
-  }
-  .fade-section.visible {
-    opacity: 1 !important;
-    transform: translateY(0);
-  }
-</style>
-
 <script>
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add("visible");
+  const mainImage = document.getElementById("main-project-image") as HTMLImageElement | null;
+  const indexBadge = document.getElementById("active-image-index");
+  const thumbBtns = document.querySelectorAll(".thumbnail-btn");
+
+  thumbBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const newSrc = btn.getAttribute("data-src");
+      const idx = btn.getAttribute("data-index");
+
+      if (mainImage && newSrc) {
+        mainImage.src = newSrc;
+      }
+      if (indexBadge && idx) {
+        indexBadge.textContent = idx.padStart(2, "0");
+      }
+
+      thumbBtns.forEach((b) => {
+        b.classList.remove("border-[#8C6D37]", "opacity-100");
+        b.classList.add("border-transparent", "opacity-60");
       });
-    },
-    { threshold: 0.15 },
-  );
-  document
-    .querySelectorAll(".fade-section")
-    .forEach((el) => observer.observe(el));
+      btn.classList.add("border-[#8C6D37]", "opacity-100");
+      btn.classList.remove("border-transparent", "opacity-60");
+    });
+  });
 </script>
