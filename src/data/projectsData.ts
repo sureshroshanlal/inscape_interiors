@@ -1,5 +1,6 @@
 export interface ProjectItem {
   id: string;
+  slug?: string;
   name: string;
   category?: string;
   location?: string;
@@ -18,13 +19,15 @@ export interface ProjectItem {
  * Exactly 11 projects in order.
  * All unknown details left blank until provided by user in Phase 2.
  */
-export const projectsData = [
+export const projectsData: ProjectItem[] = [
   {
     id: "aparna-county",
     slug: "aparna-county",
     name: "Aparna County",
     category: "Residential",
     location: "Janapriya Nagar, Hafeezpet, Hyderabad, Telangana 500049",
+    year: "2024",
+    area: "Bespoke Residence",
     scope: "Luxury Modular Kitchen & Interior Architecture",
     style: "Contemporary Warm Minimalist",
     summary:
@@ -47,60 +50,70 @@ export const projectsData = [
   },
   {
     id: "aparna-serene",
+    slug: "aparna-serene",
     name: "Aparna Serene",
     category: "",
     coverImage: "",
   },
   {
     id: "apilla",
+    slug: "apilla",
     name: "Apilla",
     category: "",
     coverImage: "",
   },
   {
     id: "la-paloma",
+    slug: "la-paloma",
     name: "La Paloma",
     category: "",
     coverImage: "",
   },
   {
     id: "la-paloma-villas",
+    slug: "la-paloma-villas",
     name: "La Paloma Villas",
     category: "",
     coverImage: "",
   },
   {
     id: "myhome-bhuja",
+    slug: "myhome-bhuja",
     name: "MyHome Bhuja",
     category: "",
     coverImage: "",
   },
   {
     id: "myhome-avtar",
+    slug: "myhome-avtar",
     name: "MyHome Avtar",
     category: "",
     coverImage: "",
   },
   {
     id: "praneeth-villas",
+    slug: "praneeth-villas",
     name: "Praneeth Villas",
     category: "",
     coverImage: "",
   },
   {
     id: "rainbow-vistas",
+    slug: "rainbow-vistas",
     name: "Rainbow Vistas",
     category: "",
     coverImage: "",
   },
   {
     id: "raja-pushpa-prestinia",
+    slug: "raja-pushpa-prestinia",
     name: "Raja Pushpa Prestinia",
     category: "",
     coverImage: "",
   },
   {
     id: "sark-one-villas",
+    slug: "sark-one-villas",
     name: "SARK One Villas",
     category: "",
     coverImage: "",
