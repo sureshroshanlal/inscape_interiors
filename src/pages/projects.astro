@@ -1,78 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { projectsData as projects } from "../data/projectsData";
 
-// Central Projects Data Array — Phase 1
-// Exactly 11 projects in order. Images and descriptions left blank until provided in Phase 2.
-const projects = [
-  {
-    id: "aparna-county",
-    name: "Aparna County",
-    category: "",
-    coverImage: "",
-  },
-  {
-    id: "aparna-serene",
-    name: "Aparna Serene",
-    category: "",
-    coverImage: "",
-  },
-  {
-    id: "apilla",
-    name: "Apilla",
-    category: "",
-    coverImage: "",
-  },
-  {
-    id: "la-paloma",
-    name: "La Paloma",
-    category: "",
-    coverImage: "",
-  },
-  {
-    id: "la-paloma-villas",
-    name: "La Paloma Villas",
-    category: "",
-    coverImage: "",
-  },
-  {
-    id: "myhome-bhuja",
-    name: "MyHome Bhuja",
-    category: "",
-    coverImage: "",
-  },
-  {
-    id: "myhome-avtar",
-    name: "MyHome Avtar",
-    category: "",
-    coverImage: "",
-  },
-  {
-    id: "praneeth-villas",
-    name: "Praneeth Villas",
-    category: "",
-    coverImage: "",
-  },
-  {
-    id: "rainbow-vistas",
-    name: "Rainbow Vistas",
-    category: "",
-    coverImage: "",
-  },
-  {
-    id: "raja-pushpa-prestinia",
-    name: "Raja Pushpa Prestinia",
-    category: "",
-    coverImage: "",
-  },
-  {
-    id: "sark-one-villas",
-    name: "SARK One Villas",
-    category: "",
-    coverImage: "",
-  },
-];
-
-const filterTabs = ["All",];
+const filterTabs = ["All", "Residential", "Commercial", "Hospitality", "Renovation"];
 ---
 
 <Layout
@@ -128,14 +58,16 @@ const filterTabs = ["All",];
             <!-- Project Image Viewport / Phase 1 Placeholder -->
             <div class="relative aspect-[4/5] w-full overflow-hidden bg-secondary/10 border-b border-secondary/10 flex items-center justify-center">
               {project.coverImage ? (
-                <img
-                  src={project.coverImage}
-                  alt={project.name}
-                  width="800"
-                  height="1000"
-                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                />
+                <a href={`/projects/${project.id}`} class="w-full h-full block">
+                  <img
+                    src={project.coverImage}
+                    alt={project.name}
+                    width="800"
+                    height="1000"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </a>
               ) : (
                 <div class="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-gradient-to-b from-secondary/5 to-secondary/15 group-hover:from-secondary/10 group-hover:to-secondary/20 transition-colors relative">
                   <div class="w-14 h-14 rounded-full border border-secondary/20 bg-primary/80 backdrop-blur-xs flex items-center justify-center text-secondary mb-3 shadow-xs transition-transform duration-500 group-hover:scale-110">
@@ -186,7 +118,7 @@ const filterTabs = ["All",];
               <!-- View Project Call to Action -->
               <div class="pt-2">
                 <a
-                  href={`#project-${project.id}`}
+                  href={`/projects/${project.id}`}
                   class="inline-flex items-center gap-2.5 text-hyperlink group-hover:text-secondary transition-colors cursor-pointer"
                 >
                   <span class="w-7 h-7 rounded-full bg-secondary text-primary flex items-center justify-center shrink-0 shadow-xs transition-transform duration-300 group-hover:scale-105">
