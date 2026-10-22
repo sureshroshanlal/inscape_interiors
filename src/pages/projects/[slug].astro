@@ -3,204 +3,266 @@ import Layout from "../../layouts/Layout.astro";
 import { projectsData } from "../../data/projectsData";
 
 export async function getStaticPaths() {
-  return projectsData.map((project) => ({
-    params: { slug: project.id },
-    props: { project },
-  }));
+  return projectsData.map((project, index) => {
+    const prevProject =
+      index > 0 ? projectsData[index - 1] : projectsData[projectsData.length - 1];
+    const nextProject =
+      index < projectsData.length - 1
+        ? projectsData[index + 1]
+        : projectsData[0];
+
+    return {
+      params: { slug: project.slug },
+      props: { project, prevProject, nextProject, projectIndex: index + 1 },
+    };
+  });
 }
 
-const { project } = Astro.props;
-const images = project.gallery && project.gallery.length > 0
-  ? project.gallery
-  : project.coverImage
-  ? [project.coverImage]
-  : [];
+const { project, prevProject, nextProject, projectIndex } = Astro.props;
+const {
+  name,
+  category,
+  location,
+  scope,
+  style,
+  summary,
+  highlights,
+  coverImage,
+  gallery,
+} = project;
 ---
 
 <Layout
-  title={`${project.name} — Inscape Interiors`}
-  description={project.summary || `Explore ${project.name} by Inscape Interiors.`}
+  title={`${name} — Inscape Interiors`}
+  description={summary || `Explore ${name} by Inscape Interiors in ${location}.`}
 >
-  <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
-    <!-- Breadcrumb / Back Link -->
-    <div class="mb-6">
+  <!-- SUBHEADER / BREADCRUMBS -->
+  <nav class="w-full bg-primary/60 border-b border-secondary/10 py-3.5 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-[1280px] mx-auto flex items-center justify-between text-xs font-serif">
       <a
         href="/projects"
-        class="inline-flex items-center gap-2 text-xs font-serif uppercase tracking-widest text-secondary/70 hover:text-secondary transition-colors py-1 cursor-pointer"
+        class="inline-flex items-center gap-2 text-hyperlink hover:text-secondary transition-colors font-medium"
       >
-        <span>← Back to All Projects</span>
+        <svg class="w-4 h-4 stroke-[2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        <span>Back to Projects</span>
       </a>
+      <span class="text-secondary/50 uppercase tracking-widest font-semibold text-[11px]">
+        Project {projectIndex.toString().padStart(2, "0")} of 11
+      </span>
     </div>
+  </nav>
 
-    <!-- Project Header Row -->
-    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-secondary/15">
-      <div class="max-w-3xl space-y-3">
-        <div class="flex items-center gap-2">
-          <span class="w-2 h-2 rotate-45 bg-[#B38E46]"></span>
-          <span class="text-xs uppercase tracking-[0.2em] font-serif font-bold text-[#8C6D37]">
-            {project.category || "Luxury Commission"}
-          </span>
-        </div>
+  <!-- HERO COVER IMAGE -->
+  <section class="relative w-full h-[65vh] md:h-[80vh] overflow-hidden bg-secondary/10">
+    <img
+      src={coverImage}
+      alt={name}
+      class="w-full h-full object-cover"
+      loading="eager"
+      decoding="async"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/30"></div>
 
-        <h1 class="text-[36px] sm:text-[46px] md:text-[54px] font-bold font-serif text-secondary leading-tight">
-          {project.name}
+    <div class="absolute bottom-8 md:bottom-14 left-0 right-0 max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 text-white">
+      <div class="max-w-3xl">
+        <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md text-white text-xs uppercase tracking-[0.25em] font-serif font-bold rounded-full mb-3">
+          {category || "Residential Interior"}
+        </span>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold font-serif leading-tight mb-3">
+          {name}
         </h1>
+        {location && (
+          <p class="text-white/80 font-serif text-sm md:text-base flex items-center gap-2">
+            <svg class="w-4 h-4 shrink-0 stroke-[2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span>{location}</span>
+          </p>
+        )}
+      </div>
+    </div>
+  </section>
 
-        <p class="text-base sm:text-lg font-serif text-secondary/85 italic leading-relaxed">
-          {project.summary || `A bespoke interior commission by Inscape Interiors.`}
+  <!-- PROJECT METADATA & SPECS BAR -->
+  <section class="w-full border-b border-secondary/15 bg-primary/40 py-8 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-[1280px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-secondary">
+      <div>
+        <span class="block text-[11px] uppercase tracking-widest font-serif text-secondary/50 font-bold mb-1">
+          Location
+        </span>
+        <p class="text-sm md:text-base font-serif font-bold text-hyperlink leading-snug">
+          {location || "Hyderabad, Telangana"}
         </p>
       </div>
 
-      <div class="shrink-0">
-        <a
-          href="/contact"
-          class="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-secondary text-primary font-serif text-sm font-semibold tracking-wide shadow-md hover:bg-secondary/90 transition-all duration-300"
-        >
-          <span>Enquire About This Project</span>
-          <span class="text-base">→</span>
-        </a>
+      <div>
+        <span class="block text-[11px] uppercase tracking-widest font-serif text-secondary/50 font-bold mb-1">
+          Project Type
+        </span>
+        <p class="text-sm md:text-base font-serif font-bold text-hyperlink leading-snug">
+          {category || "Bespoke Residence"}
+        </p>
+      </div>
+
+      <div>
+        <span class="block text-[11px] uppercase tracking-widest font-serif text-secondary/50 font-bold mb-1">
+          Design Scope
+        </span>
+        <p class="text-sm md:text-base font-serif font-bold text-hyperlink leading-snug">
+          {scope || "Turnkey Interior Architecture"}
+        </p>
+      </div>
+
+      <div>
+        <span class="block text-[11px] uppercase tracking-widest font-serif text-secondary/50 font-bold mb-1">
+          Aesthetic Style
+        </span>
+        <p class="text-sm md:text-base font-serif font-bold text-hyperlink leading-snug">
+          {style || "Contemporary Luxury"}
+        </p>
       </div>
     </div>
+  </section>
 
-    <!-- Quick Meta Strip -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-b border-secondary/15 text-secondary">
-      <div>
-        <span class="text-[10.5px] uppercase tracking-wider text-secondary/50 font-serif block">Category</span>
-        <span class="text-sm font-serif font-bold">{project.category || "Residential"}</span>
+  <!-- EDITORIAL OVERVIEW -->
+  <section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-start">
+      <div class="md:col-span-4 fade-section opacity-0">
+        <span class="text-xs uppercase tracking-[0.25em] font-serif font-bold text-secondary/60 block mb-2">
+          Design Narrative
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-bold font-serif text-hyperlink leading-tight">
+          Thoughtful Spatial Planning & Curated Joinery
+        </h2>
       </div>
-      <div>
-        <span class="text-[10.5px] uppercase tracking-wider text-secondary/50 font-serif block">Location</span>
-        <span class="text-sm font-serif font-bold truncate block">{project.location || "Hyderabad, Telangana"}</span>
-      </div>
-      <div>
-        <span class="text-[10.5px] uppercase tracking-wider text-secondary/50 font-serif block">Year</span>
-        <span class="text-sm font-serif font-bold">{project.year || "2024"}</span>
-      </div>
-      <div>
-        <span class="text-[10.5px] uppercase tracking-wider text-secondary/50 font-serif block">Scope</span>
-        <span class="text-sm font-serif font-bold">{project.scope || "Interior Architecture & Joinery"}</span>
-      </div>
-    </div>
 
-    <!-- Gallery / Main Image Viewport -->
-    <div class="pt-8 space-y-4">
-      {images.length > 0 ? (
-        <div>
-          <!-- Main Hero Image with Zoom support -->
-          <div class="relative aspect-[16/9] sm:aspect-[21/10] w-full rounded-2xl overflow-hidden bg-black shadow-lg">
-            <img
-              id="main-project-image"
-              src={images[0]}
-              alt={project.name}
-              class="w-full h-full object-cover transition-all duration-500 cursor-zoom"
-              data-zoom
-            />
-            <div class="absolute bottom-4 left-4 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-xs text-white text-xs font-mono font-medium tracking-wider">
-              <span id="active-image-index">01</span> / {images.length.toString().padStart(2, "0")}
-            </div>
-          </div>
+      <div class="md:col-span-8 space-y-6 fade-section opacity-0">
+        <p class="text-base sm:text-lg font-serif text-secondary/85 leading-relaxed">
+          {summary}
+        </p>
 
-          <!-- Thumbnail Strip -->
-          {images.length > 1 && (
-            <div class="flex items-center gap-3 overflow-x-auto py-3">
-              {images.map((img, idx) => (
-                <button
-                  class={`thumbnail-btn relative w-24 sm:w-28 aspect-[4/3] rounded-xl overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${idx === 0 ? "border-[#8C6D37] opacity-100" : "border-transparent opacity-60 hover:opacity-100"}`}
-                  data-src={img}
-                  data-index={idx + 1}
-                >
-                  <img src={img} alt={`Thumbnail ${idx + 1}`} class="w-full h-full object-cover" />
-                </button>
+        {highlights && highlights.length > 0 && (
+          <div class="pt-4">
+            <h3 class="text-xs uppercase tracking-[0.2em] font-serif font-bold text-secondary/70 mb-3">
+              Craftsmanship Highlights
+            </h3>
+            <ul class="grid sm:grid-cols-2 gap-3">
+              {highlights.map((item) => (
+                <li class="flex items-start gap-2.5 text-xs sm:text-sm font-serif text-secondary/80">
+                  <span class="w-1.5 h-1.5 rounded-full bg-secondary shrink-0 mt-1.5"></span>
+                  <span>{item}</span>
+                </li>
               ))}
-            </div>
-          )}
-        </div>
-      ) : (
-        <div class="p-16 rounded-2xl bg-primary/40 border border-secondary/15 text-center space-y-3">
-          <span class="text-xs font-serif uppercase tracking-widest text-[#8C6D37] font-semibold">Phase 1 Standby</span>
-          <h3 class="text-2xl font-serif font-bold text-secondary">Photography Awaiting Upload</h3>
-          <p class="text-sm font-serif text-secondary/70 max-w-md mx-auto">
-            Images for {project.name} will display here once added to the repository.
-          </p>
-        </div>
-      )}
-    </div>
-
-    <!-- Project Highlights & Details -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 pt-12 border-t border-secondary/15 mt-10">
-      <div class="space-y-5">
-        <h3 class="text-2xl font-serif font-bold text-secondary">Project Highlights</h3>
-        <ul class="space-y-3.5">
-          {(project.highlights && project.highlights.length > 0
-            ? project.highlights
-            : [
-                "Custom bespoke modular joinery with soft-close German fittings",
-                "Recessed architectural lighting and ambient cove illumination",
-                "High-performance quartz countertop surfaces with seamless splashbacks",
-                "Integrated smart appliance towers and concealed refrigeration",
-                "Natural oak textures and tactile materials creating everyday luxury",
-              ]
-          ).map((highlight) => (
-            <li class="flex items-start gap-3">
-              <span class="text-[#B38E46] mt-0.5 text-base shrink-0">✦</span>
-              <span class="text-base font-serif text-secondary/90 leading-snug">{highlight}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div class="space-y-5">
-        <h3 class="text-2xl font-serif font-bold text-secondary">Project Details</h3>
-        <div class="divide-y divide-secondary/10 border-y border-secondary/15">
-          <div class="py-3 flex items-start justify-between gap-4 text-sm font-serif">
-            <span class="text-secondary/60 font-medium">Category</span>
-            <span class="text-secondary font-semibold text-right">{project.category || "Residential"}</span>
+            </ul>
           </div>
-          <div class="py-3 flex items-start justify-between gap-4 text-sm font-serif">
-            <span class="text-secondary/60 font-medium">Location</span>
-            <span class="text-secondary font-semibold text-right max-w-xs">{project.location || "Hyderabad, Telangana"}</span>
-          </div>
-          <div class="py-3 flex items-start justify-between gap-4 text-sm font-serif">
-            <span class="text-secondary/60 font-medium">Year</span>
-            <span class="text-secondary font-semibold text-right">{project.year || "2024"}</span>
-          </div>
-          <div class="py-3 flex items-start justify-between gap-4 text-sm font-serif">
-            <span class="text-secondary/60 font-medium">Scope</span>
-            <span class="text-secondary font-semibold text-right">{project.scope || "Bespoke Interior Architecture"}</span>
-          </div>
-          <div class="py-3 flex items-start justify-between gap-4 text-sm font-serif">
-            <span class="text-secondary/60 font-medium">Style</span>
-            <span class="text-secondary font-semibold text-right">{project.style || "Contemporary Warm Minimalist"}</span>
-          </div>
-        </div>
+        )}
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- PROJECT GALLERY -->
+  <section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-20 md:pb-28">
+    <div class="mb-8 flex items-center justify-between border-b border-secondary/15 pb-4">
+      <div>
+        <span class="text-xs uppercase tracking-[0.25em] font-serif font-bold text-secondary/60 block">
+          Visual Walkthrough
+        </span>
+        <h2 class="text-2xl font-bold font-serif text-hyperlink">
+          Project Gallery ({gallery.length} Images)
+        </h2>
+      </div>
+    </div>
+
+    <!-- Responsive Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        gallery.map((imgSrc, imgIdx) => (
+          <div class="fade-section opacity-0 group relative aspect-[4/3] rounded-xl overflow-hidden bg-secondary/10 border border-secondary/15 shadow-xs">
+            <img
+              src={imgSrc}
+              alt={`${name} - Gallery Image ${imgIdx + 1}`}
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 cursor-zoom"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+            <span class="absolute bottom-2.5 right-2.5 text-[10px] font-serif text-white/90 bg-black/50 backdrop-blur-xs px-2 py-0.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
+              {imgIdx + 1} / {gallery.length}
+            </span>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- NEXT / PREVIOUS PROJECT NAVIGATION -->
+  <section class="border-t border-secondary/15 bg-primary/30 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-[1280px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      <a
+        href={`/projects/${prevProject.slug}`}
+        class="group inline-flex items-center gap-3 text-secondary hover:text-hyperlink transition-colors"
+      >
+        <span class="w-9 h-9 rounded-full bg-secondary text-primary flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+          <svg class="w-4 h-4 stroke-[2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </span>
+        <div class="text-left">
+          <span class="text-[10px] uppercase tracking-widest font-serif text-secondary/50 block">Previous</span>
+          <span class="text-sm font-bold font-serif">{prevProject.name}</span>
+        </div>
+      </a>
+
+      <a
+        href="/projects"
+        class="px-5 py-2 rounded-full border border-secondary/20 text-xs uppercase tracking-widest font-serif font-bold text-secondary hover:bg-secondary hover:text-primary transition-all"
+      >
+        All Projects
+      </a>
+
+      <a
+        href={`/projects/${nextProject.slug}`}
+        class="group inline-flex items-center gap-3 text-secondary hover:text-hyperlink transition-colors text-right"
+      >
+        <div>
+          <span class="text-[10px] uppercase tracking-widest font-serif text-secondary/50 block">Next</span>
+          <span class="text-sm font-bold font-serif">{nextProject.name}</span>
+        </div>
+        <span class="w-9 h-9 rounded-full bg-secondary text-primary flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+          <svg class="w-4 h-4 stroke-[2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </span>
+      </a>
+    </div>
+  </section>
 </Layout>
 
+<style>
+  .fade-section {
+    transform: translateY(30px);
+    transition:
+      opacity 0.8s ease-out,
+      transform 0.8s ease-out;
+  }
+  .fade-section.visible {
+    opacity: 1 !important;
+    transform: translateY(0);
+  }
+</style>
+
 <script>
-  const mainImage = document.getElementById("main-project-image") as HTMLImageElement | null;
-  const indexBadge = document.getElementById("active-image-index");
-  const thumbBtns = document.querySelectorAll(".thumbnail-btn");
-
-  thumbBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const newSrc = btn.getAttribute("data-src");
-      const idx = btn.getAttribute("data-index");
-
-      if (mainImage && newSrc) {
-        mainImage.src = newSrc;
-      }
-      if (indexBadge && idx) {
-        indexBadge.textContent = idx.padStart(2, "0");
-      }
-
-      thumbBtns.forEach((b) => {
-        b.classList.remove("border-[#8C6D37]", "opacity-100");
-        b.classList.add("border-transparent", "opacity-60");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
       });
-      btn.classList.add("border-[#8C6D37]", "opacity-100");
-      btn.classList.remove("border-transparent", "opacity-60");
-    });
-  });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll(".fade-section").forEach((el) => observer.observe(el));
 </script>
