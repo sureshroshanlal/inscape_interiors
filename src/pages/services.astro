@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
+// Complete 11 Services with high-intent SEO content, deliverables, and metrics
 const services = [
   {
     id: "turnkey-projects",
@@ -22,6 +23,7 @@ const services = [
     ],
     metric: "170+ Turnkey Projects Delivered",
     image: "/images/services/turnkey-projects.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1920&q=85",
     alt: "Inscape Turnkey Interior Design Projects — Luxury Residential Execution",
   },
   {
@@ -44,6 +46,7 @@ const services = [
     ],
     metric: "Expert Heritage & Modern Revival",
     image: "/images/services/renovation-restoration.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=85",
     alt: "Inscape Renovation and Restoration Services — Historic High-Ceiling Salon",
   },
   {
@@ -66,11 +69,12 @@ const services = [
     ],
     metric: "20 Years of Architectural Mastery",
     image: "/images/services/architectural-design.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=85",
     alt: "Inscape Architectural Design — Modern Luxury Villa Architecture",
   },
   {
     id: "painting",
-    menuTitle: "Painting & Finishes",
+    menuTitle: "Painting",
     title: "Artisanal Painting & Surface Finishes",
     category: "Italian Stucco, Micro-Cement Screeds & Artisanal Lime Wash",
     summary:
@@ -87,12 +91,13 @@ const services = [
       "Zero-VOC Eco-Friendly Formulations with Micro-Crack Resistance",
     ],
     metric: "Master Artisan Craftsmen",
-    image: "/images/services/painting-finishes.jpg",
+    image: "/images/services/painting.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=85",
     alt: "Inscape Artisanal Painting and Venetian Plaster Surface Finishes",
   },
   {
     id: "lighting",
-    menuTitle: "Lighting Design",
+    menuTitle: "Lighting",
     title: "Architectural & Circadian Lighting",
     category: "Illumination Schematics, Cove Lighting & Smart DALI Controls",
     summary:
@@ -110,6 +115,7 @@ const services = [
     ],
     metric: "Engineered Illumination",
     image: "/images/services/lighting.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1920&q=85",
     alt: "Inscape Architectural Lighting Design — Layered Warm Cove and Pendant Illumination",
   },
   {
@@ -132,6 +138,7 @@ const services = [
     ],
     metric: "Heirloom Grade Millwork",
     image: "/images/services/furniture.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1920&q=85",
     alt: "Inscape Bespoke Handcrafted Furniture Workshop — Sculpted Walnut Credenza",
   },
   {
@@ -154,6 +161,7 @@ const services = [
     ],
     metric: "High-Performance Workplaces",
     image: "/images/services/office-interiors.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=85",
     alt: "Inscape Corporate Office Interiors — Executive Boardroom with Slatted Oak Paneling",
   },
   {
@@ -176,6 +184,7 @@ const services = [
     ],
     metric: "Clinical Hygiene Meets Luxury",
     image: "/images/services/commercial-healthcare.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1920&q=85",
     alt: "Inscape Commercial and Healthcare Interiors — Serene Wellness Clinic Reception",
   },
   {
@@ -198,11 +207,12 @@ const services = [
     ],
     metric: "Immersive Guest Experiences",
     image: "/images/services/hospitality-interiors.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=85",
     alt: "Inscape Hospitality Interiors — Luxury Hotel Cocktail Lounge with Backlit Onyx Bar",
   },
   {
     id: "farmhouses",
-    menuTitle: "Luxury Farmhouses",
+    menuTitle: "Farmhouses",
     title: "Luxury Farmhouses & Country Estates",
     category: "Country Living, Landscape Architecture & Private Acreage Estates",
     summary:
@@ -220,11 +230,12 @@ const services = [
     ],
     metric: "Unrivaled Estate Architecture",
     image: "/images/services/farmhouses.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=85",
     alt: "Inscape Luxury Farmhouses and Country Estates — Sprawling Modern Stone Estate",
   },
   {
     id: "kitchens-wardrobes",
-    menuTitle: "Modular Kitchens",
+    menuTitle: "Modular Kitchens & Wardrobes",
     title: "High-End Modular Kitchens & Wardrobes",
     category: "Precision Millwork, Bespoke Storage & Culinary Architecture",
     summary:
@@ -242,6 +253,7 @@ const services = [
     ],
     metric: "Engineered Precision Joinery",
     image: "/images/services/kitchens-wardrobes.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1920&q=85",
     alt: "Inscape High-End Modular Kitchens and Wardrobes — Porcelain Waterfall Island",
   },
 ];
@@ -249,18 +261,24 @@ const services = [
 
 <Layout
   title="Services — Inscape Interiors | Turnkey, Architecture & Luxury Interiors"
-  description="Explore Inscape Interiors' comprehensive design-build services: Turnkey Interior Projects, Architectural Design, Farmhouses, Heritage Renovation, Modular Kitchens, Corporate Offices, and Bespoke Finishes."
+  description="Explore Inscape Interiors' comprehensive design-build services: Turnkey Interior Projects, Renovation & Restoration, Architectural Design, Painting, Lighting, Furniture, Office Interiors, Commercial & Healthcare, Hospitality, Farmhouses, and High-End Modular Kitchens & Wardrobes."
 >
   <!-- HERO INTRO -->
   <section class="w-full py-12 md:py-16 text-center">
     <div class="max-w-[840px] mx-auto px-4">
-      <span class="inline-block text-[12px] uppercase tracking-[0.25em] text-[#8C6D37] mb-3 font-serif font-bold">
+      <span
+        class="inline-block text-[12px] uppercase tracking-[0.25em] text-secondary/70 mb-3 font-serif font-bold"
+      >
         Comprehensive Design-Build Practice
       </span>
-      <h1 class="text-[44px] md:text-[56px] font-bold font-serif text-[#241812] leading-tight mb-6">
+      <h1
+        class="text-[44px] md:text-[56px] font-bold font-serif text-hyperlink leading-tight mb-6 fade-in-element opacity-0"
+      >
         Our Services
       </h1>
-      <p class="text-lg max-w-[700px] mx-auto text-[#241812]/90 font-medium leading-relaxed">
+      <p
+        class="text-lg max-w-[700px] mx-auto text-hyperlink fade-in-element opacity-0 font-medium leading-relaxed"
+      >
         From turnkey interior execution and architectural planning to modular kitchens, corporate workplaces, and artisanal finishes, we provide an integrated suite of architectural and interior services defined by 20 years of craftsmanship.
       </p>
     </div>
@@ -268,25 +286,30 @@ const services = [
 
   <!-- TOGGLE MENU IMPLEMENTATION (All 11 Services) -->
   <section class="w-full pb-20 md:pb-28 px-4 sm:px-6">
-    <div class="max-w-[1180px] mx-auto">
-      <!-- Mobile Select Picker -->
+    <div class="max-w-[1200px] mx-auto">
+      <!-- Mobile Compact Service Dropdown Picker (Visible on Mobile only) -->
       <div class="block md:hidden w-full max-w-sm mx-auto mb-8 px-2">
-        <label for="mobile-service-select" class="block text-xs uppercase tracking-[0.2em] font-serif font-bold text-[#241812]/70 mb-2 text-center">
+        <label
+          for="mobile-service-select"
+          class="block text-xs uppercase tracking-[0.2em] font-serif font-bold text-secondary/70 mb-2 text-center"
+        >
           Select Practice Area
         </label>
         <div class="relative">
           <select
             id="mobile-service-select"
-            class="w-full appearance-none bg-[#F5EFE8] border-2 border-[#241812]/20 rounded-full px-5 py-3 text-sm font-serif font-bold text-[#241812] focus:outline-none focus:border-[#241812] shadow-xs pr-10 cursor-pointer"
+            class="w-full appearance-none bg-primary/90 border-2 border-secondary/30 rounded-full px-5 py-3 text-sm font-serif font-bold text-secondary focus:outline-none focus:border-secondary shadow-sm transition-all duration-300 pr-10 cursor-pointer"
             aria-label="Select Service"
           >
-            {services.map((svc, i) => (
-              <option value={i} class="bg-[#FAF7F2] text-[#241812] font-serif font-bold py-2">
-                {svc.title}
-              </option>
-            ))}
+            {
+              services.map((svc, i) => (
+                <option value={i} class="bg-primary text-secondary font-serif font-bold py-2">
+                  {svc.title}
+                </option>
+              ))
+            }
           </select>
-          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#241812]">
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-secondary">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
             </svg>
@@ -294,46 +317,73 @@ const services = [
         </div>
       </div>
 
-      <!-- Desktop Toggle Tabs -->
-      <nav class="hidden md:flex flex-wrap items-center justify-center gap-2 lg:gap-2.5 w-full mb-10" aria-label="Services Toggle Menu">
-        {services.map((svc, i) => (
-          <button
-            class="service-toggle-btn flex items-center justify-center text-center px-4 py-2.5 rounded-full border border-[#241812]/25 text-xs lg:text-[13.5px] font-serif font-bold tracking-normal leading-tight transition-all duration-300 cursor-pointer whitespace-nowrap"
-            data-service-index={i}
-            data-service-id={svc.id}
-            role="tab"
-            aria-selected={i === 0 ? "true" : "false"}
-          >
-            {svc.menuTitle}
-          </button>
-        ))}
+      <!-- Desktop Toggle Tabs for all 11 Services -->
+      <nav
+        class="hidden md:flex flex-wrap items-center justify-center gap-2 lg:gap-2.5 w-full mb-10"
+        aria-label="Services Toggle Menu"
+      >
+        {
+          services.map((svc, i) => (
+            <button
+              class="service-toggle-btn flex items-center justify-center text-center px-4 py-2.5 rounded-full border border-secondary/25 text-xs lg:text-[13.5px] font-serif font-bold tracking-normal leading-tight transition-all duration-300 cursor-pointer whitespace-nowrap"
+              data-service-index={i}
+              data-service-id={svc.id}
+              role="tab"
+              aria-selected={i === 0 ? "true" : "false"}
+            >
+              {svc.menuTitle}
+            </button>
+          ))
+        }
       </nav>
 
-      <!-- Active Service Display Card -->
-      <div id="active-service-card" class="bg-[#F5EFE8]/85 border border-[#241812]/15 rounded-2xl p-6 md:p-12 shadow-sm">
-        <div id="service-content-wrapper" class="space-y-8 transition-opacity duration-300">
+      <!-- Active Service Display Card (Updates in place on the same screen) -->
+      <div
+        id="active-service-card"
+        class="bg-primary/40 border border-secondary/15 rounded-2xl p-6 md:p-12 shadow-sm"
+      >
+        <div
+          id="service-content-wrapper"
+          class="space-y-8 transition-opacity duration-300"
+        >
           <!-- Header Row -->
-          <div class="flex flex-wrap items-start justify-between gap-4 border-b border-[#241812]/15 pb-6">
+          <div
+            class="flex flex-wrap items-start justify-between gap-4 border-b border-secondary/15 pb-6"
+          >
             <div>
-              <span id="svc-category" class="text-xs uppercase tracking-[0.2em] font-serif font-bold text-[#8C6D37] block mb-2">
+              <span
+                id="svc-category"
+                class="text-xs uppercase tracking-[0.2em] font-serif font-bold text-secondary/70 block mb-2"
+              >
                 {services[0].category}
               </span>
-              <h2 id="svc-title" class="text-[34px] md:text-[44px] font-bold font-serif text-[#241812] leading-tight">
+              <h2
+                id="svc-title"
+                class="text-[34px] md:text-[44px] font-bold font-serif text-hyperlink leading-tight"
+              >
                 {services[0].title}
               </h2>
-              <p id="svc-subtitle" class="text-base md:text-lg text-[#241812]/80 font-serif italic font-medium mt-2">
+              <p
+                id="svc-subtitle"
+                class="text-base md:text-lg text-secondary/80 font-serif italic font-bold mt-2"
+              >
                 {services[0].summary}
               </p>
             </div>
             <div class="shrink-0">
-              <span id="svc-metric" class="inline-block px-4 py-1.5 rounded-full border border-[#241812]/20 bg-[#241812]/5 text-xs font-serif font-bold text-[#241812] tracking-wider uppercase">
+              <span
+                id="svc-metric"
+                class="inline-block px-4 py-1.5 rounded-full border border-secondary/20 bg-secondary/5 text-xs font-serif font-bold text-secondary tracking-wider uppercase"
+              >
                 {services[0].metric}
               </span>
             </div>
           </div>
 
-          <!-- Image Showcase -->
-          <div class="relative overflow-hidden rounded-xl aspect-[16/9] bg-[#241812]/10 shadow-sm">
+          <!-- Image Showcase with Multi-Tier Fallback -->
+          <div
+            class="relative overflow-hidden rounded-xl aspect-[16/9] bg-secondary/10 shadow-sm"
+          >
             <img
               id="svc-image"
               src={services[0].image}
@@ -343,43 +393,61 @@ const services = [
               class="w-full h-full object-cover transition-all duration-700 hover:scale-105 cursor-zoom"
               data-zoom
               loading="eager"
+              onerror={`if(this.dataset.fallbackApplied !== '1'){ this.dataset.fallbackApplied = '1'; this.src='${services[0].fallbackImage}'; } else { this.onerror=null; this.src='https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1920&q=85'; }`}
             />
-            <div class="absolute bottom-3 right-3 bg-[#FAF7F2]/90 backdrop-blur-sm px-3.5 py-1.5 rounded-full text-[11px] font-serif font-bold text-[#241812] border border-[#241812]/15 shadow-sm">
+            <div
+              class="absolute bottom-3 right-3 bg-primary/85 backdrop-blur-sm px-3.5 py-1.5 rounded-full text-[11px] font-serif font-bold text-secondary border border-secondary/15 shadow-sm"
+            >
               Click to Expand Image
             </div>
           </div>
 
           <!-- Description Paragraphs -->
-          <div class="space-y-4 text-[#241812]">
-            <p id="svc-desc1" class="text-lg font-bold leading-relaxed font-serif">
+          <div class="space-y-4 text-hyperlink">
+            <p
+              id="svc-desc1"
+              class="text-lg font-bold leading-relaxed"
+            >
               {services[0].description1}
             </p>
-            <p id="svc-desc2" class="text-lg font-normal leading-relaxed text-[#241812]/90 font-serif">
+            <p
+              id="svc-desc2"
+              class="text-lg font-normal leading-relaxed text-hyperlink/90"
+            >
               {services[0].description2}
             </p>
           </div>
 
           <!-- Deliverables Checklist -->
           <div class="pt-2">
-            <h3 class="text-xs uppercase tracking-[0.2em] font-serif text-[#8C6D37] mb-4 font-bold">
+            <h3
+              class="text-xs uppercase tracking-[0.2em] font-serif text-secondary/70 mb-4 font-bold"
+            >
               Key Scope & Deliverables
             </h3>
-            <ul id="svc-deliverables" class="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-base text-[#241812]">
-              {services[0].deliverables.map((item) => (
-                <li class="flex items-start gap-2.5">
-                  <span class="text-[#B38E46] mt-0.5 text-xs shrink-0">✦</span>
-                  <span class="font-bold">{item}</span>
-                </li>
-              ))}
+            <ul
+              id="svc-deliverables"
+              class="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-base text-hyperlink/90"
+            >
+              {
+                services[0].deliverables.map((item) => (
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-secondary/70 mt-1 text-xs shrink-0">✦</span>
+                    <span class="font-bold">{item}</span>
+                  </li>
+                ))
+              }
             </ul>
           </div>
 
           <!-- Bottom Actions -->
-          <div class="pt-6 border-t border-[#241812]/15 flex flex-wrap items-center justify-between gap-4">
+          <div
+            class="pt-6 border-t border-secondary/15 flex flex-wrap items-center justify-between gap-4"
+          >
             <a
               id="svc-cta"
               href="/contact"
-              class="inline-block border border-[#241812] bg-[#241812] text-[#FAF7F2] rounded-full hover:bg-[#FAF7F2] hover:text-[#241812] transition-colors duration-300 px-8 py-3 text-base font-serif font-semibold"
+              class="inline-block border border-secondary bg-secondary text-primary rounded-full hover:bg-primary hover:text-secondary transition-colors duration-300 px-8 py-3 text-base font-serif font-bold"
             >
               Begin Your Bespoke Journey
             </a>
@@ -388,14 +456,14 @@ const services = [
             <div class="flex items-center gap-3">
               <button
                 id="btn-prev-service"
-                class="px-5 py-2.5 rounded-full border border-[#241812]/20 text-xs font-serif uppercase tracking-wider text-[#241812] hover:bg-[#241812] hover:text-[#FAF7F2] transition-all duration-300 cursor-pointer"
+                class="px-5 py-2.5 rounded-full border border-secondary/20 text-xs font-serif uppercase tracking-wider text-secondary hover:bg-secondary hover:text-primary transition-all duration-300 cursor-pointer"
                 aria-label="Previous Service"
               >
                 ← Previous
               </button>
               <button
                 id="btn-next-service"
-                class="px-5 py-2.5 rounded-full border border-[#241812]/20 text-xs font-serif uppercase tracking-wider text-[#241812] hover:bg-[#241812] hover:text-[#FAF7F2] transition-all duration-300 cursor-pointer"
+                class="px-5 py-2.5 rounded-full border border-secondary/20 text-xs font-serif uppercase tracking-wider text-secondary hover:bg-secondary hover:text-primary transition-all duration-300 cursor-pointer"
                 aria-label="Next Service"
               >
                 Next →
@@ -408,18 +476,20 @@ const services = [
   </section>
 
   <!-- CTA BANNER AT BOTTOM -->
-  <section class="w-full py-16 md:py-20 text-center border-t border-[#241812]/15 bg-gradient-to-b from-[#FAF7F2] to-[#F5EFE8]">
+  <section class="w-full py-16 md:py-20 text-center border-t border-secondary/15">
     <div class="max-w-[700px] mx-auto space-y-6 px-4">
-      <h2 class="text-[36px] md:text-[46px] font-bold font-serif text-[#241812] leading-tight">
+      <h2
+        class="text-[36px] md:text-[46px] font-bold font-serif text-hyperlink leading-tight"
+      >
         Ready to Transform Your Space?
       </h2>
-      <p class="text-lg font-bold text-[#241812]/90 max-w-[520px] mx-auto">
+      <p class="text-lg font-bold text-hyperlink max-w-[520px] mx-auto">
         Speak with our design architects about your upcoming residence, commercial space, or bespoke procurement project.
       </p>
       <div class="pt-2">
         <a
           href="/contact"
-          class="inline-block border border-[#241812] bg-[#241812] text-[#FAF7F2] rounded-full hover:bg-[#FAF7F2] hover:text-[#241812] transition-colors duration-300 px-9 py-3 text-base font-serif font-bold"
+          class="inline-block border border-secondary bg-secondary text-primary rounded-full hover:bg-primary hover:text-secondary transition-colors duration-300 px-9 py-3 text-base font-serif font-bold"
         >
           Schedule a Consultation
         </a>
@@ -431,6 +501,7 @@ const services = [
 <script define:vars={{ services }}>
   let currentIndex = 0;
 
+  // DOM Elements
   const categoryEl = document.getElementById("svc-category");
   const titleEl = document.getElementById("svc-title");
   const subtitleEl = document.getElementById("svc-subtitle");
@@ -462,6 +533,16 @@ const services = [
       if (subtitleEl) subtitleEl.textContent = svc.summary;
       if (metricEl) metricEl.textContent = svc.metric;
       if (imageEl) {
+        let fallbackStage = 0;
+        imageEl.onerror = () => {
+          if (fallbackStage === 0 && svc.fallbackImage) {
+            fallbackStage = 1;
+            imageEl.src = svc.fallbackImage;
+          } else {
+            imageEl.onerror = null;
+            imageEl.src = "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1920&q=85";
+          }
+        };
         imageEl.src = svc.image;
         imageEl.alt = svc.alt;
       }
@@ -473,26 +554,28 @@ const services = [
           .map(
             (item) => `
             <li class="flex items-start gap-2.5">
-              <span class="text-[#B38E46] mt-0.5 text-xs shrink-0">✦</span>
+              <span class="text-secondary/70 mt-1 text-xs shrink-0">✦</span>
               <span class="font-bold">${item}</span>
             </li>
-          `
+          `,
           )
           .join("");
       }
 
+      // Update Desktop Toggle Buttons Active State
       toggleBtns.forEach((btn, i) => {
         if (i === index) {
-          btn.classList.add("bg-[#241812]", "text-[#FAF7F2]", "border-[#241812]", "shadow-sm");
-          btn.classList.remove("text-[#241812]", "border-[#241812]/25", "bg-[#FAF7F2]");
+          btn.classList.add("bg-secondary", "text-primary", "border-secondary", "shadow-sm");
+          btn.classList.remove("text-secondary", "border-secondary/25", "bg-primary/40");
           btn.setAttribute("aria-selected", "true");
         } else {
-          btn.classList.remove("bg-[#241812]", "text-[#FAF7F2]", "border-[#241812]", "shadow-sm");
-          btn.classList.add("text-[#241812]", "border-[#241812]/25", "bg-[#FAF7F2]");
+          btn.classList.remove("bg-secondary", "text-primary", "border-secondary", "shadow-sm");
+          btn.classList.add("text-secondary", "border-secondary/25", "bg-primary/40");
           btn.setAttribute("aria-selected", "false");
         }
       });
 
+      // Update Mobile Dropdown Selected Value
       if (mobileSelectEl) {
         mobileSelectEl.value = String(index);
       }
@@ -505,6 +588,7 @@ const services = [
     }, animate ? 140 : 0);
   }
 
+  // Mobile dropdown select handler
   mobileSelectEl?.addEventListener("change", (e) => {
     const target = e.target;
     if (target) {
@@ -513,6 +597,7 @@ const services = [
     }
   });
 
+  // Click handlers for toggle buttons
   toggleBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       const idx = parseInt(btn.getAttribute("data-service-index") || "0", 10);
@@ -520,6 +605,7 @@ const services = [
     });
   });
 
+  // Prev / Next button handlers
   prevBtn?.addEventListener("click", () => {
     const nextIdx = (currentIndex - 1 + services.length) % services.length;
     renderService(nextIdx, true);
@@ -530,6 +616,7 @@ const services = [
     renderService(nextIdx, true);
   });
 
+  // URL Hash or query param pre-selection
   function checkUrlForService() {
     const hash = window.location.hash.replace("#", "").toLowerCase();
     const urlParams = new URLSearchParams(window.location.search);
@@ -547,11 +634,12 @@ const services = [
         lighting: "lighting",
         furniture: "furniture",
         office: "office-interiors",
+        offices: "office-interiors",
         commercial: "commercial-healthcare",
         healthcare: "commercial-healthcare",
         hospitality: "hospitality-interiors",
-        farmhouse: "farmhouses",
         farmhouses: "farmhouses",
+        farmhouse: "farmhouses",
         kitchen: "kitchens-wardrobes",
         kitchens: "kitchens-wardrobes",
         wardrobes: "kitchens-wardrobes",
@@ -559,16 +647,45 @@ const services = [
       const resolvedTarget = aliases[target] || target;
 
       const foundIdx = services.findIndex(
-        (s) => s.id.toLowerCase() === resolvedTarget || s.id.toLowerCase() === target
+        (s) => s.id.toLowerCase() === resolvedTarget || s.id.toLowerCase() === target,
       );
       if (foundIdx !== -1) {
         renderService(foundIdx, false);
         return;
       }
     }
+    // Default to first service
     renderService(0, false);
   }
 
+  // Initial render
   checkUrlForService();
   window.addEventListener("hashchange", checkUrlForService);
+</script>
+
+<style>
+  .fade-in-element {
+    transition:
+      opacity 1s ease-out,
+      transform 1s ease-out;
+    transform: translateY(20px);
+  }
+  .fade-in-element.visible {
+    opacity: 1 !important;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add("visible"), index * 120);
+        }
+      });
+    },
+    { threshold: 0.1 },
+  );
+  document.querySelectorAll(".fade-in-element").forEach((el) => observer.observe(el));
 </script>
